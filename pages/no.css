@@ -1,0 +1,21 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    font-family: "Pretendard";
+}
+
+.alert {
+    text-align: center;
+}
+
+.alert h1 {
+    font-size: 100px;
+    padding: 20px;
+}
+
+.alert h3 {
+    font-size: 30px;
+    padding: 20px;
+    text-decoration-line: line-through;
+    color: rgb(195, 195, 195);
+}

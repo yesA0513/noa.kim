@@ -1,0 +1,300 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    font-family: "Pretendard";
+}
+
+nav {
+    position: fixed;
+    float: left;
+    width: 200px;
+    padding: 10px;
+    display: inline;
+    z-index: 1;
+}
+
+nav h1 {
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 5px;
+    font-size: 30px;
+}
+
+nav p {
+    margin: 0;
+    padding-left: 5px;
+    padding-bottom: 50px;
+    font-size: 15px;
+    color: gray;
+}
+
+nav a {
+    display: table;
+    padding: 5px;
+    color: black;
+}
+
+.avatar img{
+    margin: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/*콘텐츠*/
+
+.contents{
+    max-width: 0 auto;
+    margin: 0;
+    padding-left: 400px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 300px;
+    position: relative;
+}
+
+
+
+.gridbox{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/*그리드 박스*/
+
+.box1, .box3, .box8, .box9{
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    align-items: center;
+    aspect-ratio: 1;
+}
+
+.content2 {
+    grid-column-start: 1;
+	grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    padding-top: 5rem;
+}
+
+.box2 {
+    position: relative;
+    background-color: #fff3ae;
+    border-radius: 20px;
+    align-items: center;
+    aspect-ratio: 1;
+}
+
+.box4 {
+    grid-column-start: 1;
+	grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    position: relative;
+    background-color: #d7ffb5;
+    border-radius: 20px;
+    align-items: center;
+    aspect-ratio: 1/0.24;
+}
+
+.box5 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.box6 {
+    height: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    position: relative;
+    background-color: #eddefe;
+    border-radius: 20px;
+    align-items: center;
+    aspect-ratio: 1/0.24;
+}
+
+.box10, .box11, .box12 {
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* */
+
+.intro, .hobby, .mbti, .nowlistening, .weather, .time, .overlay, .project_1, .project_2, .project_3 {
+    margin: 10%;
+}
+
+.ability, .learn {
+    margin: 0;
+    padding: 5%;
+}
+
+.moreinfo a {
+    margin: 10%;
+    text-align: center;
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: rgb(255, 200, 0);
+    text-decoration: none;
+    background-color: rgb(16, 124, 255);
+    border-radius: 15px;
+}
+
+.intro h2, .mbti h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.hobbylist h2{
+    padding: 0.1rem;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.hobby h4 {
+    margin: 0;
+    padding-bottom: 2.3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.mbti h4, .ability h4, .learn h4, .nowlistening h4, .photo h4, .weather h4, .time h4 {
+    margin: 0;
+    padding-bottom: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.mbti h1 {
+    margin: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 4rem;
+    background-color: lightgreen;
+    border-radius: 15px;
+}
+
+.abilitylist i {
+    margin-right: 1rem;
+    padding: 0;
+    font-size: 2.5rem;
+    color: #3a7c00;
+}
+
+.learnlist i {
+    margin-right: 1rem;
+    padding: 0;
+    font-size: 2.5rem;
+    color: #5d1da7;
+}
+
+.weather i {
+    margin: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgb(84, 84, 84);
+    background-color: rgba(195, 195, 195, 0.61);
+    border-radius: 100%;
+}
+
+.weather p {
+    font-size: small;
+    font-weight: bold;
+    padding-top: 7rem;
+    padding-left: 2rem;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 2px;
+    color: rgb(142, 142, 142);
+}
+
+/*사진*/
+
+.showphoto {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    color: white;
+}
+
+.overlay h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.photo, .location {
+    font-size: 1.5rem;
+}
+
+.location a {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.228);
+    border-radius: 15px;
+}
+
+/*프로젝트*/
+
+.project_1 a, .project_2 a, .project_3 a {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(46, 47, 59);
+    text-decoration: none;
+}
+
+.project_1 p, .project_2 p, .project_3 p{
+    margin: 0;
+    padding-top: 2rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(120, 120, 120);
+    text-decoration: none;
+}
