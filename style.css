@@ -104,10 +104,7 @@ nav a {
 
 .box1,
 .box2,
-.box3,
-.box7,
-.box8,
-.box9 {
+.box3 {
     aspect-ratio: 1;
 }
 
@@ -141,6 +138,10 @@ nav a {
     border-radius: 20px;
 }
 
+.box7 {
+    background-color: #ffffff;
+}
+
 .box10,
 .box11,
 .box12 {
@@ -150,7 +151,7 @@ nav a {
     align-items: center;
 }
 
-.box13{
+.box13 {
     position: relative;
     background-color: #f1f1f1;
     border-radius: 20px;
@@ -195,8 +196,7 @@ nav a {
     border-radius: 15px;
 }
 
-.intro h2,
-.mbti h2 {
+.intro h2 {
     margin: 0;
     font-size: 1.5rem;
 }
@@ -392,10 +392,11 @@ nav a {
     font-weight: bold;
     background-color: rgb(14, 32, 127);
     color: #ffffff;
-    border-radius:15px;
+    border-radius: 15px;
 }
 
-.high h3, .univ h3 {
+.high h3,
+.univ h3 {
     padding-top: 0.1rem;
     margin: 0;
     font-size: 1rem;
@@ -476,13 +477,14 @@ nav a {
 
     }
 
-    .high h3, .univ h3 {
+    .high h3,
+    .univ h3 {
         color: #ababab;
     }
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 540px) {
 
     nav {
         float: inline-start;
@@ -568,14 +570,28 @@ nav a {
     .project_2,
     .project_3,
     .ability,
-    .learn, 
+    .learn,
     .school {
         margin: 0;
         padding: 10%;
     }
 
-    .content2, .content3 {
+    .content2,
+    .content3 {
         padding-left: 1rem;
+    }
+
+    .moreinfo a {
+        font-size: 1.5rem;
+    }
+
+    .mbti h1 {
+        font-size: 4rem;
+    }
+
+    .weather p {
+        padding-top: 8.2rem;
+        padding-left: 2.5rem;
     }
 
     /*사진*/
@@ -599,5 +615,263 @@ nav a {
     .project_3 p {
         padding-top: 1.5rem;
         font-size: 1rem;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 850px) {
+    
+    nav {
+        position: relative;
+        float:unset;
+        width: 100%;
+        padding-bottom: 100px;
+        z-index: 1;
+        text-align: center;
+    }
+    
+    nav h1 {
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        font-size: 2rem;
+    }
+    
+    nav p {
+        margin: 0;
+        padding: 0;
+        padding-top: 5px;
+        padding-bottom: 30px;
+        font-size: 1rem;
+    }
+    
+    nav a {
+        display:unset;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .avatar img {
+        margin: 0;
+        padding: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    
+    /*콘텐츠*/
+    
+    .contents {
+        margin: 1rem;
+        padding: 0;
+    }
+    
+    .gridbox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /*그리드 박스*/
+    
+    .content2 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        padding-top: 5rem;
+    }
+    
+    .content3 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 10;
+        grid-row-end: 11;
+        padding-top: 5rem;
+    }
+    
+    .box3 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .box5 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .box5,
+    .box8,
+    .box9 {
+        position: relative;
+        border-radius: 20px;
+        align-items: center;
+    }
+    
+    .box4 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    
+    .box6 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+
+    .box10 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 8;
+        grid-row-end: 9;
+    }
+
+    .box11 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 8;
+        grid-row-end: 9;
+    }
+
+    .box12 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 9;
+        grid-row-end: 10;
+    }
+
+    
+    .box13 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 11;
+        grid-row-end: 12;
+    }
+    
+    .moreinfo a {
+        font-family: "PartialSansKR-Regular";
+        font-size: 1.2rem;
+    }
+
+    .time h2, .weather h2 {
+        font-size: 1.3rem;
+    }
+    
+    .mbti h1 {
+        font-size: 3.5rem;
+    }
+    
+    .weather i {
+        font-size: 1.5rem;
+    }
+    
+    .weather p {
+        margin: 0;
+        padding: 0;
+        padding-top: 5rem;
+    }
+    
+    /*프로젝트*/
+    
+    .project_1 a,
+    .project_2 a,
+    .project_3 a {
+        font-size: 1.3rem;
+    }
+    
+    .project_1 p,
+    .project_2 p,
+    .project_3 p {
+        font-size: 1rem;
+    }
+
+}
+
+@media (min-width: 851px) and (max-width: 1200px) {
+
+    .moreinfo a {
+        font-size: 1rem;
+    }
+
+    .mbti h1 {
+        font-size: 2.5rem;
+    }
+
+    .location a {
+        font-size: 1rem;
+    }
+
+    .musicpage a {
+        font-size: 1rem;
+    }
+
+    .mbti h4,
+    .ability h4,
+    .learn h4,
+    .nowlistening h4,
+    .photo h4,
+    .weather h4,
+    .time h4,
+    .school h4 {
+        padding-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .hobby h4 {
+        padding-bottom: 0.6rem;
+        font-size: 1rem;
+    }
+
+    .hobbylist h2 {
+        font-size: 1.7rem;
+    }
+
+    .intro h2 {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .abilitylist i {
+        font-size: 1.7rem;
+    }
+
+    .learnlist i {
+        font-size: 1.7rem;
+    }
+
+    .weather h2,
+    .time h2 {
+        font-size: 1rem;
+    }
+
+    .weather p {
+        font-size: 0.5rem;
+        padding-top: 2.5rem;
+        padding-left: 0.1rem;
+    }
+
+    .project_1 a,
+    .project_2 a,
+    .project_3 a {
+        font-size: 1rem;
+    }
+
+    .project_1 p,
+    .project_2 p,
+    .project_3 p {
+        padding-top: 1.3rem;
+        font-size: 0.7rem;
     }
 }
