@@ -1,9 +1,15 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 @font-face {
     font-family: 'PartialSansKR-Regular';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 :root {
@@ -86,6 +92,14 @@ nav a {
     padding-top: 5rem;
 }
 
+.content3 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 7;
+    grid-row-end: 8;
+    padding-top: 5rem;
+}
+
 .box2 {
     position: relative;
     background-color: #fff3ae;
@@ -139,6 +153,13 @@ nav a {
     align-items: center;
 }
 
+.box13{
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    align-items: center;
+}
+
 /* */
 
 .intro,
@@ -150,7 +171,8 @@ nav a {
 .overlay,
 .project_1,
 .project_2,
-.project_3 {
+.project_3,
+.school {
     margin: 10%;
 }
 
@@ -203,7 +225,8 @@ nav a {
 .nowlistening h4,
 .photo h4,
 .weather h4,
-.time h4 {
+.time h4,
+.school h4 {
     margin: 0;
     padding-bottom: 1.2rem;
     font-size: 1.2rem;
@@ -353,6 +376,113 @@ nav a {
     text-decoration: none;
 }
 
+/*정보*/
+
+.high {
+    padding-bottom: 1rem;
+}
+
+.high a {
+    padding: 0;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.univ a {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: rgb(14, 32, 127);
+    color: #ffffff;
+    border-radius:15px;
+}
+
+.high h3, .univ h3 {
+    padding-top: 0.1rem;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(120, 120, 120);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222222;
+        color: #ffffff;
+
+    }
+
+    nav a {
+        color: #d9d9d9;
+    }
+
+    .box1,
+    .box3,
+    .box5,
+    .box8,
+    .box9,
+    .box10,
+    .box11,
+    .box12,
+    .box13 {
+        background-color: #333333;
+    }
+
+    .box2 {
+        background-color: #f5d144;
+        color: #000000;
+    }
+
+    .box4 {
+        background-color: #a0f544;
+        color: #000000;
+    }
+
+    .box6 {
+        background-color: #b444f5;
+        color: #000000;
+    }
+
+    .moreinfo a {
+        color: rgb(238, 187, 0);
+        background-color: rgb(0, 91, 203);
+    }
+
+    .mbti h1 {
+        background-color: rgb(65, 216, 65);
+        color: #000000;
+    }
+
+    .abilitylist i {
+        color: #027600;
+    }
+
+    .learnlist i {
+        color: #4b0076;
+    }
+
+    .project_1 a,
+    .project_2 a,
+    .project_3 a {
+        color: #ffffff;
+    }
+
+    .project_1 p,
+    .project_2 p,
+    .project_3 p {
+        color: #ababab;
+
+    }
+
+    .high h3, .univ h3 {
+        color: #ababab;
+    }
+
+}
+
 @media (max-width: 480px) {
 
     nav {
@@ -409,7 +539,18 @@ nav a {
 
     /*그리드 박스*/
 
-    .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12 {
+    .box1,
+    .box2,
+    .box3,
+    .box4,
+    .box5,
+    .box6,
+    .box7,
+    .box8,
+    .box9,
+    .box10,
+    .box11,
+    .box12 {
         border-radius: 20px;
         align-items: center;
         margin: 1rem;
