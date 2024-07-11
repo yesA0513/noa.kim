@@ -20,6 +20,18 @@
     color: rgb(195, 195, 195);
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222222;
+        color: #ffffff;
+
+    }
+
+    .alert h3 {
+        color: #555555;
+    }
+}
+
 @media (max-width: 480px) {
     .alert h1 {
         font-size: 50px;

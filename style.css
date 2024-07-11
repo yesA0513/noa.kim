@@ -21,36 +21,36 @@ body {
 nav {
     position: fixed;
     float: left;
-    width: 200px;
-    padding: 10px;
+    width: 15%;
+    padding: 1%;
     z-index: 1;
 }
 
 nav h1 {
     margin: 0;
-    padding-top: 20px;
-    padding-left: 5px;
-    font-size: 30px;
+    padding-top: 5%;
+    padding-left: 5%;
+    font-size: 2rem;
 }
 
 nav p {
     margin: 0;
-    padding-left: 5px;
-    padding-bottom: 50px;
-    font-size: 15px;
+    padding-left: 5%;
+    padding-bottom: 15%;
+    font-size: 1rem;
     color: gray;
 }
 
 nav a {
     display: table;
-    padding: 5px;
+    padding: 5%;
     color: black;
 }
 
 .avatar img {
-    margin: 25px;
-    width: 150px;
-    height: 150px;
+    margin: 10%;
+    width: 60%;
+    height: 60%;
     border-radius: 50%;
 }
 
@@ -58,10 +58,10 @@ nav a {
 
 .contents {
     margin: 0;
-    padding-left: 400px;
-    padding-right: 50px;
-    padding-top: 50px;
-    padding-bottom: 300px;
+    padding-left: 20%;
+    padding-right: 3%;
+    padding-top: 3%;
+    padding-bottom: 20%;
     position: relative;
 }
 
@@ -72,17 +72,6 @@ nav a {
 }
 
 /*그리드 박스*/
-
-.box1,
-.box3,
-.box8,
-.box9 {
-    position: relative;
-    background-color: #f1f1f1;
-    border-radius: 20px;
-    align-items: center;
-    aspect-ratio: 1;
-}
 
 .content2 {
     grid-column-start: 1;
@@ -100,12 +89,30 @@ nav a {
     padding-top: 5rem;
 }
 
-.box2 {
+.box1,
+.box2,
+.box3,
+.box5,
+.box7,
+.box8,
+.box9 {
     position: relative;
-    background-color: #fff3ae;
+    background-color: #f1f1f1;
     border-radius: 20px;
     align-items: center;
+}
+
+.box1,
+.box2,
+.box3,
+.box7,
+.box8,
+.box9 {
     aspect-ratio: 1;
+}
+
+.box2 {
+    background-color: #fff3ae;
 }
 
 .box4 {
@@ -113,11 +120,8 @@ nav a {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    position: relative;
     background-color: #d7ffb5;
     border-radius: 20px;
-    align-items: center;
-    aspect-ratio: 1/0.24;
 }
 
 .box5 {
@@ -125,23 +129,16 @@ nav a {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 4;
-    position: relative;
     background-color: #f1f1f1;
-    border-radius: 20px;
-    align-items: center;
 }
 
 .box6 {
-    height: auto;
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    position: relative;
     background-color: #eddefe;
     border-radius: 20px;
-    align-items: center;
-    aspect-ratio: 1/0.24;
 }
 
 .box10,
@@ -159,8 +156,6 @@ nav a {
     border-radius: 20px;
     align-items: center;
 }
-
-/* */
 
 .intro,
 .hobby,
@@ -446,6 +441,10 @@ nav a {
         color: #000000;
     }
 
+    .box7 {
+        background-color: #222222;
+    }
+
     .moreinfo a {
         color: rgb(238, 187, 0);
         background-color: rgb(0, 91, 203);
@@ -550,7 +549,8 @@ nav a {
     .box9,
     .box10,
     .box11,
-    .box12 {
+    .box12,
+    .box13 {
         border-radius: 20px;
         align-items: center;
         margin: 1rem;
@@ -568,12 +568,13 @@ nav a {
     .project_2,
     .project_3,
     .ability,
-    .learn {
+    .learn, 
+    .school {
         margin: 0;
         padding: 10%;
     }
 
-    .content2 {
+    .content2, .content3 {
         padding-left: 1rem;
     }
 
