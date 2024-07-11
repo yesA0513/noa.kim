@@ -19,3 +19,13 @@
     text-decoration-line: line-through;
     color: rgb(195, 195, 195);
 }
+
+@media (max-width: 480px) {
+    .alert h1 {
+        font-size: 50px;
+    }
+
+    .alert h3 {
+        font-size: 20px;
+    }
+}
