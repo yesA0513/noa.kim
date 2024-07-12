@@ -97,14 +97,43 @@
                 <div class="weather">
                     <h4>내 위치의 날씨는</h4>
                     <h2>개발자가 귀찮은 관계로</h2>
-                    <p>이거 누르면 성남시 날씨 나옴 ➔</p>
+                    <h2>나중에 추가하겠음.</h2>
                     <a href="https://weather.naver.com/today/02133101?cpName=KMA"><i class="fa-solid fa-plus"></i></a>
                 </div>
             </div>
             <div class="box9">
                 <div class="time">
-                    <h4>나의 시간대는</h4>
-                    <h2>나중에 추가하겠음.</h2>
+                    <h4>지금 seoul 의 시간은</h4>
+                    <div class="worldtime" id="my-time"></div>
+                    <script>
+                        function updateSeoulTime() {
+                            const now = new Date();
+                            const seoulTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
+                            
+                            let period = seoulTime.toLocaleString("ko-KR", {
+                                timeZone: "Asia/Seoul",
+                                hour12: true,
+                                hour: 'numeric'
+                            }).split(' ')[0]; // "오전" 또는 "오후"
+                            
+                            // "오전"을 "AM"으로, "오후"를 "PM"으로 변환
+                            period = period === "오전" ? "AM" : "PM";
+                            
+                            const time = seoulTime.toLocaleString("ko-KR", {
+                                timeZone: "Asia/Seoul",
+                                hour12: true,
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            }).split(' ')[1]; // "HH:MM" 형식의 시간
+                    
+                            document.getElementById("my-time").innerHTML = 
+                                `<span class="period">${period}</span> 
+                                 <span class="time">${time}</span>`;
+                        }
+                    
+                        updateSeoulTime();
+                        setInterval(updateSeoulTime, 1000); // 1초마다 업데이트 (1밀리초는 너무 빈번할 수 있어 1000으로 변경했습니다)
+                    </script>
                 </div>
             </div>
             <div class="content2">

@@ -7,6 +7,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SunBatang-Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/SunBatang-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: #ffffff;
     color: #000000;
@@ -222,6 +236,7 @@ nav a {
 .weather h4,
 .time h4,
 .school h4 {
+    font-family: "Pretendard";
     margin: 0;
     padding-bottom: 1.2rem;
     font-size: 1.2rem;
@@ -275,16 +290,6 @@ nav a {
     border-radius: 100%;
 }
 
-.weather p {
-    font-size: small;
-    font-weight: bold;
-    padding-top: 7rem;
-    padding-left: 2rem;
-    text-decoration-line: line-through;
-    text-decoration-thickness: 2px;
-    color: rgb(142, 142, 142);
-}
-
 .musicpage a {
     font-family: "PartialSansKR-Regular";
     padding-left: 10px;
@@ -302,6 +307,32 @@ nav a {
     border-radius: 15px;
 }
 
+
+.worldtime span {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    position: absolute;
+    margin: 10%;
+    border-radius: 15px;
+}
+
+.period {
+    font-family: 'LINESeedKR';
+    left: 0;
+    bottom: 15%;
+    font-size: 6rem;
+    font-weight: 100;
+    color: rgba(255, 206, 91, 0.526);
+}
+
+.time {
+    font-family: 'SunBatang-light';
+    font-weight: 400;
+    right: 0;
+    bottom: 0;
+    font-size: 4rem;
+}
 /*사진*/
 
 .showphoto {
@@ -464,6 +495,10 @@ nav a {
         color: #4b0076;
     }
 
+    .period {
+        color: rgba(91, 99, 255, 0.526);
+    }
+
     .project_1 a,
     .project_2 a,
     .project_3 a {
@@ -558,6 +593,15 @@ nav a {
         margin: 1rem;
     }
 
+    .box1,
+    .box2,
+    .box3,
+    .box5,
+    .box8,
+    .box9 {
+        aspect-ratio: 1;
+    }
+
     .intro,
     .hobby,
     .mbti,
@@ -587,11 +631,6 @@ nav a {
 
     .mbti h1 {
         font-size: 4rem;
-    }
-
-    .weather p {
-        padding-top: 8.2rem;
-        padding-left: 2.5rem;
     }
 
     /*사진*/
@@ -714,6 +753,7 @@ nav a {
         position: relative;
         border-radius: 20px;
         align-items: center;
+        aspect-ratio: 1;
     }
     
     .box4 {
@@ -775,12 +815,6 @@ nav a {
     
     .weather i {
         font-size: 1.5rem;
-    }
-    
-    .weather p {
-        margin: 0;
-        padding: 0;
-        padding-top: 5rem;
     }
     
     /*프로젝트*/
@@ -854,12 +888,6 @@ nav a {
     .weather h2,
     .time h2 {
         font-size: 1rem;
-    }
-
-    .weather p {
-        font-size: 0.5rem;
-        padding-top: 2.5rem;
-        padding-left: 0.1rem;
     }
 
     .project_1 a,
