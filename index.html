@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko-KR">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
+    <script src="/app/api/music.js"></script>
+    <script src="/app/api/page.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,7 @@
                 <div class="intro">
                     <h2>👋 안녕하세요!<br>저는 김노아입니다.</h2>
                     <div class="moreinfo">
-                        <a href="/pages/no.html">INTRODUCE ➔</a>
+                        <a href="#" id="introduceLink">INTRODUCE ➔</a>
                     </div>
                 </div>
             </div>
@@ -62,8 +64,13 @@
                 </div>
             </div>
             <div class="box5">
-                <div class="nowlistening">
-                    <h4>지금 듣는 중</h4>
+                <div class="musicalbum" id="cover" alt="Album Cover" style="border-radius: 20px;"></div>
+                <div class="overlay">
+                    <div class="musicinfo">
+                        <h4>💿 지금 듣는 중</h4>
+                        <div class="musictitle" id="song"></div>
+                        <div class="musicartist" id="artist"></div>
+                    </div>
                     <div class="musicpage">
                         <a href="https://music.noa.kim">MUSIC ➔</a>
                     </div>
@@ -88,7 +95,7 @@
                             <h4>최근 촬영한 📸 사진</h4>
                         </div>
                         <div class="location">
-                            <a href="/pages/no.html">MORE ➔</a>
+                            <a href="https://photo.noa.kim">MORE ➔</a>
                         </div>
                     </div>
                 </div>
@@ -165,11 +172,11 @@
                     <h4>🏫학력</h4>
                     <div class="high">
                         <a>성일고등학교</a>
-                        <h3>일반 인문계</h3>
+                        <h3>(2021~2023) 일반 인문계</h3>
                     </div>
                     <div class="univ">
                         <a>➔ 상명대학교</a>
-                        <h3>소프트웨어학과</h3>
+                        <h3>(2024~) 소프트웨어학과</h3>
                     </div>
                 </div>
         </div>
