@@ -127,7 +127,7 @@ nav a {
 }
 
 .box2 {
-    background-color: #fff3ae;
+    background: linear-gradient(145deg, #fff6b0, #ffb1ff);
 }
 
 .box4 {
@@ -135,7 +135,7 @@ nav a {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    background-color: #d7ffb5;
+    background: linear-gradient(90deg, #ceff96, #50ff40);
     border-radius: 20px;
 }
 
@@ -153,12 +153,16 @@ nav a {
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    background-color: #eddefe;
+    background: linear-gradient(90deg, #f2b9ff, #d98eff);
     border-radius: 20px;
 }
 
 .box7 {
     background-color: #ffffff;
+}
+
+.box9 {
+    background: linear-gradient(180deg, #fff3c8, #f1f1f1);
 }
 
 .box10,
@@ -177,6 +181,7 @@ nav a {
     grid-column-end: 2;
     grid-row-start: 9;
     grid-row-end: 10;
+    background: linear-gradient(180deg, #c8eaff, #f1f1f1);
 }
 
 .intro,
@@ -213,7 +218,7 @@ nav a {
     font-size: 1.5rem;
     color: rgb(255, 200, 0);
     text-decoration: none;
-    background-color: rgb(16, 124, 255);
+    background: linear-gradient(90deg, #6ca2ff, #4a3aff);
     border-radius: 15px;
 }
 
@@ -261,7 +266,7 @@ nav a {
     bottom: 0;
     font-weight: bold;
     font-size: 4rem;
-    background-color: lightgreen;
+    background: linear-gradient(45deg, #8cff9a, #fbff78);
     border-radius: 15px;
 }
 
