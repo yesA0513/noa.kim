@@ -324,12 +324,12 @@ nav a {
     display: flex;
     border-radius: 20px;
     object-fit: cover;
-    filter: brightness(40%);
+    filter: brightness(50%);
 }
 
 .musictitle {
     padding-top: 10%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
@@ -509,11 +509,11 @@ nav a {
         background-color: #222222;
     }
 
-    .box9{
-        background:linear-gradient(180deg, #1f3c46, #333333);
+    .box9 {
+        background: linear-gradient(180deg, #1f3c46, #333333);
     }
 
-    .box13{
+    .box13 {
         background:linear-gradient(180deg, #212a42, #333333);
     }
 
@@ -704,6 +704,17 @@ nav a {
         padding-top: 1.5rem;
         font-size: 1rem;
     }
+
+    .weather-location {
+        font-size: 1rem;
+    }
+
+    .weather-icon {
+        width: 100px !important;
+        height: 100px !important;
+        top: 20% !important;
+        left: 10% !important;
+    }
 }
 
 @media (min-width: 541px) and (max-width: 850px) {
@@ -841,7 +852,13 @@ nav a {
         grid-row-end: 10;
     }
 
-    
+    .box14 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 9;
+        grid-row-end: 10;
+    }
+
     .box13 {
         grid-column-start: 1;
         grid-column-end: 2;
@@ -849,7 +866,6 @@ nav a {
         grid-row-end: 12;
     }
 
-    
     .moreinfo a {
         font-family: "PartialSansKR-Regular";
         font-size: 1.2rem;
@@ -940,6 +956,18 @@ nav a {
         font-size: 1rem;
     }
 
+    .weather-location {
+        font-size: 1rem;
+    }
+
+    .weather-icon {
+        width: 80px;
+        height: 80px;
+        top: 10% !important;
+        left: 10% !important;
+    }
+
+
     .project_0 a,
     .project_1 a,
     .project_2 a,
@@ -953,5 +981,104 @@ nav a {
     .project_3 p {
         padding-top: 1.3rem;
         font-size: 0.7rem;
+    }
+}
+
+.weather-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+.weather-icon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 15%;
+    top: 25%;
+}
+
+.weather-location {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-family: "Pretendard";
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 1.2rem;
+    color: #000000;
+}
+
+.weather-info {
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    text-align: right;
+}
+
+.weather-temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.weather-desc {
+    font-size: 1.5em;
+    color: #8d8d8d;
+}
+
+
+/* 모바일 반응 대응 */
+@media (max-width: 540px) {
+    .weather-icon {
+        width: 60px;
+        height: 60px;
+        top: 15%;
+    }
+    
+    .weather-temp {
+        font-size: 1.8em;
+    }
+    
+    .weather-desc {
+        font-size: 1em;
+    }
+}
+
+.box8 {
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    align-items: center;
+    cursor: pointer;  /* 커서를 포인터로 변경 */
+    transition: transform 0.2s ease;  /* 부드러운 변환 효과 */
+}
+
+@media (prefers-color-scheme: dark) {
+    .box8 {
+        background-color: #222222;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .weather-desc {
+        color: #ffffff;
+    }
+    
+    .weather-temp {
+        color: #ffffff;
+    }
+    
+    .weather-location {
+        color: #ffffff;
+    }
+    
+    .weather-icon {
+        filter: brightness(0.8);
+        opacity: 0.8;
     }
 }

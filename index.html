@@ -20,6 +20,7 @@
     <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
     <script src="/app/api/music.js"></script>
     <script src="/app/api/page.js"></script>
+    <script src="/app/api/weather.js"></script>
 </head>
 
 <body>
@@ -110,12 +111,14 @@
                     </div>
                 </div>
             </div>
-            <div class="box8">
-                <div class="weather">
-                    <h4>내 위치의 날씨는</h4>
-                    <h2>개발자가 귀찮은 관계로</h2>
-                    <h2>나중에 추가하겠음.</h2>
-                    <a href="https://weather.naver.com/today/02133101?cpName=KMA"><i class="fa-solid fa-plus"></i></a>
+            <div class="box8" onclick="window.open('https://openweathermap.org/city/1897000', '_blank')">
+                <div class="weather-content">
+                    <div class="weather-location">성남시</div>
+                    <img class="weather-icon" alt="날씨 아이콘" />
+                    <div class="weather-info">
+                        <div class="weather-temp"></div>
+                        <div class="weather-desc"></div>
+                    </div>
                 </div>
             </div>
             <div class="box9">
@@ -197,6 +200,12 @@
                 </div>
         </div>
     </section>
+    <script>
+        // 페이지 로드 시 날씨 정보 가져오기
+        document.addEventListener('DOMContentLoaded', getWeather);
+        // 30분마다 날씨 정보 업데이트
+        setInterval(getWeather, 1800000);
+    </script>
 </body>
 
 </html>
