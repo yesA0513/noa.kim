@@ -16,104 +16,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>김노아 @yesA0513</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
     <script src="/app/api/music.js"></script>
     <script src="/app/api/page.js"></script>
     <script src="/app/api/weather.js"></script>
+    <script src="/app/api/clock.js"></script>
+    <script src="/app/api/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <nav>
-        <div class="avatar">
-            <img src="/img/IMG_7688.jpg" alt="avatar">
-        </div>
-        <h1>김노아</h1>
-        <p>@yesA0513</p>
-        <a href="https://github.com/yesa0513">GitHub</a>
-        <a href="https://blog.noa.kim">Blog</a>
-        <a href="mailto:hi@noa.kim">hi@noa.kim</a>
-        <a href="https://instagram.com/_rlashdk_">instagram</a>
-    </nav>
     <section class="contents">
+        <nav class="reveal-on-scroll">
+            <p id="MyName">김노아</p>
+            <p>@yesA0513</p>
+            <div class="nav-links">
+                <a href="https://github.com/yesa0513" data-tooltip="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="https://blog.noa.kim" data-tooltip="Blog"><ion-icon name="journal-outline"></ion-icon></a>
+                <a href="mailto:hi@noa.kim" data-tooltip="Email"><ion-icon name="mail-outline"></ion-icon></a>
+                <a href="https://instagram.com/_rlashdk_" data-tooltip="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/noa-kim-62962a348" data-tooltip="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </div>
+        </nav>
 
         <div class="gridbox">
-            <div class="box1">
+            <div class="box1 reveal-on-scroll">
                 <div class="intro">
-                    <h2>👋 안녕하세요!<br>저는 김노아입니다.</h2>
-                    <div class="moreinfo">
-                        <a href="#" id="introduceLink">INTRODUCE ➔</a>
-                    </div>
+                    <p id="Introduce">👋 안녕하세요!<br>저는 김노아입니다.</p>
                 </div>
             </div>
-            <div class="box2">
+            <div class="box2 reveal-on-scroll">
                 <div class="hobby">
-                    <h4>나의🎨취미는</h4>
+                    <p class="title">나의 관심사</p>
                     <div class="hobbylist">
-                        <h2>🚗 자동차</h2>
-                        <h2>💻 코딩/></h2>
-                        <h2>사진 📷 찰칵</h2>
+                        <div class="hobbies">
+                            <div class="hobby-item">
+                                <p class="things">자동차 🚗</p>
+                                <p class="desc">다양한 차를 알아보고 운전하는 것을 좋아해요.</p>
+                            </div>
+                            <div class="hobby-item">
+                                <p class="things">새로운 기술 🛠️</p>
+                                <p class="desc">새로운 기술을 탐구하고 다양한 방법으로 활용해봐요.</p>
+                            </div>
+                            <div class="hobby-item">
+                                <p class="things">사진 촬영 📷</p>
+                                <p class="desc">여행하거나 일상에서 취미로 사진을 촬영해요.</p>
+                            </div>
+                            <div class="hobby-item">
+                                <p class="things">디자인 🎨</p>
+                                <p class="desc">사용자가 이용하기 편리하고 깔끔한 UI/UX에 관심이 많아요.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="box3">
+            <div class="box3 reveal-on-scroll">
                 <div class="mbti">
-                    <h4>나의 MBTI는</h4>
-                    <h1>INTJ</h1>
-                </div>
-            </div>
-            <div class="box4">
-                <div class="ability">
-                    <h4>이런걸 다룰 수 있어요 😃</h4>
-                    <div class="abilitylist">
-                        <i class="devicon-python-plain"></i>
-                        <i class="devicon-c-plain"></i>
-                        <i class="devicon-html5-plain"></i>
-                        <i class="devicon-css3-plain"></i>
-                        <i class="devicon-javascript-plain"></i>
+                    <p class="title">나의 MBTI는</p>
+
+                    <div class="mbti-descriptions">
+                        <span class="mbti-desc" data-type="I">내향형:<br>에너지의 방향이 내면 세계를 향해요</span>
+                        <span class="mbti-desc" data-type="N">직관형:<br>사실보다 아이디어나 개념에 더 관심이 많아요</span>
+                        <span class="mbti-desc" data-type="T">사고형:<br>논리적 분석을 바탕으로 객관적으로 판단해요</span>
+                        <span class="mbti-desc" data-type="J">판단형:<br>빠르고 합리적인 결정을 내리는 것을 선호해요</span>
+                    </div>
+
+                    <div class="mbti-container">
+                        <div class="mbti-item" data-type="I">
+                            <span class="mbti-letter">I</span>
+                        </div>
+                        <div class="mbti-item" data-type="N">
+                            <span class="mbti-letter">N</span>
+                        </div>
+                        <div class="mbti-item" data-type="T">
+                            <span class="mbti-letter">T</span>
+                        </div>
+                        <div class="mbti-item" data-type="J">
+                            <span class="mbti-letter">J</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="box5">
+            <div class="box4 reveal-on-scroll">
+                <div class="ability">
+                    <p class="title">이런걸 다룰 수 있어요 😃</p>
+                    <div class="abilitylist">
+                        <div class="skill-item">
+                            <i class="devicon-python-plain"></i>
+                            <span class="skill-name">Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-c-plain"></i>
+                            <span class="skill-name">C</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-javascript-plain"></i>
+                            <span class="skill-name">JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-html5-plain"></i>
+                            <span class="skill-name">HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-css3-plain"></i>
+                            <span class="skill-name">CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-electron-original"></i>
+                            <span class="skill-name">Electron</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-docker-plain"></i>
+                            <span class="skill-name">Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-git-plain"></i>
+                            <span class="skill-name">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box6 reveal-on-scroll">
                 <div class="musicalbum" id="cover" alt="Album Cover" style="border-radius: 20px;"></div>
                 <div class="overlay">
                     <div class="musicinfo">
-                        <h4>💿 지금 듣는 중</h4>
+                        <p class="title">🎧 지금 듣는 중</p>
                         <div class="musictitle" id="song"></div>
                         <div class="musicartist" id="artist"></div>
                     </div>
-                    <div class="musicpage">
-                        <a href="https://music.noa.kim">MUSIC ➔</a>
+                    <div class="more">
+                        <a href="https://music.noa.kim">+</a>
                     </div>
                 </div>
             </div>
-            <div class="box6">
+            <div class="box5 reveal-on-scroll">
                 <div class="learn">
-                    <h4>이런걸 ✏️ 배우고 있어요</h4>
+                    <p class="title">이런걸 ✏️ 배우고 있어요</p>
                     <div class="learnlist">
-                        <i class="devicon-java-plain"></i>
-                        <i class="devicon-react-original"></i>
-                        <i class="devicon-kotlin-plain"></i>
-                        <i class="devicon-swift-plain"></i>
+                        <div class="skill-item">
+                            <i class="devicon-java-plain"></i>
+                            <span class="skill-name">Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-react-original"></i>
+                            <span class="skill-name">React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-kotlin-plain"></i>
+                            <span class="skill-name">Kotlin</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="box7">
+            <div class="box7 reveal-on-scroll">
                 <div class="showphoto">
-                    <img src="/img/preview.jpg" style="border-radius: 20px;" width="100%" alt="plane" />
+                    <img src="https://i.imgur.com/9nr3AVL.jpg" alt="Pic" />
                     <div class="overlay">
                         <div class="photo">
-                            <h4>최근 촬영한 📸 사진</h4>
+                            <p class="title">최근 촬영한 📸 사진</p>
                         </div>
-                        <div class="location">
-                            <a href="https://photo.noa.kim">MORE ➔</a>
+                        <div class="more">
+                            <a href="https://photo.noa.kim">+</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="box8" onclick="window.open('https://openweathermap.org/city/1897000', '_blank')">
+            <div class="box8 reveal-on-scroll" onclick="window.open('https://openweathermap.org/city/1897000', '_blank')">
                 <div class="weather-content">
-                    <div class="weather-location">성남시</div>
+                    <div class="title">📍성남시</div>
                     <img class="weather-icon" alt="날씨 아이콘" />
                     <div class="weather-info">
                         <div class="weather-temp"></div>
@@ -121,81 +197,70 @@
                     </div>
                 </div>
             </div>
-            <div class="box9">
-                <div class="time">
-                    <h4>지금 seoul 의 시간은</h4>
-                    <div class="worldtime" id="my-time"></div>
-                    <script>
-                        function updateSeoulTime() {
-                            const now = new Date();
-                            const seoulTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-                            
-                            let period = seoulTime.toLocaleString("ko-KR", {
-                                timeZone: "Asia/Seoul",
-                                hour12: true,
-                                hour: 'numeric'
-                            }).split(' ')[0]; // "오전" 또는 "오후"
-                            
-                            // "오전"을 "AM"으로, "오후"를 "PM"으로 변환
-                            period = period === "오전" ? "AM" : "PM";
-                            
-                            const time = seoulTime.toLocaleString("ko-KR", {
-                                timeZone: "Asia/Seoul",
-                                hour12: true,
-                                hour: '2-digit',
-                                minute: '2-digit'
-                            }).split(' ')[1]; // "HH:MM" 형식의 시간
-                    
-                            document.getElementById("my-time").innerHTML = 
-                                `<span class="period">${period}</span> 
-                                 <span class="time">${time}</span>`;
-                        }
-                    
-                        updateSeoulTime();
-                        setInterval(updateSeoulTime, 1000); // 1초마다 업데이트 (1밀리초는 너무 빈번할 수 있어 1000으로 변경했습니다)
-                    </script>
+            <div class="box9 reveal-on-scroll">
+                <div class="time-container">
+                    <div class="second-hand-container"></div>
+                    <div class="time-display">
+                        <span class="period" id="time-period"></span>
+                        <span class="hour" id="time-hour"></span>
+                        <span class="minute" id="time-minute"></span>
+                    </div>
+                </div>
+
+                <div class="location-tag">🇰🇷 Seoul</div>
+            </div>
+            <div class="content2 reveal-on-scroll">
+                <p class="MainTitle">📂 프로젝트</p>
+            </div>
+            <div class="box14 reveal-on-scroll">
+                <div class="project">
+                    <a href="https://smu-d.com" class="title">스무디 🔗</a>
+                    <p>상명대학교 학식 정보를 보여주는 사이트</p>
                 </div>
             </div>
-            <div class="content2">
-                <h1>📂 프로젝트</h1>
-            </div>
-            <div class="box14">
-                <div class="project_0">
-                    <a href="https://smu-d.com">스무디 ➔</a>
-                    <p>상명대학교 학식 정보를 보여주는 사이트.</p>
+            <div class="box10 reveal-on-scroll">
+                <div class="project">
+                    <a href="https://manual.noa.kim" class="title">스마트폰 설명서 🔗</a>
+                    <p>고령화 사회로 인한 정보격차 문제를 해결하기 위해 제작한 웹페이지</p>
                 </div>
             </div>
-            <div class="box10">
-                <div class="project_1">
-                    <a href="https://manual.noa.kim">스마트폰 설명서 ➔</a>
-                    <p>고령화 사회로 인한 정보격차 문제를 해결하기 위해 제작한 웹페이지.</p>
+            <div class="box11 reveal-on-scroll">
+                <div class="project">
+                    <a class="title">Now Listening</a>
+                    <p>현재 개발자가 Apple Music에서 듣고있는 음악을 보여주는 웹페이지</p>
                 </div>
             </div>
-            <div class="box11">
-                <div class="project_2">
-                    <a href="https://music.noa.kim">Now Listening ➔</a>
-                    <p>현재 개발자가 Apple Music에서 듣고있는 음악을 보여주는 웹페이지.</p>
+            <div class="box12 reveal-on-scroll">
+                <div class="project">
+                    <a class="title">Notion 블로그</a>
+                    <p>개인적인 일상과 개발 관련 글을 올리는 블로그</p>
                 </div>
             </div>
-            <div class="box12">
-                <div class="project_3">
-                    <a href="https://blog.noa.kim">Notion 블로그 ➔</a>
-                    <p>개인적인 일상과 개발 관련 글을 올리는 블로그.</p>
+            <div class="box15 reveal-on-scroll">
+                <div class="project">
+                    <a class="title">Photofolio</a>
+                    <p>최근에 촬영한 사진중 개발자의 마음에 든 사진을 모아둔 웹페이지</p>
                 </div>
             </div>
-            <div class="content3">
-                <h1>ℹ️ 정보</h1>
+            <div class="box16 reveal-on-scroll">
+                <div class="project">
+                    <a href="https://health.noa.kim/" class="title">Sm@rt Health 🔗</a>
+                    <p>학교 과제물로 만든 웹페이지. AI로 어디까지 가능할까? 싶어서 디자인까지 AI로 돌려 만든 결과물</p>
+                </div>
             </div>
-            <div class="box13">
+            <div class="content3 reveal-on-scroll">
+                <p class="MainTitle">ℹ️ 정보</p>
+            </div>
+            <div class="box13 reveal-on-scroll">
                 <div class="school">
-                    <h4>🏫학력</h4>
+                    <p class="title">🏫학력</p>
                     <div class="high">
-                        <a>성일고등학교</a>
-                        <h3>(2021~2023) 일반 인문계</h3>
+                        <p class="School">📘 성일고등학교</p>
+                        <p class="Detail">(2021~2023) 일반 인문계</p>
                     </div>
                     <div class="univ">
-                        <a>➔ 상명대학교</a>
-                        <h3>(2024~) 소프트웨어학과</h3>
+                        <p class="School">🖥️ 상명대학교</p>
+                        <p class="Detail">(2024~) 소프트웨어학과</p>
                     </div>
                 </div>
         </div>
@@ -206,6 +271,7 @@
         // 30분마다 날씨 정보 업데이트
         setInterval(getWeather, 1800000);
     </script>
+    <script src="app/api/scroll-animation.js" defer></script>
 </body>
 
 </html>
