@@ -627,6 +627,8 @@ ion-icon {
 
 .showphoto {
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .showphoto img {
