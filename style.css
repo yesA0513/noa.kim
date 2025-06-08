@@ -25,11 +25,15 @@
     to { transform: rotate(360deg); }
 }
 
-/* =================================================================
-   랜덤 순서 스크롤 애니메이션 (최종본)
-   ================================================================= */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-/* 1. 애니메이션 효과 정의 (변경 없음) */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -79,7 +83,7 @@ nav.is-visible { animation-delay: 0.1s; }
 .is-visible .mbti-descriptions,
 .is-visible .mbti-item,
 .is-visible .skill-item,
-.is-visible .overlay,
+.is-visible .showphoto .overlay,
 .is-visible .weather-content,
 .is-visible .time-container,
 .is-visible .location-tag {
@@ -135,6 +139,7 @@ nav.is-visible { animation-delay: 0.1s; }
   --c-overlay-button-bg: #ffffff81;
   --c-image-filter: brightness(100%);
   --c-music-overlay-filter: brightness(50%);
+  --c-overlay-bg: rgba(255, 255, 255, 0.25);
 
   /* MBTI 색상 */
   --c-mbti-i-bg: rgba(100, 149, 237, 0.2);
@@ -163,6 +168,7 @@ nav.is-visible { animation-delay: 0.1s; }
     --c-overlay-button-bg: #00000081;
     --c-image-filter: brightness(85%);
     --c-music-overlay-filter: brightness(40%);
+    --c-overlay-bg: rgba(0, 0, 0, 0.25);
 
     /* MBTI 색상 (더 잘보이도록 투명도 조정) */
     --c-mbti-i-bg: rgba(100, 149, 237, 0.4);
@@ -290,7 +296,7 @@ nav a:hover::before {
     aspect-ratio: 1;
 }
 
-.box1, .box2, .box3, .box4, .box5, .box6, .box9 {
+.box1, .box2, .box3, .box4, .box5, .box9 {
     padding: 2rem;
 }
 
@@ -466,8 +472,8 @@ ion-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
 }
 
@@ -516,14 +522,14 @@ ion-icon {
     white-space: nowrap;
 }
 
-.mbti-item:hover::before {
+.mbti-item.is-active::before {
     width: 800px;
     height: 800px;
     opacity: 1;
     z-index: 0;
 }
 
-.mbti-item:hover .mbti-letter {
+.mbti-item.is-active .mbti-letter {
     transform: scale(1.1);
 }
 
@@ -531,28 +537,130 @@ ion-icon {
     opacity: 1;
 }
 
-.musicalbum {
-    position: absolute;
+/* =================================================================
+   3. LP 플레이어 스타일 (수정)
+   ================================================================= */
+
+/* box6: 오버레이를 위한 위치 기준(positioning context)을 설정합니다. */
+.box6 {
+    position: relative; /* 자식 요소의 absolute 위치 기준 */
+    overflow: hidden;   /* 박스 밖으로 나가는 모든 요소를 숨깁니다. */
+    cursor: pointer;
+}
+
+/* LP판: 박스를 거의 가득 채우고 천천히 회전합니다. */
+.lp-record {
     width: 100%;
     height: 100%;
+    box-sizing: border-box; /* 테두리가 크기 안으로 계산되도록 설정 */
+    animation: spin 25s linear infinite; /* 느리게 회전 (25초에 한 바퀴) */
+    
+    /* 이미지와 중앙 구멍을 위한 flex 설정 */
     display: flex;
-    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 앨범 아트 이미지에 LP판 테두리 효과를 직접 줍니다. */
+.lp-record img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     object-fit: cover;
-    filter: var(--c-music-overlay-filter);
+    border: 12px solid #1a1a1a; /* LP판 테두리 효과 */
+    box-sizing: border-box;
+    filter: var(--c-image-filter);
 }
 
-.musictitle {
-    padding-top: 10%;
+/* LP판 중앙의 작은 구멍 효과 */
+.lp-record::after {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background: var(--c-box-bg);
+    border: 2px solid #555;
+    z-index: 2;
+}
+
+/* 정보 오버레이: ... */
+.box6 .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 1.5rem;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    
+    /* --- 이하 나머지 속성은 그대로 유지 --- */
+    background-color: var(--c-overlay-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    mask-image: linear-gradient(to top, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+
+    text-align: center;
+    color: var(--c-text-primary);
+}
+
+/* 마우스를 올렸을 때의 오버레이 스타일 */
+.box6:hover .overlay {
+    opacity: 1;
+}
+
+/* 오버레이 내부 텍스트 기본 스타일 초기화 */
+.box6 .overlay .title,
+.box6 .overlay .musictitle,
+.box6 .overlay .musicartist {
+    padding: 0;
+    margin: 0;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.2); /* 텍스트 가독성을 위한 그림자 */
+}
+
+/* 다크모드에서 텍스트 색상을 흰색으로 고정 */
+@media (prefers-color-scheme: dark) {
+    .box6 .overlay .title,
+    .box6 .overlay .musictitle,
+    .box6 .overlay .musicartist {
+        color: #ffffff;
+    }
+}
+
+.box6 .overlay .title {
+    font-size: 1rem;
+}
+
+.box6 .overlay .musictitle {
     font-size: 1.5rem;
-    font-weight: bolder;
+    font-weight: bold;
+    margin-top: 0.75rem;
 }
 
-.musicartist {
-    padding-top: 5px;
+.box6 .overlay .musicartist {
     font-size: 1rem;
     font-weight: 400;
-    color: var(--c-text-tertiary);
+    margin-top: 0.5rem;
+    opacity: 0.85;
 }
+
+.box6 .more {
+    display: none;
+}
+
+/* =================================================================
+   4. 시계 관련 스타일
+   ================================================================= */
 
 .box3, .box9 {
     display: flex;
@@ -614,6 +722,10 @@ ion-icon {
     text-shadow: 0px 0px 10px var(--c-clock-shadow);
 }
 
+/* =================================================================
+   5. 위치 태그 및 사진 관련 스타일
+   ================================================================= */
+
 .location-tag {
     font-family: "Tossface";
     position: absolute;
@@ -647,6 +759,8 @@ ion-icon {
     width: 80%;
     height: 80%;
 }
+
+/* 더보기 버튼 스타일 */
 
 .more a {
     padding-left: 10px;
@@ -693,6 +807,10 @@ a.title {
     color: var(--c-text-tertiary);
 }
 
+/* =================================================================
+   6. 날씨 관련 스타일
+   ================================================================= */
+
 .box8 {
     padding: 2rem;
     display: flex;
@@ -714,8 +832,8 @@ a.title {
 
 .weather-content .title {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 0;
+    left: 0;
     padding-bottom: 0;
     font-weight: 600;
 }
