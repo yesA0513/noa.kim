@@ -278,7 +278,7 @@ nav a:hover::before {
     font-family: "Tossface";
 }
 .content2 { grid-row: 4 / 5; }
-.content3 { grid-row: 7 / 8; }
+.content3 { grid-row: 8 / 9; }
 
 
 .box1, .box2, .box3, .box4, .box5, .box6, .box8, .box9{
@@ -309,7 +309,7 @@ nav a:hover::before {
     cursor: pointer;
 }
 
-.box10, .box11, .box12, .box13, .box14, .box15, .box16 {
+.box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 {
     position: relative;
     background-color: var(--c-box-bg);
     border-radius: 20px;
