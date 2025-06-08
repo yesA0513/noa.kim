@@ -445,6 +445,10 @@ ion-icon {
     color: var(--c-icon-hover);
 }
 
+/* =================================================================
+   MBTI 위젯 스타일 (최종 수정본)
+   ================================================================= */
+
 .box3 .mbti {
     display: flex;
     flex-direction: column;
@@ -467,16 +471,24 @@ ion-icon {
     width: 100%;
 }
 
+/* 기본 아이템 컨테이너 */
 .mbti-item {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
+    z-index: 1; 
 }
 
+/* 활성화된 아이템 컨테이너 */
+.mbti-item.is-active {
+    z-index: 2;
+}
+
+/* 배경 원 (::before) */
 .mbti-item::before {
     content: '';
     position: absolute;
@@ -487,22 +499,36 @@ ion-icon {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
-    z-index: 1;
     opacity: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.mbti-item:nth-child(1)::before { background-color: var(--c-mbti-i-bg); }
-.mbti-item:nth-child(2)::before { background-color: var(--c-mbti-n-bg); }
-.mbti-item:nth-child(3)::before { background-color: var(--c-mbti-t-bg); }
-.mbti-item:nth-child(4)::before { background-color: var(--c-mbti-j-bg); }
-
+/* MBTI 글자 */
 .mbti-letter {
     font-size: 2.5rem;
     font-weight: 600;
     position: relative;
-    z-index: 2;
     transition: transform 0.5s ease;
+    z-index: 2;
 }
+
+/* 활성화된 아이템의 스타일 (원의 크기, 글자 크기 변경) */
+.mbti-item.is-active::before {
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+}
+
+.mbti-item.is-active .mbti-letter {
+    transform: scale(1.2);
+}
+
+/* --- 나머지 mbti-desc, 색상 지정 등은 그대로 유지 --- */
+.mbti-item:nth-child(1)::before { background-color: var(--c-mbti-i-bg); }
+.mbti-item:nth-child(2)::before { background-color: var(--c-mbti-n-bg); }
+.mbti-item:nth-child(3)::before { background-color: var(--c-mbti-t-bg); }
+.mbti-item:nth-child(4)::before { background-color: var(--c-mbti-j-bg); }
 
 .mbti-descriptions {
     position: relative;
@@ -520,17 +546,6 @@ ion-icon {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     white-space: nowrap;
-}
-
-.mbti-item.is-active::before {
-    width: 800px;
-    height: 800px;
-    opacity: 1;
-    z-index: 0;
-}
-
-.mbti-item.is-active .mbti-letter {
-    transform: scale(1.1);
 }
 
 .mbti-desc.is-active {
