@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "https://yuntae.in/api/music/recent";
     const userToken = "AuX+Y68jIJ4ojOSi9EpcKz9828+u2CwX1JDxKVnly4TkTKoz8SaIvrQA5rmLHdqVc4wVgMSLGEuqnhKZ0FAcldthmXplETm8tNFATc4V+12u3szBQcCvV9yhtLA/DZMLupw9kFTdlVQAk31dM3yi7myTWy0Yn2RUluSGjGGdsxahpKMscuc7Pmow4PN4qbCc5sG/E9WLL2ZwMjVairmY7CEDP1p+v1kWkHnnMVxSql38OI6xzw==";
 
-
         fetch(apiUrl,{
             headers: {
                 'Content-Type': 'application/json',
@@ -33,11 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 document.getElementById("artist").innerHTML = artistName;
                 document.getElementById("song").innerHTML = songName;
-
-                // --- 여기만 수정됩니다 ---
-                // ID가 'album-art'인 img 태그를 찾아 src 속성을 설정합니다.
                 document.getElementById("album-art").src = resizeCover;
-                // -------------------------
 
             })
             .catch(error => {
