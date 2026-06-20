@@ -8,8 +8,10 @@
     /* 전체적인 좌우 여백 조정 */
     nav,
     .gridbox {
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
+        margin: 0 auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        width: 100%;
     }
 
     /* 그리드 레이아웃을 3열에서 2열로 변경 */
@@ -50,8 +52,10 @@
     /* 모바일에서는 좌우 여백을 더 줄여서 공간 확보 */
     nav,
     .gridbox {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin: 0 auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 100%;
     }
 
     /* 네비게이션 이름, 아이콘 크기 조정 */
@@ -68,9 +72,13 @@
     }
 
     /* 1열에서는 정사각형 비율이 콘텐츠 길이에 방해가 되므로 해제 */
-    .box2, .box3, .box4, .box5, .box7 {
+    .box1, .box2, .box3, .box4, .box5, .box8 {
         aspect-ratio: unset; 
         height: auto;
+    }
+
+    .box6, .box7, .box9 {
+        aspect-ratio: 1; 
     }
 
     /* 모든 박스와 프로젝트 아이템들의 위치를 1열에 맞게 재설정 */

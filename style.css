@@ -178,15 +178,22 @@ nav.is-visible { animation-delay: 0.1s; }
   }
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* =================================================================
    2. 기존 스타일에 변수 적용
    ================================================================= */
 
 body {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 4rem;
     background-color: var(--c-bg);
     color: var(--c-text-primary);
     font-family: "Pretendard";
-    padding-bottom: 4rem;
+    overflow-x: hidden;
 }
 
 nav {
