@@ -28,14 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 var songName = data.data[0].attributes.name;
                 var albumCover = data.data[0].attributes.artwork.url;
 
-                var resizeCover = albumCover.replace("{w}x{h}", "1000x1000");
+                var resizeCover = albumCover.replace("{w}x{h}", "3000x3000");
 
-                document.getElementById("artist").innerHTML = artistName;
-                document.getElementById("song").innerHTML = songName;
-                document.getElementById("album-art").src = resizeCover;
+                document.getElementById("artist").textContent = artistName;
+                document.getElementById("song").textContent = songName;
+                const albumArt = document.getElementById("album-art");
+                albumArt.src = resizeCover;
+                albumArt.onload = () => document.querySelector('.box6')?.classList.remove('no-album-art');
+                albumArt.onerror = () => {
+                    document.querySelector('.box6')?.classList.add('no-album-art');
+                    albumArt.removeAttribute('src');
+                };
 
             })
             .catch(error => {
+                document.querySelector('.box6')?.classList.add('no-album-art');
+                document.getElementById("song").textContent = "Music unavailable";
+                document.getElementById("artist").textContent = "Try again shortly";
                 console.error('Error fetching data:', error);
             });
 });
