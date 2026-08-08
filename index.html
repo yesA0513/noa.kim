@@ -35,6 +35,14 @@
 </head>
 
 <body>
+    <div class="ambient" aria-hidden="true">
+        <span class="ambient-orb orb-one"></span>
+        <span class="ambient-orb orb-two"></span>
+        <span class="ambient-grid"></span>
+        <span class="ambient-line line-one"></span>
+        <span class="ambient-line line-two"></span>
+        <span class="ambient-line line-three"></span>
+    </div>
     <section class="contents">
         <nav class="reveal-on-scroll">
             <p id="MyName">김노아</p>
@@ -280,12 +288,52 @@
                 </div>
         </div>
     </section>
+    <aside class="ambient-console" aria-label="Ambient light controls">
+        <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel">
+            <span class="ambient-trigger-light"></span>
+            <span>AMBIENT</span>
+            <span class="ambient-trigger-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="ambient-panel" id="ambient-panel" aria-hidden="true">
+            <div class="ambient-panel-head">
+                <div><span class="ambient-kicker">CABIN LIGHTING</span><strong>Ambient</strong></div>
+                <button type="button" class="ambient-close" aria-label="Close ambient controls">×</button>
+            </div>
+            <div class="ambient-preview" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="ambient-section">
+                <span class="ambient-label">MODE</span>
+                <div class="ambient-mode-switch">
+                    <button type="button" class="ambient-mode" data-ambient-mode="multi" aria-pressed="true">MULTI</button>
+                    <button type="button" class="ambient-mode" data-ambient-mode="single" aria-pressed="false">SINGLE</button>
+                </div>
+            </div>
+            <div class="ambient-section">
+                <span class="ambient-label">COLOR</span>
+                <div class="ambient-palette">
+                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#6e7cff,#a778ff" aria-label="Ice blue ambient light"></button>
+                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" aria-label="Violet ambient light"></button>
+                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" aria-label="Rose ambient light"></button>
+                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" aria-label="Amber ambient light"></button>
+                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" aria-label="Mint ambient light"></button>
+                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" aria-label="Lime ambient light"></button>
+                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" aria-label="Ocean blue ambient light"></button>
+                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" aria-label="Crimson ambient light"></button>
+                    <label class="ambient-picker" aria-label="Custom ambient light color"><input type="color" value="#56d7ff" aria-label="Custom ambient light color"></label>
+                </div>
+            </div>
+            <div class="ambient-section ambient-brightness-row">
+                <div><span class="ambient-label">BRIGHTNESS</span><output class="ambient-brightness-value">85%</output></div>
+                <input class="ambient-brightness" type="range" min="20" max="100" value="85" aria-label="Ambient light brightness">
+            </div>
+        </div>
+    </aside>
     <script>
         // 페이지 로드 시 날씨 정보 가져오기
         document.addEventListener('DOMContentLoaded', getWeather);
         // 30분마다 날씨 정보 업데이트
         setInterval(getWeather, 1800000);
     </script>
+    <script src="app/api/ambient-controls.js" defer></script>
     <script src="app/api/scroll-animation.js" defer></script>
 </body>
 

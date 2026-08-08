@@ -5,6 +5,8 @@
 /* --- 1. 태블릿 화면 스타일 (1024px 이하) --- */
 @media (max-width: 1024px) {
 
+    nav { padding-top: 3rem; }
+
     /* 전체적인 좌우 여백 조정 */
     nav,
     .gridbox {
@@ -48,6 +50,16 @@
 
 
 @media (max-width: 650px) {
+
+    body { padding-bottom: 2rem; }
+    nav { display: block; padding-top: 2.5rem; padding-bottom: 1.75rem; }
+    nav p { padding-bottom: .8rem; }
+    .nav-links { margin-top: 1.1rem; }
+    nav a { width: 2.3rem; height: 2.3rem; }
+    .gridbox { gap: .9rem; }
+    .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 { border-radius: 22px; }
+    .box1, .box2, .box4, .box5, .box8, .box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 { padding: 1.5rem; }
+    .content2, .content3 { padding-top: 2rem; }
 
     /* 모바일에서는 좌우 여백을 더 줄여서 공간 확보 */
     nav,
