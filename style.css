@@ -700,6 +700,16 @@ ion-icon {
     background-size: 100% 100%;
 }
 
+.nav-links > a:hover, .nav-links > a:focus-visible {
+    color: var(--ambient-primary);
+    border-color: color-mix(in srgb, var(--ambient-primary) 52%, rgba(255,255,255,.3));
+}
+
+.project a.title:hover {
+    color: var(--ambient-primary);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--ambient-primary) 24%, transparent);
+}
+
 /* Static background tracks replace the scrolling visual noise of the floating light strips. */
 .ambient-line { display: none; }
 
@@ -1415,8 +1425,24 @@ body {
 .ambient-mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin-top: .55rem; padding: .25rem; border-radius: 10px; background: rgba(255, 255, 255, .045); }
 .ambient-mode-switch .ambient-mode { width: auto !important; height: 1.9rem; padding: 0 !important; border: 1px solid transparent; border-radius: 7px; color: #9da8cc; background: transparent; box-shadow: none; font: 700 .62rem/1 "Pretendard", sans-serif; letter-spacing: .06em; cursor: pointer; }
 .ambient-mode-switch .ambient-mode.is-active { border-color: color-mix(in srgb, var(--ambient-primary) 38%, transparent); color: #fff; background: linear-gradient(115deg, color-mix(in srgb, var(--ambient-primary) 36%, #18214c), color-mix(in srgb, var(--ambient-secondary) 34%, #281b4c)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 0 12px color-mix(in srgb, var(--ambient-primary) 14%, transparent); }
-.ambient-multi-colors { display: none; }
-:root[data-ambient-mode="multi"] .ambient-multi-colors { display: block; }
+.ambient-multi-colors {
+    display: block;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-top-color: transparent;
+    opacity: 0;
+    transform: translateY(-.35rem);
+    transition: max-height .38s cubic-bezier(.2,.8,.2,1), padding .38s cubic-bezier(.2,.8,.2,1), border-color .28s ease, opacity .24s ease, transform .38s cubic-bezier(.2,.8,.2,1);
+}
+:root[data-ambient-mode="multi"] .ambient-multi-colors {
+    max-height: 5.2rem;
+    padding: .82rem 0;
+    border-top-color: rgba(195, 211, 255, .1);
+    opacity: 1;
+    transform: translateY(0);
+}
 .ambient-multi-pickers { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .58rem; }
 .ambient-multi-pickers label { display: flex; align-items: center; justify-content: space-between; gap: .45rem; min-height: 2.1rem; padding: .35rem .42rem .35rem .58rem; border: 1px solid rgba(206, 220, 255, .14); border-radius: 8px; background: rgba(255,255,255,.045); color: #aeb9dc; font: 700 .52rem/1 "Pretendard", sans-serif; letter-spacing: .08em; }
 .ambient-multi-pickers input { width: 1.35rem; height: 1.35rem; padding: 0; border: 0; border-radius: 5px; background: transparent; cursor: pointer; }
