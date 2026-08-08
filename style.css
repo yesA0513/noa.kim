@@ -1566,6 +1566,7 @@ body {
 .box6 {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: .7rem;
     padding: 1rem;
 }
@@ -1582,13 +1583,14 @@ body {
     min-height: 0;
     margin: 0 auto;
     padding: 0;
+    border-radius: 0;
     transform: none;
     background: none;
     box-shadow: none;
 }
 
 .lp-record::before { display: none; }
-.lp-record img { width: 100%; height: 100%; border: 1px solid color-mix(in srgb, var(--ambient-primary) 48%, rgba(255,255,255,.28)); border-radius: 13px; box-shadow: 0 0 12px color-mix(in srgb, var(--ambient-primary) 18%, transparent); }
+.lp-record img { width: 100%; height: 100%; border: 1px solid color-mix(in srgb, var(--ambient-primary) 48%, rgba(255,255,255,.28)); border-radius: 0; box-shadow: 0 0 12px color-mix(in srgb, var(--ambient-primary) 18%, transparent); }
 
 .box6 .overlay {
     position: relative;
@@ -1604,6 +1606,7 @@ body {
     background: none;
     box-shadow: none;
     text-align: center;
+    margin-top: auto;
 }
 
 .box6:hover .overlay { border-color: transparent; background: none; }
