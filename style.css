@@ -298,7 +298,7 @@ ion-icon { margin: 0; }
 .title, .MainTitle, #Introduce, .School, a.title { color: var(--ink); }
 .title { font-family: "Pretendard", "Tossface", sans-serif; font-weight: 650; letter-spacing: -0.04em; }
 .MainTitle { display: flex; align-items: center; gap: .75rem; font-family: "Pretendard", sans-serif; color: var(--ink); font-size: 1.05rem; letter-spacing: -.02em; }
-.MainTitle::before { content: ''; width: 2.4rem; height: 1px; background: var(--accent); }
+.MainTitle::before { content: ''; width: 2.4rem; height: 1px; background: linear-gradient(90deg, var(--ambient-primary), var(--ambient-secondary)); box-shadow: 0 0 7px color-mix(in srgb, var(--ambient-primary) 34%, transparent); }
 #Introduce { font-size: clamp(1.55rem, 2.4vw, 2.15rem); line-height: 1.35; font-weight: 650; letter-spacing: -.055em; }
 .project { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
 .project .title { font-size: 1.25rem; padding-bottom: 0; }
@@ -1268,16 +1268,21 @@ body {
 .box9::before {
     content: '';
     position: absolute;
-    inset: 8%;
+    top: 50%;
+    left: 50%;
+    width: 84%;
+    height: auto;
+    aspect-ratio: 1;
     z-index: 0;
     border: 1px solid color-mix(in srgb, var(--ambient-primary) 42%, transparent);
     border-radius: 50%;
     opacity: var(--ambient-intensity);
     box-shadow: 0 0 16px color-mix(in srgb, var(--ambient-primary) 20%, transparent), inset 0 0 20px color-mix(in srgb, var(--ambient-secondary) 8%, transparent);
     pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
-.time-container { z-index: 1; }
+.time-container { position: absolute; inset: 0; z-index: 1; }
 .second-hand { background: linear-gradient(to top, color-mix(in srgb, var(--ambient-secondary) 72%, transparent), color-mix(in srgb, var(--ambient-primary) 92%, transparent)); box-shadow: 0 0 7px color-mix(in srgb, var(--ambient-primary) 26%, transparent); filter: brightness(var(--ambient-intensity)); }
 
 .ambient-console {
@@ -1524,7 +1529,7 @@ body {
 }
 
 .box9 { background: linear-gradient(145deg, color-mix(in srgb, var(--ambient-primary) 14%, var(--clock-glass-base)), var(--clock-glass-base) 48%, color-mix(in srgb, var(--ambient-secondary) 12%, var(--clock-glass-base))) padding-box, linear-gradient(128deg, color-mix(in srgb, var(--ambient-primary) calc(52% * var(--ambient-intensity)), var(--glass-border)), rgba(255, 255, 255, .16) 38%, color-mix(in srgb, var(--ambient-secondary) calc(48% * var(--ambient-intensity)), var(--glass-border))) border-box; }
-.box9 .time-container::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: calc(.58 * var(--ambient-intensity)); background-image: linear-gradient(color-mix(in srgb, var(--ambient-primary) 16%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ambient-primary) 16%, transparent) 1px, transparent 1px), radial-gradient(circle at 50% 47%, transparent 0 24%, color-mix(in srgb, var(--ambient-secondary) 15%, transparent) 24.3% 24.7%, transparent 25% 34%, color-mix(in srgb, var(--ambient-primary) 13%, transparent) 34.3% 34.6%, transparent 35%); background-size: 2.6rem 2.6rem, 2.6rem 2.6rem, 100% 100%; mask-image: radial-gradient(circle at center, black 15%, transparent 74%); -webkit-mask-image: radial-gradient(circle at center, black 15%, transparent 74%); }
+.box9 .time-container::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: calc(.58 * var(--ambient-intensity)); background-image: linear-gradient(color-mix(in srgb, var(--ambient-primary) 16%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ambient-primary) 16%, transparent) 1px, transparent 1px), radial-gradient(circle at 50% 50%, transparent 0 24%, color-mix(in srgb, var(--ambient-secondary) 15%, transparent) 24.3% 24.7%, transparent 25% 34%, color-mix(in srgb, var(--ambient-primary) 13%, transparent) 34.3% 34.6%, transparent 35%); background-size: 2.6rem 2.6rem, 2.6rem 2.6rem, 100% 100%; mask-image: radial-gradient(circle at center, black 15%, transparent 74%); -webkit-mask-image: radial-gradient(circle at center, black 15%, transparent 74%); }
 .box9 .time-container::after { content: '37.5665° N  ·  126.9780° E'; position: absolute; right: 1.3rem; bottom: 1.25rem; z-index: 2; color: color-mix(in srgb, var(--ambient-primary) 68%, var(--muted)); font: 650 .53rem/1 "Pretendard", sans-serif; letter-spacing: .14em; }
 .second-hand-container { z-index: 1; }
 .time-display { z-index: 2; text-shadow: 0 0 18px color-mix(in srgb, var(--ambient-primary) 15%, transparent); }
@@ -1672,9 +1677,8 @@ body {
 
 /* Keep the music tile simple: cover art first, metadata below, no inner glass window. */
 .box6 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
     gap: .7rem;
     padding: 1rem;
 }
@@ -1689,7 +1693,8 @@ body {
     flex: 0 0 auto;
     width: min(100%, 13rem);
     min-height: 0;
-    margin: 0 auto;
+    align-self: center;
+    margin: auto;
     padding: 0;
     border-radius: 0;
     transform: none;
@@ -1714,14 +1719,14 @@ body {
     background: none;
     box-shadow: none;
     text-align: center;
-    margin-top: auto;
+    margin-top: 0;
     padding-top: .9rem;
 }
 
 .box6:hover .overlay { border-color: transparent; background: none; }
 .box6 .overlay::before { content: ''; position: absolute; top: 0; right: 8%; left: 8%; height: 1px; background: linear-gradient(90deg, transparent, var(--ambient-primary), var(--ambient-secondary), transparent); box-shadow: 0 0 8px color-mix(in srgb, var(--ambient-primary) 42%, transparent); opacity: var(--ambient-intensity); }
 .box6.no-album-art .lp-record { display: none; }
-.box6.no-album-art .overlay { margin-top: auto; }
+.box6.no-album-art .overlay { margin-top: 0; }
 
 .nav-links > a {
     background: rgba(255, 255, 255, .16);
