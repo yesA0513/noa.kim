@@ -1454,10 +1454,13 @@ body {
 
 .lp-record {
     position: absolute;
-    top: 8%;
-    left: 12%;
-    width: 76%;
-    height: 76%;
+    top: 1.35rem;
+    left: 50%;
+    width: 62%;
+    height: auto;
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    animation: none;
     filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .32));
 }
 
@@ -1467,12 +1470,12 @@ body {
     inset: -3px;
     z-index: -1;
     border: 1px solid color-mix(in srgb, var(--ambient-primary) 66%, transparent);
-    border-radius: 50%;
+    border-radius: 18px;
     box-shadow: 0 0 18px color-mix(in srgb, var(--ambient-primary) 28%, transparent), inset 0 0 16px color-mix(in srgb, var(--ambient-secondary) 17%, transparent);
 }
 
-.lp-record img { border: 9px solid rgba(9, 12, 27, .92); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ambient-secondary) 44%, transparent); filter: saturate(1.06) contrast(1.03); }
-.lp-record::after { background: #151b37; border-color: color-mix(in srgb, var(--ambient-primary) 60%, #0c1020); box-shadow: 0 0 10px color-mix(in srgb, var(--ambient-primary) 40%, transparent); }
+.lp-record img { display: block; width: 100%; height: 100%; border: 1px solid rgba(221, 232, 255, .28); border-radius: 15px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ambient-secondary) 44%, transparent); filter: none; }
+.lp-record::after { display: none; }
 
 .box6 .overlay {
     right: .75rem;
