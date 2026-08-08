@@ -648,12 +648,94 @@ ion-icon {
 
 .nav-links:hover::before { opacity: .85; filter: blur(13px); }
 
+/* Header social links stay visually light: no filled button background. */
+.nav-links > a {
+    background: transparent;
+    box-shadow: none;
+}
+
+.nav-links > a:hover,
+.nav-links > a:focus-visible {
+    background: transparent;
+    box-shadow: 0 0 0 3px rgba(105, 131, 255, .11), 0 0 18px rgba(104, 171, 255, .32);
+}
+
 @media (prefers-color-scheme: dark) {
     .nav-links > a {
         border-color: rgba(165, 177, 255, .18);
         background: rgba(20, 27, 53, .62);
         box-shadow: inset 0 1px 0 rgba(190, 209, 255, .12), 0 4px 14px rgba(0, 0, 0, .16);
     }
+}
+
+/* Fade the perimeter lighting in and out instead of switching it on abruptly. */
+.box1, .box2, .box3, .box4, .box5, .box8, .box9,
+.box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 {
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, border-color .45s ease, background .45s ease;
+}
+
+.box1::after, .box2::after, .box3::after, .box4::after, .box5::after, .box8::after, .box9::after,
+.box10::after, .box11::after, .box12::after, .box13::after, .box14::after, .box15::after, .box16::after, .box17::after {
+    opacity: 0;
+    background:
+        linear-gradient(90deg, transparent, var(--ambient-primary), var(--ambient-secondary), transparent) 50% 0 / 72% 1px no-repeat,
+        linear-gradient(90deg, transparent, var(--ambient-secondary), var(--ambient-primary), transparent) 50% 100% / 72% 1px no-repeat,
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--ambient-primary) 62%, transparent), transparent) 0 50% / 1px 52% no-repeat,
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--ambient-secondary) 62%, transparent), transparent) 100% 50% / 1px 52% no-repeat;
+    transition: opacity .48s cubic-bezier(.2,.8,.2,1), box-shadow .48s ease;
+}
+
+.ambient-grid { opacity: 1; filter: brightness(1.28) saturate(1.18); }
+.ambient-grid::before {
+    inset: 0;
+    filter: none;
+    opacity: min(1, calc(1.2 * var(--ambient-intensity)));
+    transform: none;
+    background-image:
+        radial-gradient(105% 68% at -12% 108%, transparent 61.8%, color-mix(in srgb, var(--ambient-primary) 2%, transparent) 62.7%, color-mix(in srgb, var(--ambient-primary) 18%, transparent) 64.34%, color-mix(in srgb, var(--ambient-primary) 2%, transparent) 66%, transparent 66.8%),
+        radial-gradient(105% 68% at -12% 108%, transparent 65.2%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 66%, color-mix(in srgb, var(--ambient-secondary) 16%, transparent) 67.63%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 69.2%, transparent 70%),
+        radial-gradient(96% 62% at 112% -8%, transparent 58.5%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 59.3%, color-mix(in srgb, var(--ambient-secondary) 16%, transparent) 61.32%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 63.2%, transparent 64%),
+        linear-gradient(115deg, transparent 27.7%, color-mix(in srgb, var(--ambient-primary) 3%, transparent) 28.6%, color-mix(in srgb, var(--ambient-primary) 14%, transparent) 30.08%, color-mix(in srgb, var(--ambient-primary) 3%, transparent) 31.6%, transparent 32.4%),
+        linear-gradient(115deg, transparent 29.2%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 30%, color-mix(in srgb, var(--ambient-secondary) 11%, transparent) 31.28%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 32.7%, transparent 33.5%);
+    background-size: 100% 100%;
+}
+
+/* Static background tracks replace the scrolling visual noise of the floating light strips. */
+.ambient-line { display: none; }
+
+body {
+    background-image: linear-gradient(145deg, #f4f7fd 0%, #e7edf8 47%, #e8e7f5 100%);
+}
+
+.ambient-grid {
+    opacity: calc(.72 * var(--ambient-intensity));
+    background-image:
+        radial-gradient(105% 68% at -12% 108%, transparent 64.2%, color-mix(in srgb, var(--ambient-primary) 30%, transparent) 64.35% 64.48%, transparent 64.62%),
+        radial-gradient(105% 68% at -12% 108%, transparent 67.5%, color-mix(in srgb, var(--ambient-secondary) 24%, transparent) 67.64% 67.74%, transparent 67.88%),
+        radial-gradient(96% 62% at 112% -8%, transparent 61.2%, color-mix(in srgb, var(--ambient-secondary) 25%, transparent) 61.34% 61.44%, transparent 61.58%),
+        linear-gradient(115deg, transparent 0 30%, color-mix(in srgb, var(--ambient-primary) 18%, transparent) 30.08% 30.16%, transparent 30.25% 100%),
+        linear-gradient(115deg, transparent 0 31.2%, color-mix(in srgb, var(--ambient-secondary) 12%, transparent) 31.28% 31.34%, transparent 31.42% 100%);
+    background-size: 100% 100%;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.ambient-grid::before {
+    content: '';
+    position: absolute;
+    inset: -2%;
+    z-index: 0;
+    pointer-events: none;
+    background: inherit;
+    background-size: 100% 100%;
+    filter: blur(14px);
+    opacity: calc(.72 * var(--ambient-intensity));
+    transform: scale(1.025);
+}
+
+@media (prefers-color-scheme: dark) {
+    body { background-image: linear-gradient(145deg, #111a35 0%, #0d1328 52%, #17132c 100%); }
+    .ambient-grid { opacity: calc(.88 * var(--ambient-intensity)); }
 }
 
 /* =================================================================
@@ -1590,7 +1672,7 @@ body {
 }
 
 .lp-record::before { display: none; }
-.lp-record img { width: 100%; height: 100%; border: 1px solid color-mix(in srgb, var(--ambient-primary) 48%, rgba(255,255,255,.28)); border-radius: 0; box-shadow: 0 0 12px color-mix(in srgb, var(--ambient-primary) 18%, transparent); }
+.lp-record img { width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
 
 .box6 .overlay {
     position: relative;
@@ -1607,8 +1689,95 @@ body {
     box-shadow: none;
     text-align: center;
     margin-top: auto;
+    padding-top: .9rem;
 }
 
 .box6:hover .overlay { border-color: transparent; background: none; }
+.box6 .overlay::before { content: ''; position: absolute; top: 0; right: 8%; left: 8%; height: 1px; background: linear-gradient(90deg, transparent, var(--ambient-primary), var(--ambient-secondary), transparent); box-shadow: 0 0 8px color-mix(in srgb, var(--ambient-primary) 42%, transparent); opacity: var(--ambient-intensity); }
 .box6.no-album-art .lp-record { display: none; }
 .box6.no-album-art .overlay { margin-top: auto; }
+
+.nav-links > a {
+    background: rgba(255, 255, 255, .16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .42);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+.nav-links > a:hover, .nav-links > a:focus-visible {
+    background: rgba(255, 255, 255, .22);
+    transform: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62), 0 0 0 3px rgba(105, 131, 255, .11), 0 0 18px rgba(104, 171, 255, .24);
+}
+.nav-links::before { display: none; }
+
+@media (prefers-color-scheme: dark) {
+    .nav-links > a, .nav-links > a:hover, .nav-links > a:focus-visible { background: rgba(255, 255, 255, .06); }
+}
+
+/* Match the standard content cards to the lighter glass treatment used by the social controls. */
+.box1, .box2, .box3, .box4, .box5, .box8, .box9,
+.box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 {
+    border-color: rgba(255, 255, 255, .38);
+    background: rgba(255, 255, 255, .16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .42), 0 16px 42px rgba(31, 43, 89, .1);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+@media (prefers-color-scheme: dark) {
+    .box1, .box2, .box3, .box4, .box5, .box8, .box9,
+    .box10, .box11, .box12, .box13, .box14, .box15, .box16, .box17 {
+        border-color: rgba(177, 194, 255, .15);
+        background: rgba(255, 255, 255, .06);
+        box-shadow: inset 0 1px 0 rgba(196, 215, 255, .12), 0 16px 42px rgba(0, 0, 0, .2);
+    }
+}
+
+.ambient-line { display: none; }
+.ambient-grid {
+    opacity: calc(.72 * var(--ambient-intensity));
+    background-image:
+        radial-gradient(105% 68% at -12% 108%, transparent 64.2%, color-mix(in srgb, var(--ambient-primary) 30%, transparent) 64.35% 64.48%, transparent 64.62%),
+        radial-gradient(105% 68% at -12% 108%, transparent 67.5%, color-mix(in srgb, var(--ambient-secondary) 24%, transparent) 67.64% 67.74%, transparent 67.88%),
+        radial-gradient(96% 62% at 112% -8%, transparent 61.2%, color-mix(in srgb, var(--ambient-secondary) 25%, transparent) 61.34% 61.44%, transparent 61.58%),
+        linear-gradient(115deg, transparent 0 30%, color-mix(in srgb, var(--ambient-primary) 18%, transparent) 30.08% 30.16%, transparent 30.25% 100%),
+        linear-gradient(115deg, transparent 0 31.2%, color-mix(in srgb, var(--ambient-secondary) 12%, transparent) 31.28% 31.34%, transparent 31.42% 100%);
+    background-size: 100% 100%;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ambient-grid { opacity: calc(.88 * var(--ambient-intensity)); }
+}
+
+body { background-image: linear-gradient(145deg, #f4f7fd 0%, #e7edf8 47%, #e8e7f5 100%); }
+@media (prefers-color-scheme: dark) {
+    body { background-image: linear-gradient(145deg, #111a35 0%, #0d1328 52%, #17132c 100%); }
+}
+
+.box1::after, .box2::after, .box3::after, .box4::after, .box5::after, .box8::after, .box9::after,
+.box10::after, .box11::after, .box12::after, .box13::after, .box14::after, .box15::after, .box16::after, .box17::after {
+    opacity: 0;
+    background:
+        linear-gradient(90deg, transparent, var(--ambient-primary), var(--ambient-secondary), transparent) 50% 0 / 72% 1px no-repeat,
+        linear-gradient(90deg, transparent, var(--ambient-secondary), var(--ambient-primary), transparent) 50% 100% / 72% 1px no-repeat,
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--ambient-primary) 62%, transparent), transparent) 0 50% / 1px 52% no-repeat,
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--ambient-secondary) 62%, transparent), transparent) 100% 50% / 1px 52% no-repeat;
+    transition: opacity .48s cubic-bezier(.2,.8,.2,1), box-shadow .48s ease;
+}
+
+.ambient-grid { opacity: 1; filter: brightness(1.28) saturate(1.18); }
+.ambient-grid::before {
+    inset: 0;
+    filter: none;
+    opacity: min(1, calc(1.2 * var(--ambient-intensity)));
+    transform: none;
+    background-image:
+        radial-gradient(105% 68% at -12% 108%, transparent 61.8%, color-mix(in srgb, var(--ambient-primary) 2%, transparent) 62.7%, color-mix(in srgb, var(--ambient-primary) 18%, transparent) 64.34%, color-mix(in srgb, var(--ambient-primary) 2%, transparent) 66%, transparent 66.8%),
+        radial-gradient(105% 68% at -12% 108%, transparent 65.2%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 66%, color-mix(in srgb, var(--ambient-secondary) 16%, transparent) 67.63%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 69.2%, transparent 70%),
+        radial-gradient(96% 62% at 112% -8%, transparent 58.5%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 59.3%, color-mix(in srgb, var(--ambient-secondary) 16%, transparent) 61.32%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 63.2%, transparent 64%),
+        linear-gradient(115deg, transparent 27.7%, color-mix(in srgb, var(--ambient-primary) 3%, transparent) 28.6%, color-mix(in srgb, var(--ambient-primary) 14%, transparent) 30.08%, color-mix(in srgb, var(--ambient-primary) 3%, transparent) 31.6%, transparent 32.4%),
+        linear-gradient(115deg, transparent 29.2%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 30%, color-mix(in srgb, var(--ambient-secondary) 11%, transparent) 31.28%, color-mix(in srgb, var(--ambient-secondary) 2%, transparent) 32.7%, transparent 33.5%);
+    background-size: 100% 100%;
+}
