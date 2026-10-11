@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panel = document.querySelector('.ambient-panel');
     const modeButtons = document.querySelectorAll('.ambient-mode');
     const themeButtons = document.querySelectorAll('.ambient-theme');
+    const themeStatuses = document.querySelectorAll('.theme-status');
     const presets = document.querySelectorAll('.ambient-preset');
     const picker = document.querySelector('.ambient-picker input');
     const multiPrimary = document.querySelector('.ambient-multi-primary');
@@ -16,18 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const multiColors = ['#56d7ff', '#a778ff', '#ff7daf'];
 
     const savedSettings = () => {
-        try { return JSON.parse(localStorage.getItem('ambient-light') || '{}'); }
+        try {
+            const value = JSON.parse(localStorage.getItem('ambient-light') || '{}');
+            return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+        }
         catch { return {}; }
     };
     const save = (value) => {
         try { localStorage.setItem('ambient-light', JSON.stringify(value)); }
         catch { /* Controls remain usable when browser storage is unavailable. */ }
     };
-    const setThemeButtons = () => themeButtons.forEach((button) => {
-        const isActive = button.dataset.themePreference === root.dataset.themePreference;
-        button.classList.toggle('is-active', isActive);
-        button.setAttribute('aria-pressed', String(isActive));
-    });
+    const setThemeButtons = () => {
+        themeButtons.forEach((button) => {
+            const isActive = button.dataset.themePreference === root.dataset.themePreference;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-pressed', String(isActive));
+        });
+        themeStatuses.forEach(status => { status.textContent = root.dataset.theme === 'dark' ? 'DARK' : 'LIGHT'; });
+    };
     setThemeButtons();
     window.addEventListener('themechange', setThemeButtons);
     themeButtons.forEach((button) => button.addEventListener('click', () => {
@@ -60,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shouldSave) save({ ...savedSettings(), enabled: isEnabled });
     };
 
-    const setColor = (color) => {
+    const setColor = (color, shouldSave = true) => {
         root.style.setProperty('--ambient-primary', color);
         root.style.setProperty('--ambient-secondary', color);
         root.style.setProperty('--ambient-tertiary', color);
@@ -69,10 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
         picker.value = color;
         presets.forEach((preset) => preset.classList.toggle('is-active', preset.dataset.ambientColor === color));
         const brightnessSetting = Number(brightness.value);
-        save({ ...savedSettings(), mode: 'single', color, brightness: brightnessSetting });
+        if (shouldSave) save({ ...savedSettings(), mode: 'single', color, brightness: brightnessSetting });
     };
 
-    const setMulti = (colors = multiColors, presetColor = '') => {
+    const setMulti = (colors = multiColors, presetColor = '', shouldSave = true) => {
         const [primary, secondary, tertiary = colors[1]] = colors;
         root.style.setProperty('--ambient-primary', primary);
         root.style.setProperty('--ambient-secondary', secondary);
@@ -82,27 +89,46 @@ document.addEventListener('DOMContentLoaded', () => {
         multiPrimary.value = primary;
         multiSecondary.value = secondary;
         presets.forEach((preset) => preset.classList.toggle('is-active', preset.dataset.ambientColor === presetColor));
-        save({ ...savedSettings(), mode: 'multi', colors: [primary, secondary, tertiary], presetColor, brightness: Number(brightness.value) });
+        if (shouldSave) save({ ...savedSettings(), mode: 'multi', colors: [primary, secondary, tertiary], presetColor, brightness: Number(brightness.value) });
     };
 
     try {
-        const saved = JSON.parse(localStorage.getItem('ambient-light'));
-        if (saved?.mode === 'single' && saved.color) setColor(saved.color);
-        else setMulti(saved?.colors || multiColors, saved?.presetColor || '');
+        const saved = savedSettings();
+        if (saved.mode === 'single' && saved.color) setColor(saved.color, false);
+        else setMulti(saved.colors || multiColors, saved.presetColor || '', false);
         setBrightness(saved?.brightness ?? 85, false);
         setPower(saved?.enabled ?? true, false);
     } catch {
-        setMulti();
+        setMulti(multiColors, '', false);
         setBrightness(85, false);
         setPower(true, false);
     }
 
-    trigger.addEventListener('click', () => {
-        const isOpen = consoleElement.classList.toggle('is-open');
+    const setPanelOpen = (isOpen, restoreFocus = false) => {
+        consoleElement.classList.toggle('is-open', isOpen);
         trigger.setAttribute('aria-expanded', String(isOpen));
         panel.setAttribute('aria-hidden', String(!isOpen));
+        panel.inert = !isOpen;
+        if (isOpen) {
+            requestAnimationFrame(() => {
+                if (!consoleElement.classList.contains('is-open')) return;
+                panel.querySelector('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])')?.focus();
+            });
+        } else if (restoreFocus) trigger.focus();
+    };
+    setPanelOpen(false);
+    trigger.addEventListener('click', () => {
+        setPanelOpen(!consoleElement.classList.contains('is-open'));
     });
-    closeButton.addEventListener('click', () => trigger.click());
+    closeButton.addEventListener('click', () => setPanelOpen(false, true));
+    document.addEventListener('click', event => {
+        if (!consoleElement.contains(event.target)) setPanelOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !consoleElement.classList.contains('is-open')) return;
+        event.preventDefault();
+        setPanelOpen(false, true);
+    });
     powerButton.addEventListener('click', () => setPower(root.dataset.ambientEnabled !== 'true'));
     modeButtons.forEach((button) => button.addEventListener('click', () => {
         if (button.dataset.ambientMode === 'multi') setMulti();

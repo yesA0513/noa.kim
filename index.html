@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
-
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0X5B4B8TBE"></script>
@@ -11,49 +10,60 @@
 
         gtag('config', 'G-0X5B4B8TBE');
     </script>
-    
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="김노아 @yesA0513">
-    <meta property="og:description" content="반가워요!✌️">
+    <meta name="description" content="Noa Kim — exploring technology, photography, cars and thoughtful design.">
+    <meta property="og:title" content="Noa Kim · @yesA0513">
+    <meta property="og:description" content="Curiosity, in motion. Technology, photography and thoughtful design.">
     <meta property="og:image" content="img/Preview.png">
-    <title>김노아 @yesA0513</title>
+    <title>Noa Kim · @yesA0513</title>
     <script src="app/api/theme.js?v=09b4af397d12"></script>
-    <link rel="stylesheet" href="style.css?v=4e2589183a5c">
-    <link rel="stylesheet" href="responsive.css?v=52107c91ac99">
-    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
-    <script src="/app/api/music.js?v=6690319eaa1f"></script>
-    <script src="/app/api/weather.js?v=ed00a4c28793"></script>
-    <script src="/app/api/clock.js?v=fbd1e0c29a81"></script>
-    <script src="/app/api/main.js?v=bd5ed8f7ab34"></script>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css" rel="stylesheet" type="text/css" />
+    <link rel="preload" href="img/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=eab74741aaac">
+    <link rel="stylesheet" href="responsive.css?v=6b9619a54fef">
+    <script src="app/api/music.js?v=d0643b35e837" defer></script>
+    <script src="app/api/weather.js?v=57d1109c7c9f" defer></script>
+    <script src="app/api/clock.js?v=407ac535227d" defer></script>
+    <script src="app/api/main.js?v=9a88d2fadb0d" defer></script>
+    <script src="app/api/ambient-controls.js?v=bf48281eb8dd" defer></script>
 </head>
-
 <body>
-    <div class="ambient" aria-hidden="true">
-        <span class="ambient-orb orb-one"></span>
-        <span class="ambient-orb orb-two"></span>
-        <span class="ambient-grid"></span>
-        <span class="ambient-line line-one"></span>
-        <span class="ambient-line line-two"></span>
-        <span class="ambient-line line-three"></span>
-    </div>
-    <section class="contents">
-        <nav class="reveal-on-scroll" aria-label="프로필 및 소셜 링크">
-            <div class="nav-identity">
-                <p id="MyName">김노아<span class="identity-dot" aria-hidden="true"></span></p>
-                <p class="nav-handle">@yesA0513</p>
-            </div>
+    <a class="skip-link" href="#overview">Skip to content</a>
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+            <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+            <symbol id="icon-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+            <symbol id="icon-sliders" viewBox="0 0 24 24"><path d="M4 6h4m4 0h8M4 12h10m4 0h2M4 18h2m4 0h10"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
+            <symbol id="icon-cloud" viewBox="0 0 48 48"><path d="M13 36h24a8 8 0 0 0 1-16 13 13 0 0 0-25-3 9.5 9.5 0 0 0 0 19Z"/></symbol>
+            <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3Z"/><circle cx="12" cy="13" r="4"/></symbol>
+            <symbol id="icon-wave" viewBox="0 0 32 32"><path d="M4 13v6m4-10v14m4-18v22m4-26v30m4-24v18m4-14v10m4-7v4"/></symbol>
+            <symbol id="icon-meal" viewBox="0 0 64 64"><path d="M8 31h40a20 20 0 0 1-40 0Zm7 22h26M20 24c-6-5 6-7 0-12m12 12c-6-5 6-7 0-12M53 9v15m5-15v15m-10-15v15c0 5 10 5 10 0M53 29v25"/></symbol>
+            <symbol id="icon-phone" viewBox="0 0 48 64"><rect x="9" y="3" width="30" height="58" rx="6"/><path d="M20 9h8m-7 46h6"/></symbol>
+            <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        </defs>
+    </svg>
+    <div class="ambient" aria-hidden="true"><span class="ambient-orb orb-one"></span><span class="ambient-orb orb-two"></span></div>
+    <div class="contents">
+        <header class="site-header">
+            <a class="nav-identity" href="#overview" aria-label="Noa Kim, overview">
+                <span id="MyName">NOA KIM</span>
+                <span class="nav-handle">@yesA0513</span>
+            </a>
+            <nav class="section-nav" aria-label="Main navigation">
+                <a class="is-active" href="#overview">OVERVIEW</a>
+                <a href="#work">WORK</a>
+                <a href="#photography">PHOTOGRAPHY</a>
+            </nav>
             <div class="nav-links">
                 <a href="https://github.com/yesa0513" data-tooltip="GitHub" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.8-1.33-3.8-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.6 1.55.23 2.7.1 2.98.73.79 1.16 1.8 1.16 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.1c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
                 </a>
-                <a href="https://blog.noa.kim" data-tooltip="Blog" aria-label="블로그">
+                <a href="https://blog.noa.kim" data-tooltip="Blog" aria-label="Blog">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h13v18H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z M8 3v18 M11 8h5 M11 12h5 M11 16h3"/></svg>
                 </a>
-                <a href="mailto:hi@noa.kim" data-tooltip="Email" aria-label="이메일 보내기">
+                <a href="mailto:hi@noa.kim" data-tooltip="Email" aria-label="Send email">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
                 </a>
                 <a href="https://instagram.com/_rlashdk_" data-tooltip="Instagram" aria-label="Instagram">
@@ -63,254 +73,115 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10v7 M11.5 17v-7 M11.5 13a3 3 0 0 1 6 0v4"/><circle cx="7.5" cy="7" r=".9" fill="currentColor" stroke="none"/></svg>
                 </a>
             </div>
-        </nav>
-
-        <div class="gridbox">
-            <div class="box1 reveal-on-scroll">
-                <div class="intro">
-                    <p class="intro-eyebrow">반가워요 <span aria-hidden="true">✌️</span></p>
-                    <h1 id="Introduce">안녕하세요!<br>저는 <strong>김노아</strong>입니다.</h1>
-                    <p class="intro-caption">기술 · 사진 · 자동차 · 디자인</p>
-                </div>
-            </div>
-            <div class="box2 reveal-on-scroll">
-                <div class="hobby">
-                    <p class="title">나의 관심사</p>
-                    <div class="hobbylist">
-                        <div class="hobbies">
-                            <div class="hobby-item">
-                                <p class="things">자동차 🚗</p>
-                                <p class="desc">다양한 차를 알아보고 운전하는 것을 좋아해요.</p>
+        </header>
+        <main id="overview">
+            <div class="dashboard">
+                <div class="profile-column">
+                <section class="hero panel" aria-labelledby="Introduce">
+                    <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> DEVELOPER &amp; CREATOR</p>
+                    <h1 id="Introduce">Curiosity,<br>in motion.</h1>
+                    <p class="intro-copy">I’m Noa Kim. I explore technology, photography,<br class="desktop-break"> cars and thoughtful design.</p>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="#work">Explore my work <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+                        <a class="text-link" href="mailto:hi@noa.kim">Get in touch</a>
+                    </div>
+                    <div class="hero-bottom">
+                        <div class="interest-chips" aria-label="Interests"><span>TECH</span><span>PHOTO</span><span>CARS</span><span>DESIGN</span></div>
+                        <div class="mbti" aria-label="Personality: INTJ">
+                            <div class="mbti-container">
+                                <button type="button" class="mbti-item" data-type="I" aria-label="I, Introverted" aria-pressed="false">I</button>
+                                <button type="button" class="mbti-item" data-type="N" aria-label="N, Intuitive" aria-pressed="false">N</button>
+                                <button type="button" class="mbti-item" data-type="T" aria-label="T, Thinking" aria-pressed="false">T</button>
+                                <button type="button" class="mbti-item" data-type="J" aria-label="J, Judging" aria-pressed="false">J</button>
                             </div>
-                            <div class="hobby-item">
-                                <p class="things">새로운 기술 🛠️</p>
-                                <p class="desc">새로운 기술을 탐구하고 다양한 방법으로 활용해봐요.</p>
-                            </div>
-                            <div class="hobby-item">
-                                <p class="things">사진 촬영 📷</p>
-                                <p class="desc">여행하거나 일상에서 취미로 사진을 촬영해요.</p>
-                            </div>
-                            <div class="hobby-item">
-                                <p class="things">디자인 🎨</p>
-                                <p class="desc">사용자가 이용하기 편리하고 깔끔한 UI/UX에 관심이 많아요.</p>
+                            <div class="mbti-descriptions" aria-live="polite">
+                                <span class="mbti-desc" data-type="I">Introverted — finding energy in my inner world.</span>
+                                <span class="mbti-desc" data-type="N">Intuitive — drawn to ideas and possibilities.</span>
+                                <span class="mbti-desc" data-type="T">Thinking — making decisions through logic.</span>
+                                <span class="mbti-desc" data-type="J">Judging — preferring a clear plan.</span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="box3 reveal-on-scroll">
-                <div class="mbti">
-                    <p class="title">나의 MBTI는</p>
-
-                    <div class="mbti-descriptions">
-                        <span class="mbti-desc" data-type="I">내향형:<br>에너지의 방향이 내면 세계를 향해요</span>
-                        <span class="mbti-desc" data-type="N">직관형:<br>사실보다 아이디어나 개념에 더 관심이 많아요</span>
-                        <span class="mbti-desc" data-type="T">사고형:<br>논리적 분석을 바탕으로 객관적으로 판단해요</span>
-                        <span class="mbti-desc" data-type="J">판단형:<br>빠르고 합리적인 결정을 내리는 것을 선호해요</span>
+                </section>
+                <section class="featured-work" id="work" aria-labelledby="work-title">
+                    <div class="section-heading"><h2 id="work-title">Selected work</h2><a class="text-link" href="#more-work">View all <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a></div>
+                    <div class="featured-projects">
+                        <a class="project-card project-featured panel" href="https://smu-d.vercel.app" target="_blank" rel="noopener noreferrer">
+                            <div class="project-art meal-art" aria-hidden="true"><svg class="icon"><use href="#icon-meal"/></svg></div>
+                            <div class="project-copy"><h3>SMU:D</h3><p>University dining, made simple.</p><div class="project-tags"><span>Web App</span><span>Campus</span></div></div>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#icon-external"/></svg>
+                        </a>
+                        <a class="project-card panel" href="https://manual.noa.kim" target="_blank" rel="noopener noreferrer">
+                            <div class="project-art" aria-hidden="true"><svg class="icon"><use href="#icon-phone"/></svg></div>
+                            <div class="project-copy"><h3>Smartphone Guide</h3><p>Making technology easier to access.</p><div class="project-tags"><span>Web</span><span>Accessibility</span></div></div>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#icon-external"/></svg>
+                        </a>
+                        <a class="project-card panel" href="https://music.noa.kim" target="_blank" rel="noopener noreferrer">
+                            <div class="project-art music-art" aria-hidden="true"><svg class="icon"><use href="#icon-wave"/></svg></div>
+                            <div class="project-copy"><h3>Now Listening</h3><p>A live look at what I’m listening to.</p><div class="project-tags"><span>Music</span><span>API</span></div></div>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#icon-external"/></svg>
+                        </a>
                     </div>
-
-                    <div class="mbti-container">
-                        <button type="button" class="mbti-item" data-type="I" aria-label="I 내향형" aria-pressed="false">
-                            <span class="mbti-letter">I</span>
-                        </button>
-                        <button type="button" class="mbti-item" data-type="N" aria-label="N 직관형" aria-pressed="false">
-                            <span class="mbti-letter">N</span>
-                        </button>
-                        <button type="button" class="mbti-item" data-type="T" aria-label="T 사고형" aria-pressed="false">
-                            <span class="mbti-letter">T</span>
-                        </button>
-                        <button type="button" class="mbti-item" data-type="J" aria-label="J 판단형" aria-pressed="false">
-                            <span class="mbti-letter">J</span>
-                        </button>
-                    </div>
+                </section>
+                <section class="toolkit panel" aria-labelledby="toolkit-title">
+                    <h2 class="eyebrow" id="toolkit-title"><span class="status-light" aria-hidden="true"></span> TOOLKIT</h2>
+                    <div class="toolkit-content"><div class="abilitylist">
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/python.svg" alt="" width="32" height="32"><span class="skill-name">Python</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/c.svg" alt="" width="32" height="32"><span class="skill-name">C</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/javascript.svg" alt="" width="32" height="32"><span class="skill-name">JavaScript</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/html5.svg" alt="" width="32" height="32"><span class="skill-name">HTML5</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/css3.svg" alt="" width="32" height="32"><span class="skill-name">CSS3</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/electron.svg" alt="" width="32" height="32"><span class="skill-name">Electron</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/docker.svg" alt="" width="32" height="32"><span class="skill-name">Docker</span></div>
+                        <div class="skill-item"><img class="skill-icon" src="img/icons/git.svg" alt="" width="32" height="32"><span class="skill-name">Git</span></div>
+                    </div><div class="learn"><p class="eyebrow">EXPLORING</p><p>Java · React · Kotlin · Swift</p></div></div>
+                </section>
                 </div>
-            </div>
-            <div class="box4 reveal-on-scroll">
-                <div class="ability">
-                    <p class="title">이런걸 다룰 수 있어요 😃</p>
-                    <div class="abilitylist">
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/python.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/c.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">C</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/javascript.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/html5.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">HTML5</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/css3.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">CSS3</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/electron.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Electron</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/docker.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/git.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Git</span>
+                <div class="lifestyle-column">
+                <a class="photo-panel panel box7" id="photography" href="https://photo.noa.kim" target="_blank" rel="noopener noreferrer" aria-label="Through my lens — view photography gallery">
+                    <div class="showphoto">
+                        <img src="img/sapporo.jpg" alt="Sapporo TV Tower beneath a blue sky, framed by green trees" width="2828" height="4097" fetchpriority="high">
+                        <div class="photo-fallback" hidden><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><span>Photography, through my lens.</span></div>
+                        <div class="photo-caption"><p class="eyebrow">PHOTOGRAPHY</p><h2>Through my lens</h2><span class="photo-link">View gallery <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></span></div>
+                    </div>
+                </a>
+                <section class="instrument-panel panel" aria-label="Local time and weather">
+                    <div class="box9 clock-widget">
+                        <div class="time-container">
+                            <div class="second-hand-container"></div>
+                            <div class="time-display"><div class="time-digits"><span id="time-hour">--</span><span class="time-colon" aria-hidden="true">:</span><span id="time-minute">--</span></div><span class="period" id="time-period">SEOUL</span></div>
                         </div>
                     </div>
+                    <a class="weather-content box8" href="https://openweathermap.org/city/1897000" target="_blank" rel="noopener noreferrer" aria-label="Seongnam weather, open forecast">
+                        <div class="weather-art"><svg class="icon weather-fallback" aria-hidden="true"><use href="#icon-cloud"/></svg><img class="weather-icon" alt="" hidden width="64" height="64"></div>
+                        <div class="weather-info"><p class="weather-temp">--°C</p><p class="weather-desc">Loading weather</p></div><span class="weather-location">Seongnam</span>
+                    </a>
+                </section>
                 </div>
             </div>
-            <div class="box6 reveal-on-scroll no-album-art" onclick="window.open('https://music.noa.kim', '_blank')">
-                <div class="lp-record">
-                    <img id="album-art" src="" alt="Album Cover">
+            <section class="more-work" id="more-work" aria-labelledby="more-work-title">
+                <div class="section-heading"><h2 id="more-work-title">More to explore</h2><span class="section-note">Projects &amp; personal spaces</span></div>
+                <div class="other-projects">
+                    <a class="small-project panel" href="https://blog.noa.kim" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><h3>Notion Blog</h3><p>Notes on everyday life and development.</p><span class="project-link">Read the blog ↗</span></a>
+                    <a class="small-project panel" href="https://photo.noa.kim" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><h3>Photofolio</h3><p>A collection of my favorite photographs.</p><span class="project-link">View photographs ↗</span></a>
+                    <a class="small-project panel" href="https://health.noa.kim" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><h3>Sm@rt Health</h3><p>A class project exploring AI-assisted web design.</p><span class="project-link">Explore the project ↗</span></a>
+                    <a class="small-project panel" href="https://shots.noa.kim" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><h3>Shots!</h3><p>Favorite moments captured while gaming in 4K.</p><span class="project-link">View screenshots ↗</span></a>
                 </div>
-                <div class="overlay">
-                    <div class="musicinfo">
-                        <p class="title">🎧 지금 듣는 중</p>
-                        <div class="musictitle" id="song"></div>
-                        <div class="musicartist" id="artist"></div>
-                    </div>
-                    <div class="more">
-                        <a href="https://music.noa.kim">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="box5 reveal-on-scroll">
-                <div class="learn">
-                    <p class="title">이런걸 ✏️ 배우고 있어요</p>
-                    <div class="learnlist">
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/java.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Java</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/react.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">React</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/kotlin.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Kotlin</span>
-                        </div>
-                        <div class="skill-item">
-                            <img class="skill-icon" src="img/icons/swift.svg" alt="" width="32" height="32" loading="lazy">
-                            <span class="skill-name">Swift</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="box7 reveal-on-scroll">
-                <div class="showphoto">
-                    <img src="https://i.imgur.com/dJARkw8.jpg" alt="최근 촬영한 사진" />
-                    <div class="photo-fallback" hidden>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h3l2-3h6l2 3h3a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="4"/></svg>
-                        <span>사진을 불러오지 못했어요</span>
-                    </div>
-                    <div class="overlay">
-                        <div class="photo">
-                            <p class="title">최근 촬영한 📸 사진</p>
-                        </div>
-                        <div class="more">
-                            <a href="https://photo.noa.kim">+</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="box8 reveal-on-scroll" onclick="window.open('https://openweathermap.org/city/1897000', '_blank')">
-                <div class="weather-content">
-                    <div class="title">📍성남시</div>
-                    <img class="weather-icon" alt="날씨 아이콘" />
-                    <div class="weather-info">
-                        <div class="weather-temp"></div>
-                        <div class="weather-desc"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box9 reveal-on-scroll">
-                <div class="time-container">
-                    <div class="second-hand-container"></div>
-                    <div class="time-display">
-                        <span class="period" id="time-period"></span>
-                        <span class="hour" id="time-hour"></span>
-                        <span class="minute" id="time-minute"></span>
-                    </div>
-                </div>
-
-                <div class="location-tag">🇰🇷 Seoul</div>
-            </div>
-            <div class="content2 reveal-on-scroll">
-                <p class="MainTitle">📂 프로젝트</p>
-            </div>
-            <div class="box14 reveal-on-scroll">
-                <div class="project">
-                    <a href="https://smu-d.vercel.app" class="title">스무디 🔗</a>
-                    <p>상명대학교의 학식 정보를 보여주는 사이트</p>
-                </div>
-            </div>
-            <div class="box10 reveal-on-scroll">
-                <div class="project">
-                    <a href="https://manual.noa.kim" class="title">스마트폰 설명서 🔗</a>
-                    <p>고령화 사회로 인한 정보격차 문제를 해결하기 위해 제작한 웹페이지</p>
-                </div>
-            </div>
-            <div class="box11 reveal-on-scroll">
-                <div class="project">
-                    <a class="title">Now Listening</a>
-                    <p>현재 개발자가 Apple Music에서 듣고있는 음악을 보여주는 웹페이지</p>
-                </div>
-            </div>
-            <div class="box12 reveal-on-scroll">
-                <div class="project">
-                    <a class="title">Notion 블로그</a>
-                    <p>개인적인 일상과 개발 관련 글을 올리는 블로그</p>
-                </div>
-            </div>
-            <div class="box15 reveal-on-scroll">
-                <div class="project">
-                    <a class="title">Photofolio</a>
-                    <p>최근에 촬영한 사진중 개발자의 마음에 든 사진을 모아둔 웹페이지</p>
-                </div>
-            </div>
-            <div class="box16 reveal-on-scroll">
-                <div class="project">
-                    <a href="https://health.noa.kim/" class="title">Sm@rt Health 🔗</a>
-                    <p>학교 과제물로 만든 웹페이지. AI로 어디까지 가능할까? 싶어서 디자인까지 AI로 돌려 만든 결과물</p>
-                </div>
-            </div>
-            <div class="box17 reveal-on-scroll">
-                <div class="project">
-                    <a href="https://shots.noa.kim/" class="title">Shots! 🔗</a>
-                    <p>게임하면서 찍어둔 스크린샷이 아까워서 만든 웹페이지. 4K 환경이라서 구경하는 맛이 있다</p>
-                </div>
-            </div>
-            <div class="content3 reveal-on-scroll">
-                <p class="MainTitle">ℹ️ 정보</p>
-            </div>
-            <div class="box13 reveal-on-scroll">
-                <div class="school">
-                    <p class="title">🏫학력</p>
-                    <div class="high">
-                        <p class="School">📘 성일고등학교</p>
-                        <p class="Detail">(2021~2023) 일반 인문계</p>
-                    </div>
-                    <div class="univ">
-                        <p class="School">🖥️ 상명대학교</p>
-                        <p class="Detail">(2024~) 소프트웨어학과</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <aside class="ambient-console" aria-label="Ambient light controls">
-        <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel">
-            <span class="ambient-trigger-light"></span>
-            <span>AMBIENT</span>
-            <span class="ambient-trigger-arrow" aria-hidden="true">+</span>
-        </button>
-        <div class="ambient-panel" id="ambient-panel" aria-hidden="true">
+            </section>
+            <section class="education" aria-labelledby="education-title"><h2 class="eyebrow" id="education-title">EDUCATION</h2><div><h3>Seongil High School</h3><p>General studies · 2021–2023</p></div><div><h3>Sangmyung University</h3><p>Software · 2024–present</p></div></section>
+        </main>
+        <footer class="site-footer"><p>Noa Kim <span>·</span> Curiosity, in motion.</p><a href="mailto:hi@noa.kim">Let’s talk <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></footer>
+    </div>
+    <div class="media-dock panel">
+        <a class="music-widget box6 no-album-art" href="https://music.noa.kim" target="_blank" rel="noopener noreferrer" aria-label="Now listening — open music page">
+            <div class="album-thumbnail"><svg class="icon album-fallback" aria-hidden="true"><use href="#icon-wave"/></svg><img id="album-art" alt="Current album cover" width="56" height="56"></div>
+            <svg class="icon music-wave" aria-hidden="true"><use href="#icon-wave"/></svg>
+            <div class="musicinfo"><p class="eyebrow">NOW PLAYING</p><p id="song">Finding the soundtrack…</p><p id="artist">Recent listening on Apple Music</p></div>
+            <svg class="icon music-link" aria-hidden="true"><use href="#icon-external"/></svg>
+        </a>
+        <aside class="ambient-console" aria-label="Ambient light controls">
+            <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span>AMBIENT</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">DARK</span></button>
+<div class="ambient-panel" id="ambient-panel" aria-hidden="true" inert>
             <div class="ambient-panel-head">
                 <div><span class="ambient-kicker">CABIN LIGHTING</span><strong>Ambient</strong></div>
                 <div class="ambient-panel-actions">
@@ -359,15 +230,9 @@
                 <input class="ambient-brightness" type="range" min="20" max="100" value="85" aria-label="Ambient light brightness">
             </div>
         </div>
-    </aside>
-    <script>
-        // 페이지 로드 시 날씨 정보 가져오기
-        document.addEventListener('DOMContentLoaded', getWeather);
-        // 30분마다 날씨 정보 업데이트
-        setInterval(getWeather, 1800000);
-    </script>
-    <script src="app/api/ambient-controls.js?v=9f27f47cc091" defer></script>
-    <script src="app/api/scroll-animation.js?v=838e538bb00e" defer></script>
-</body>
 
+        </aside>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', () => { getWeather(); setInterval(getWeather, 1800000); });</script>
+</body>
 </html>

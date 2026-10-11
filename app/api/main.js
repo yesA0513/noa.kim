@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const navigation = [...document.querySelectorAll('.section-nav a')];
+    const updateNavigation = () => {
+        const section = location.hash === '#photography' ? '#photography'
+            : ['#work', '#more-work'].includes(location.hash) ? '#work' : '#overview';
+        navigation.forEach(link => {
+            const isActive = link.hash === section;
+            link.classList.toggle('is-active', isActive);
+            if (isActive) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+    };
+    updateNavigation();
+    window.addEventListener('hashchange', updateNavigation);
+
     const photo = document.querySelector('.showphoto img');
     const photoFallback = document.querySelector('.photo-fallback');
     if (photo && photoFallback) {
@@ -10,46 +24,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (photo.complete && photo.naturalWidth === 0) showPhotoFallback();
     }
 
-    // MBTI 클릭 기능
-    const mbtiItems = document.querySelectorAll('.mbti-item');
-    const mbtiDescriptions = document.querySelectorAll('.mbti-desc');
+    const mbtiItems = [...document.querySelectorAll('.mbti-item')];
+    const mbtiDescriptions = [...document.querySelectorAll('.mbti-desc')];
+    const descriptionPanel = document.querySelector('.mbti-descriptions');
+
+    const setMbti = (selected = null) => {
+        mbtiItems.forEach(item => {
+            const isActive = item === selected;
+            item.classList.toggle('is-active', isActive);
+            item.setAttribute('aria-pressed', String(isActive));
+            item.setAttribute('aria-expanded', String(isActive));
+        });
+        mbtiDescriptions.forEach(description => {
+            const isActive = selected?.dataset.type === description.dataset.type;
+            description.classList.toggle('is-active', isActive);
+            description.hidden = !isActive;
+            description.setAttribute('aria-hidden', String(!isActive));
+        });
+        if (descriptionPanel) {
+            descriptionPanel.classList.toggle('is-open', Boolean(selected));
+            descriptionPanel.setAttribute('aria-hidden', String(!selected));
+        }
+    };
 
     mbtiItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            // 이벤트 전파를 막아 문서 전체의 클릭 이벤트가 실행되지 않게 함
-            event.stopPropagation(); 
-
-            const type = item.getAttribute('data-type');
-            const targetDesc = document.querySelector(`.mbti-desc[data-type="${type}"]`);
-            
-            // 현재 클릭한 아이템이 이미 활성화 상태인지 확인
-            const wasActive = item.classList.contains('is-active');
-
-            // 먼저 모든 아이템과 설명의 활성 상태를 제거
-            mbtiItems.forEach(i => {
-                i.classList.remove('is-active');
-                i.setAttribute('aria-pressed', 'false');
-            });
-            mbtiDescriptions.forEach(d => d.classList.remove('is-active'));
-
-            // 만약 클릭한 아이템이 비활성 상태였다면, 활성 상태로 만듦
-            if (!wasActive) {
-                item.classList.add('is-active');
-                item.setAttribute('aria-pressed', 'true');
-                if (targetDesc) {
-                    targetDesc.classList.add('is-active');
-                }
-            }
-            // 이미 활성 상태였다면, 위의 초기화 로직에 의해 비활성화된 상태로 남게 됨 (토글 오프)
-        });
+        const description = mbtiDescriptions.find(element => element.dataset.type === item.dataset.type);
+        if (description) {
+            description.id ||= `mbti-description-${item.dataset.type.toLowerCase()}`;
+            item.setAttribute('aria-controls', description.id);
+        }
+        item.addEventListener('click', () => setMbti(item.classList.contains('is-active') ? null : item));
     });
+    setMbti();
 
-    // MBTI 영역 바깥을 클릭하면 모든 활성 상태를 해제
-    document.addEventListener('click', () => {
-        mbtiItems.forEach(i => {
-            i.classList.remove('is-active');
-            i.setAttribute('aria-pressed', 'false');
-        });
-        mbtiDescriptions.forEach(d => d.classList.remove('is-active'));
+    document.addEventListener('click', event => {
+        if (mbtiItems.some(item => item.contains(event.target)) || descriptionPanel?.contains(event.target)) return;
+        setMbti();
+    });
+    document.addEventListener('keydown', event => {
+        const activeItem = mbtiItems.find(item => item.classList.contains('is-active'));
+        if (event.key !== 'Escape' || !activeItem) return;
+        event.preventDefault();
+        setMbti();
+        activeItem.focus();
     });
 });

@@ -27,14 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const updateDigitalTime = () => {
         const parts = seoulTime.formatToParts(new Date());
-        const hour = Number(parts.find(part => part.type === 'hour').value);
+        const hour = parts.find(part => part.type === 'hour').value;
         const minute = parts.find(part => part.type === 'minute').value;
-        const period = hour >= 12 ? '오후' : '오전';
-        const displayHour = String(hour % 12 || 12).padStart(2, '0');
-        periodElement.textContent = period;
-        hourElement.textContent = displayHour;
+        periodElement.textContent = 'SEOUL';
+        hourElement.textContent = hour;
         minuteElement.textContent = minute;
-        display.setAttribute('aria-label', `서울 시간 ${period} ${displayHour}시 ${minute}분`);
+        display.setAttribute('aria-label', `Seoul time ${hour}:${minute}`);
     };
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
