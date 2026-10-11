@@ -18,6 +18,7 @@
     <meta property="og:description" content="반가워요!✌️">
     <meta property="og:image" content="img/Preview.png">
     <title>김노아 @yesA0513</title>
+    <script src="app/api/theme.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
@@ -315,6 +316,14 @@
                 <div class="ambient-panel-actions">
                     <button type="button" class="ambient-power is-active" aria-pressed="true" aria-label="Turn ambient lighting off">ON</button>
                     <button type="button" class="ambient-close" aria-label="Close ambient controls">×</button>
+                </div>
+            </div>
+            <div class="ambient-section">
+                <span class="ambient-label" id="theme-label">THEME</span>
+                <div class="ambient-theme-switch" role="group" aria-labelledby="theme-label">
+                    <button type="button" class="ambient-theme" data-theme-preference="system" aria-pressed="true">시스템</button>
+                    <button type="button" class="ambient-theme" data-theme-preference="light" aria-pressed="false">라이트</button>
+                    <button type="button" class="ambient-theme" data-theme-preference="dark" aria-pressed="false">다크</button>
                 </div>
             </div>
             <div class="ambient-section">

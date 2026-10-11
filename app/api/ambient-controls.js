@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const powerButton = document.querySelector('.ambient-power');
     const panel = document.querySelector('.ambient-panel');
     const modeButtons = document.querySelectorAll('.ambient-mode');
+    const themeButtons = document.querySelectorAll('.ambient-theme');
     const presets = document.querySelectorAll('.ambient-preset');
     const picker = document.querySelector('.ambient-picker input');
     const multiPrimary = document.querySelector('.ambient-multi-primary');
@@ -18,7 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         try { return JSON.parse(localStorage.getItem('ambient-light') || '{}'); }
         catch { return {}; }
     };
-    const save = (value) => localStorage.setItem('ambient-light', JSON.stringify(value));
+    const save = (value) => {
+        try { localStorage.setItem('ambient-light', JSON.stringify(value)); }
+        catch { /* Controls remain usable when browser storage is unavailable. */ }
+    };
+    const setThemeButtons = () => themeButtons.forEach((button) => {
+        const isActive = button.dataset.themePreference === root.dataset.themePreference;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+    setThemeButtons();
+    window.addEventListener('themechange', setThemeButtons);
+    themeButtons.forEach((button) => button.addEventListener('click', () => {
+        window.noaTheme.setPreference(button.dataset.themePreference);
+    }));
     const setModeButtons = (mode) => modeButtons.forEach((button) => {
         const isActive = button.dataset.ambientMode === mode;
         button.classList.toggle('is-active', isActive);
@@ -79,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setPower(saved?.enabled ?? true, false);
     } catch {
         setMulti();
+        setBrightness(85, false);
+        setPower(true, false);
     }
 
     trigger.addEventListener('click', () => {
