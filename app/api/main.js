@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const photo = document.querySelector('.showphoto img');
+    const photoFallback = document.querySelector('.photo-fallback');
+    if (photo && photoFallback) {
+        const showPhotoFallback = () => {
+            photo.hidden = true;
+            photoFallback.hidden = false;
+        };
+        photo.addEventListener('error', showPhotoFallback);
+        if (photo.complete && photo.naturalWidth === 0) showPhotoFallback();
+    }
+
     // MBTI 클릭 기능
     const mbtiItems = document.querySelectorAll('.mbti-item');
     const mbtiDescriptions = document.querySelectorAll('.mbti-desc');
@@ -15,12 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const wasActive = item.classList.contains('is-active');
 
             // 먼저 모든 아이템과 설명의 활성 상태를 제거
-            mbtiItems.forEach(i => i.classList.remove('is-active'));
+            mbtiItems.forEach(i => {
+                i.classList.remove('is-active');
+                i.setAttribute('aria-pressed', 'false');
+            });
             mbtiDescriptions.forEach(d => d.classList.remove('is-active'));
 
             // 만약 클릭한 아이템이 비활성 상태였다면, 활성 상태로 만듦
             if (!wasActive) {
                 item.classList.add('is-active');
+                item.setAttribute('aria-pressed', 'true');
                 if (targetDesc) {
                     targetDesc.classList.add('is-active');
                 }
@@ -31,7 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // MBTI 영역 바깥을 클릭하면 모든 활성 상태를 해제
     document.addEventListener('click', () => {
-        mbtiItems.forEach(i => i.classList.remove('is-active'));
+        mbtiItems.forEach(i => {
+            i.classList.remove('is-active');
+            i.setAttribute('aria-pressed', 'false');
+        });
         mbtiDescriptions.forEach(d => d.classList.remove('is-active'));
     });
 });
