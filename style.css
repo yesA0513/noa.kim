@@ -2036,7 +2036,8 @@ nav a:focus-visible::before { opacity: 1; visibility: visible; }
     border-radius: 7px;
     color: #aeb9dc;
     background: transparent;
-    font: 600 .72rem/1 "Pretendard", sans-serif;
+    font: 700 .62rem/1 "Pretendard", sans-serif;
+    letter-spacing: .06em;
     transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
 .ambient-panel .ambient-theme.is-active {
