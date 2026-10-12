@@ -64,7 +64,7 @@
     .nav-links { gap: 5px; }
     .nav-links a { width: 29px; height: 29px; border-radius: 8px; }
     .nav-links svg { width: 14px; height: 14px; }
-    .section-nav { height: 39px; gap: 28px; }
+    .section-nav { height: 39px; gap: 20px; }
     .section-nav a { font-size: 13px; }
     .page-viewport { padding-bottom: 18px; }
     .hero { padding: 25px 24px 20px; }

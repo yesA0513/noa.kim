@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewport = document.querySelector('#main-content');
     const pages = [...document.querySelectorAll('.app-page[data-page]')];
     const navigation = [...document.querySelectorAll('.section-nav a')];
-    const pageNames = { overview: '소개', work: '프로젝트', photography: '사진' };
+    const pageNames = { overview: 'Overview', work: 'Projects', photography: 'Photography' };
     const resolvePage = (hash = location.hash) => hash === '#photography' ? 'photography'
         : ['#work', '#more-work'].includes(hash) ? 'work' : 'overview';
     const showPage = ({ focus = false } = {}) => {
