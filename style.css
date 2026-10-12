@@ -243,10 +243,13 @@ p, h1, h2, h3 { margin: 0; }
 .ambient-brightness { display: block; width: 100%; margin: 13px 0 3px; accent-color: #9293ff; cursor: pointer; }
 
 /* One shell, three independent screens, and an in-flow lower control rail. */
-.page-viewport { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--border) transparent; padding: 0 6px 22px; margin-inline: -6px; scroll-behavior: auto; }
+.page-viewport { position: relative; flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: var(--border) transparent; padding: 0 6px 22px; margin-inline: -6px; scroll-behavior: auto; }
 .page-viewport:focus, .page-title:focus { outline: none; }
-.app-page { min-width: 0; animation: screen-enter .18s ease-out; }
-@keyframes screen-enter { from { opacity: .45; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.app-page { min-width: 0; }
+.page-viewport.is-page-transitioning { overflow: hidden; }
+.app-page.is-entering { position: relative; }
+.app-page.is-leaving { position: absolute; left: 6px; right: 6px; pointer-events: none; }
+.app-page.is-entering, .app-page.is-leaving { will-change: transform; }
 .page-heading { padding: 5px 4px 27px; }
 .page-heading h1 { font-family: Pretendard, sans-serif; margin: 8px 0 8px; font-size: 36px; font-weight: 650; letter-spacing: -.04em; line-height: 1.3; }
 .page-heading > p:last-child { color: var(--muted); font-size: 14px; line-height: 1.7; }

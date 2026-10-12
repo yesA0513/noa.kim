@@ -3,19 +3,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const pages = [...document.querySelectorAll('.app-page[data-page]')];
     const navigation = [...document.querySelectorAll('.section-nav a')];
     const pageNames = { overview: 'Overview', work: 'Projects', photography: 'Photography' };
+    const pageOrder = Object.keys(pageNames);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activePage = null;
+    let pageAnimations = [];
+    let transitionVersion = 0;
     const resolvePage = (hash = location.hash) => hash === '#photography' ? 'photography'
         : ['#work', '#more-work'].includes(hash) ? 'work' : 'overview';
-    const showPage = ({ focus = false } = {}) => {
+    const clearTransition = () => {
+        transitionVersion += 1;
+        pageAnimations.forEach(animation => animation.cancel());
+        pageAnimations = [];
+        viewport?.classList.remove('is-page-transitioning');
+        pages.forEach(page => {
+            page.classList.remove('is-leaving', 'is-entering');
+            page.style.removeProperty('top');
+        });
+    };
+    const settlePages = () => {
+        pages.forEach(page => {
+            const isHidden = page !== activePage;
+            page.hidden = isHidden;
+            page.inert = isHidden;
+            if (isHidden) page.setAttribute('aria-hidden', 'true');
+            else page.removeAttribute('aria-hidden');
+        });
+    };
+    const showPage = ({ focus = false, animate = true } = {}) => {
         const name = resolvePage();
         const selected = pages.find(page => page.dataset.page === name);
         if (!selected || !viewport) return;
 
         const focusWillBeHidden = pages.some(page => page !== selected && page.contains(document.activeElement));
-        pages.forEach(page => {
-            const isHidden = page !== selected;
-            page.hidden = isHidden;
-            page.inert = isHidden;
-        });
+        const previous = activePage;
+        const previousScroll = viewport.scrollTop;
+        clearTransition();
+        activePage = selected;
+        settlePages();
         navigation.forEach(link => {
             const isActive = link.hash === `#${name}`;
             link.classList.toggle('is-active', isActive);
@@ -25,6 +49,35 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.dataset.page = name;
         document.title = `${pageNames[name]} | 김노아 @yesA0513`;
         viewport.scrollTop = 0;
+
+        if (animate && previous && previous !== selected && !reducedMotion.matches
+            && typeof previous.animate === 'function' && typeof selected.animate === 'function') {
+            const direction = pageOrder.indexOf(name) > pageOrder.indexOf(previous.dataset.page) ? 1 : -1;
+            const distance = viewport.clientWidth;
+            const version = transitionVersion;
+            const options = { duration: 320, easing: 'cubic-bezier(.22, .68, 0, 1.01)', fill: 'both' };
+            viewport.classList.add('is-page-transitioning');
+            previous.hidden = false;
+            previous.classList.add('is-leaving');
+            previous.style.top = `${-previousScroll}px`;
+            selected.classList.add('is-entering');
+            pageAnimations = [
+                previous.animate([
+                    { transform: 'translateX(0)' },
+                    { transform: `translateX(${-direction * distance}px)` }
+                ], options),
+                selected.animate([
+                    { transform: `translateX(${direction * distance}px)` },
+                    { transform: 'translateX(0)' }
+                ], options)
+            ];
+            Promise.all(pageAnimations.map(animation => animation.finished)).then(() => {
+                if (version !== transitionVersion) return;
+                clearTransition();
+                settlePages();
+            }, () => {});
+        }
+
         if (focus || focusWillBeHidden) {
             const title = selected.querySelector('.page-title');
             (title || viewport).focus({ preventScroll: true });
@@ -32,7 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     if (viewport && pages.length) {
         viewport.setAttribute('tabindex', '-1');
-        showPage();
+        showPage({ animate: false });
+        reducedMotion.addEventListener('change', event => {
+            if (!event.matches) return;
+            clearTransition();
+            settlePages();
+        });
         window.addEventListener('hashchange', () => showPage({ focus: true }));
         document.addEventListener('click', event => {
             if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
