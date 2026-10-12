@@ -42,7 +42,7 @@
     .interest-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 21px; }
     .interest-list p { font-size: 12px; }
     .instrument-panel { grid-area: instruments; height: 231px; grid-template-columns: 1fr 1fr; padding: 19px 24px; gap: 24px; }
-    .time-container { width: 193px; }
+    .time-container { width: 170px; }
     .time-digits { font-size: 37px; }
     .weather-content { padding-left: 24px; }
     .weather-temp { font-size: 42px; }
@@ -107,13 +107,13 @@
     .interest-list { display: flex; gap: 19px; }
     .interest-list p { font-size: 13px; }
     .instrument-panel { height: 196px; padding: 17px 13px; gap: 13px; }
-    .time-container { width: 100%; max-width: 165px; }
+    .time-container { width: 100%; max-width: 140px; }
     .time-digits { font-size: clamp(26px, 7.1vw, 37px); }
     .period { font-size: 10px; letter-spacing: .01em; }
     .weather-content { min-height: 130px; padding-left: 13px; }
     .weather-temp { font-size: 32px; }
     .weather-desc, .weather-location { font-size: 12px; }
-    .weather-art { height: 48px; }
+    .weather-art { flex-basis: 48px; width: 48px; height: 48px; }
     .other-projects { grid-template-columns: minmax(0, 1fr); gap: 11px; }
     .small-project { padding: 23px; }
     .small-project > .icon { margin-bottom: 15px; }

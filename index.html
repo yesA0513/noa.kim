@@ -21,10 +21,10 @@
     <title>김노아 · @yesA0513</title>
     <script src="app/api/theme.js?v=09b4af397d12"></script>
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=9d77f9a4b5c8">
-    <link rel="stylesheet" href="responsive.css?v=78bfd007b3b1">
+    <link rel="stylesheet" href="style.css?v=5d270958bde1">
+    <link rel="stylesheet" href="responsive.css?v=b81cd6833d03">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
-    <script src="app/api/weather.js?v=b4dd22f9e926" defer></script>
+    <script src="app/api/weather.js?v=316e7ab02654" defer></script>
     <script src="app/api/clock.js?v=0367177c7f2e" defer></script>
     <script src="app/api/main.js?v=2be6c787fabf" defer></script>
     <script src="app/api/ambient-controls.js?v=4c282cdec9e2" defer></script>
@@ -38,6 +38,14 @@
             <symbol id="icon-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
             <symbol id="icon-sliders" viewBox="0 0 24 24"><path d="M4 6h4m4 0h8M4 12h10m4 0h2M4 18h2m4 0h10"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
             <symbol id="icon-cloud" viewBox="0 0 48 48"><path d="M13 36h24a8 8 0 0 0 1-16 13 13 0 0 0-25-3 9.5 9.5 0 0 0 0 19Z"/></symbol>
+            <symbol id="weather-sun" viewBox="0 0 48 48"><circle cx="24" cy="24" r="8"/><path d="M24 4v4m0 32v4M4 24h4m32 0h4M10 10l3 3m22 22 3 3M38 10l-3 3M13 35l-3 3"/></symbol>
+            <symbol id="weather-moon" viewBox="0 0 48 48"><path d="M39 27a15.5 15.5 0 0 1-18-18 16.5 16.5 0 1 0 18 18Z"/></symbol>
+            <symbol id="weather-partly-cloudy" viewBox="0 0 48 48"><path d="M18 25a7 7 0 1 1 9-9M16 3v4M4 15h4M7 6l3 3m16-3-3 3"/><path d="M17 37h20a7 7 0 0 0 1-14 11 11 0 0 0-21-3 8.5 8.5 0 0 0 0 17Z"/></symbol>
+            <symbol id="weather-cloud" viewBox="0 0 48 48"><path d="M13 36h24a8 8 0 0 0 1-16 13 13 0 0 0-25-3 9.5 9.5 0 0 0 0 19Z"/></symbol>
+            <symbol id="weather-rain" viewBox="0 0 48 48"><path d="M12 30h24a7 7 0 0 0 1-14 12 12 0 0 0-23-3 8.5 8.5 0 0 0-2 17Zm4 6-3 6m12-6-3 6m12-6-3 6"/></symbol>
+            <symbol id="weather-storm" viewBox="0 0 48 48"><path d="M13 30H9a7 7 0 0 1 4-14 12 12 0 0 1 23 0 7 7 0 0 1 1 14h-3M25 27l-9 11h9l-3 8 13-15h-9l3-4"/></symbol>
+            <symbol id="weather-snow" viewBox="0 0 48 48"><path d="M12 29h24a7 7 0 0 0 1-14 12 12 0 0 0-23-3 8.5 8.5 0 0 0-2 17ZM14 35v8m-3-6 6 4m0-4-6 4m22-6v8m-3-6 6 4m0-4-6 4"/></symbol>
+            <symbol id="weather-fog" viewBox="0 0 48 48"><path d="M12 29h24a7 7 0 0 0 1-14 12 12 0 0 0-23-3 8.5 8.5 0 0 0-2 17ZM8 36h32M13 42h22"/></symbol>
             <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3Z"/><circle cx="12" cy="13" r="4"/></symbol>
             <symbol id="icon-wave" viewBox="0 0 32 32"><path d="M4 13v6m4-10v14m4-18v22m4-26v30m4-24v18m4-14v10m4-7v4"/></symbol>
             <symbol id="icon-meal" viewBox="0 0 64 64"><path d="M8 31h40a20 20 0 0 1-40 0Zm7 22h26M20 24c-6-5 6-7 0-12m12 12c-6-5 6-7 0-12M53 9v15m5-15v15m-10-15v15c0 5 10 5 10 0M53 29v25"/></symbol>
@@ -79,7 +87,7 @@
             <section class="app-page" id="overview" data-page="overview" aria-labelledby="Introduce">
                 <div class="dashboard intro-dashboard">
                     <div class="profile-column"><section class="hero panel" aria-labelledby="Introduce">
-                    <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 기술 · 사진 · 자동차 · 디자인</p>
+                    <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> introduce</p>
                     <h1 class="page-title" id="Introduce" tabindex="-1">안녕하세요,<br>김노아입니다.</h1>
                     <p class="intro-copy">새로운 기술을 탐구하고, 사진으로 순간을 기록합니다.<br class="desktop-break"> 자동차와 사용하기 편한 디자인을 좋아해요.</p>
                     <div class="hero-actions">
@@ -104,7 +112,7 @@
                         </div>
                     </div>
                 </section><section class="toolkit panel" aria-labelledby="toolkit-title">
-                    <h2 class="eyebrow" id="toolkit-title"><span class="status-light" aria-hidden="true"></span> 다룰 수 있는 기술</h2>
+                    <h2 class="eyebrow" id="toolkit-title"><span class="status-light" aria-hidden="true"></span> skills</h2>
                     <div class="toolkit-content"><div class="abilitylist">
                         <div class="skill-item"><img class="skill-icon" src="img/icons/python.svg" alt="" width="32" height="32"><span class="skill-name">Python</span></div>
                         <div class="skill-item"><img class="skill-icon" src="img/icons/c.svg" alt="" width="32" height="32"><span class="skill-name">C</span></div>
@@ -115,9 +123,9 @@
                         <div class="skill-item"><img class="skill-icon" src="img/icons/docker.svg" alt="" width="32" height="32"><span class="skill-name">Docker</span></div>
                         <div class="skill-item"><img class="skill-icon" src="img/icons/git.svg" alt="" width="32" height="32"><span class="skill-name">Git</span></div>
                     </div><div class="learn"><p class="eyebrow">배우는 중</p><p>Java · React · Kotlin · Swift</p></div></div>
-                </section><section class="education panel" aria-labelledby="education-title"><h2 class="eyebrow" id="education-title">지나온 과정</h2><div><h3>성일고등학교</h3><p>일반 인문계 · 2021–2023</p></div><div><h3>상명대학교</h3><p>소프트웨어학과 · 2024–현재</p></div></section></div>
+                </section><section class="education panel" aria-labelledby="education-title"><h2 class="eyebrow" id="education-title">학력</h2><div><h3>성일고등학교</h3><p>일반 인문계 · 2021–2023</p></div><div><h3>상명대학교</h3><p>소프트웨어학과 · 2024–현재</p></div></section></div>
                     <div class="lifestyle-column"><section class="interests-panel panel" aria-labelledby="interests-title">
-                        <p class="eyebrow">취향과 관심사</p><h2 id="interests-title">일상을 채우는 것들</h2>
+                        <p class="eyebrow">interesting</p><h2 id="interests-title">일상을 채우는 것들</h2>
                         <div class="interest-list">
                             <div><svg class="icon" aria-hidden="true"><use href="#icon-car"/></svg><div><h3>자동차</h3><p>다양한 차를 알아보고 운전하는 것을 좋아해요.</p></div></div>
                             <div><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><div><h3>새로운 기술</h3><p>새로운 기술을 탐구하고 여러 방법으로 활용해봐요.</p></div></div>
@@ -128,11 +136,12 @@
                     <div class="box9 clock-widget">
                         <div class="time-container">
                             <div class="second-hand-container"></div>
-                            <div class="time-display"><div class="time-digits"><span id="time-hour">--</span><span class="time-colon" aria-hidden="true">:</span><span id="time-minute">--</span></div><span class="period" id="time-period">서울</span></div>
+                            <div class="time-display"><div class="time-digits"><span id="time-hour">--</span><span class="time-colon" aria-hidden="true">:</span><span id="time-minute">--</span></div></div>
                         </div>
+                        <span class="period" id="time-period">서울</span>
                     </div>
                     <a class="weather-content box8" href="https://openweathermap.org/city/1897000" target="_blank" rel="noopener noreferrer" aria-label="성남시 날씨, 자세한 예보 열기">
-                        <div class="weather-art"><svg class="icon weather-fallback" aria-hidden="true"><use href="#icon-cloud"/></svg><img class="weather-icon" alt="" hidden width="64" height="64"></div>
+                        <div class="weather-art"><svg class="icon weather-icon" viewBox="0 0 48 48" role="img" aria-label="날씨를 확인하고 있어요"><use href="#weather-cloud"/></svg></div>
                         <div class="weather-info"><p class="weather-temp">--°C</p><p class="weather-desc">날씨 확인 중</p></div><span class="weather-location">성남시</span>
                     </a>
                 </section></div>

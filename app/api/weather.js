@@ -6,17 +6,25 @@ async function getWeather() {
     const tempElement = document.querySelector(".weather-temp");
     const descElement = document.querySelector(".weather-desc");
     const iconElement = document.querySelector(".weather-icon");
-    const fallbackElement = document.querySelector(".weather-fallback");
+    const iconUseElement = iconElement?.querySelector("use");
     if (!tempElement || !descElement) return;
 
-    const showFallbackIcon = () => {
-        if (iconElement) {
-            iconElement.hidden = true;
-            iconElement.removeAttribute("src");
-        }
-        if (fallbackElement) fallbackElement.hidden = false;
+    const showIcon = (symbol, description) => {
+        iconUseElement?.setAttribute("href", `#weather-${symbol}`);
+        iconElement?.setAttribute("aria-label", `현재 날씨: ${description}`);
     };
-    showFallbackIcon();
+    const weatherSymbols = {
+        "01": "sun",
+        "02": "partly-cloudy",
+        "03": "cloud",
+        "04": "cloud",
+        "09": "rain",
+        "10": "rain",
+        "11": "storm",
+        "13": "snow",
+        "50": "fog",
+    };
+    showIcon("cloud", "날씨를 불러오는 중");
     tempElement.textContent = "—°C";
     descElement.textContent = "날씨를 불러오는 중";
     const controller = new AbortController();
@@ -36,19 +44,13 @@ async function getWeather() {
         const description = typeof current.description === "string" && current.description.trim()
             ? current.description.trim() : "날씨 정보가 없어요";
         descElement.textContent = description;
-        if (iconElement && /^\d{2}[dn]$/.test(current.icon)) {
-            iconElement.onload = () => {
-                iconElement.hidden = false;
-                if (fallbackElement) fallbackElement.hidden = true;
-            };
-            iconElement.onerror = showFallbackIcon;
-            iconElement.alt = `현재 날씨: ${description}`;
-            iconElement.src = `https://openweathermap.org/img/wn/${current.icon}@2x.png`;
-        }
+        const symbol = current.icon === "01n" ? "moon"
+            : /^\d{2}[dn]$/.test(current.icon) ? weatherSymbols[current.icon.slice(0, 2)] : null;
+        showIcon(symbol || "cloud", description);
     } catch {
         tempElement.textContent = "—°C";
         descElement.textContent = "날씨를 불러오지 못했어요";
-        showFallbackIcon();
+        showIcon("cloud", "날씨를 불러오지 못했어요");
     } finally {
         window.clearTimeout(timeout);
     }
