@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         artist.textContent = description;
     };
 
-    showStatus("Loading music", "Recent listening");
+    showStatus("음악을 불러오는 중", "최근 들은 음악을 확인하고 있어요");
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 10000);
     try {
@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = await response.json();
         const track = data?.data?.[0]?.attributes;
         if (!track || typeof track.name !== "string" || !track.name.trim()) {
-            showStatus("Nothing playing", "Recent listening will appear here");
+            showStatus("아직 들은 음악이 없어요", "최근 들은 음악이 여기에 표시돼요");
             return;
         }
 
         song.textContent = track.name;
         artist.textContent = typeof track.artistName === "string" && track.artistName.trim()
-            ? track.artistName : "Artist unavailable";
+            ? track.artistName : "아티스트 정보가 없어요";
         if (typeof track.artwork?.url !== "string" || !track.artwork.url.trim()) return;
         const artworkUrl = track.artwork.url.replaceAll("{w}", "512").replaceAll("{h}", "512");
         let artwork;
@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             musicBox.classList.remove("no-album-art");
         };
         albumArt.onerror = clearArtwork;
-        albumArt.alt = `${track.name} album artwork`;
+        albumArt.alt = `${track.name} 앨범 표지`;
         albumArt.src = artwork.href;
     } catch {
-        showStatus("Music unavailable", "Check back soon");
+        showStatus("음악을 불러오지 못했어요", "잠시 후 다시 확인해 주세요");
     } finally {
         window.clearTimeout(timeout);
     }

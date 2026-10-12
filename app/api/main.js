@@ -1,17 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.querySelector('#main-content');
+    const pages = [...document.querySelectorAll('.app-page[data-page]')];
     const navigation = [...document.querySelectorAll('.section-nav a')];
-    const updateNavigation = () => {
-        const section = location.hash === '#photography' ? '#photography'
-            : ['#work', '#more-work'].includes(location.hash) ? '#work' : '#overview';
+    const pageNames = { overview: '소개', work: '프로젝트', photography: '사진' };
+    const resolvePage = (hash = location.hash) => hash === '#photography' ? 'photography'
+        : ['#work', '#more-work'].includes(hash) ? 'work' : 'overview';
+    const showPage = ({ focus = false } = {}) => {
+        const name = resolvePage();
+        const selected = pages.find(page => page.dataset.page === name);
+        if (!selected || !viewport) return;
+
+        const focusWillBeHidden = pages.some(page => page !== selected && page.contains(document.activeElement));
+        pages.forEach(page => {
+            const isHidden = page !== selected;
+            page.hidden = isHidden;
+            page.inert = isHidden;
+        });
         navigation.forEach(link => {
-            const isActive = link.hash === section;
+            const isActive = link.hash === `#${name}`;
             link.classList.toggle('is-active', isActive);
-            if (isActive) link.setAttribute('aria-current', 'location');
+            if (isActive) link.setAttribute('aria-current', 'page');
             else link.removeAttribute('aria-current');
         });
+        document.body.dataset.page = name;
+        document.title = `${pageNames[name]} | 김노아 @yesA0513`;
+        viewport.scrollTop = 0;
+        if (focus || focusWillBeHidden) {
+            const title = selected.querySelector('.page-title');
+            (title || viewport).focus({ preventScroll: true });
+        }
     };
-    updateNavigation();
-    window.addEventListener('hashchange', updateNavigation);
+    if (viewport && pages.length) {
+        viewport.setAttribute('tabindex', '-1');
+        showPage();
+        window.addEventListener('hashchange', () => showPage({ focus: true }));
+        document.addEventListener('click', event => {
+            if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            const link = event.target.closest('a[href]');
+            if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+            const target = new URL(link.href, location.href);
+            if (target.origin !== location.origin || target.pathname !== location.pathname || target.search !== location.search) return;
+
+            if (target.hash === '#main-content') {
+                event.preventDefault();
+                viewport.scrollTop = 0;
+                viewport.focus({ preventScroll: true });
+                return;
+            }
+            if (!['#overview', '#work', '#more-work', '#photography'].includes(target.hash)) return;
+            event.preventDefault();
+            if (target.hash !== location.hash) history.pushState(null, '', target.hash);
+            showPage({ focus: true });
+        });
+    }
 
     const photo = document.querySelector('.showphoto img');
     const photoFallback = document.querySelector('.photo-fallback');

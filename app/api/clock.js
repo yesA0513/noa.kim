@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const parts = seoulTime.formatToParts(new Date());
         const hour = parts.find(part => part.type === 'hour').value;
         const minute = parts.find(part => part.type === 'minute').value;
-        periodElement.textContent = 'SEOUL';
+        periodElement.textContent = '서울';
         hourElement.textContent = hour;
         minuteElement.textContent = minute;
-        display.setAttribute('aria-label', `Seoul time ${hour}:${minute}`);
+        display.setAttribute('aria-label', `서울 시간 ${hour}시 ${minute}분`);
     };
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
