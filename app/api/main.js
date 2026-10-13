@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const photo = document.querySelector('.scene-photo') || document.querySelector('.showphoto img');
+    const photo = document.querySelector('.showphoto img');
     const photoFallback = document.querySelector('.photo-fallback');
     if (photo && photoFallback) {
         const showPhotoFallback = () => {

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="forest" x2="0" y2="1"><stop stop-color="#0a1c22"/><stop offset=".53" stop-color="#344d39"/><stop offset="1" stop-color="#091a1b"/></linearGradient>
+<radialGradient id="clearing"><stop stop-color="#bbd88e" stop-opacity=".38"/><stop offset=".5" stop-color="#809b5c" stop-opacity=".15"/><stop offset="1" stop-color="#466143" stop-opacity="0"/></radialGradient>
+<linearGradient id="shaft" x2=".4" y2="1"><stop stop-color="#d9edb8" stop-opacity=".2"/><stop offset="1" stop-color="#b5d683" stop-opacity="0"/></linearGradient>
+<linearGradient id="path" x2="0" y2="1"><stop stop-color="#9da673" stop-opacity=".23"/><stop offset="1" stop-color="#4c5942" stop-opacity=".08"/></linearGradient>
+</defs>
+<path fill="url(#forest)" d="M0 0h1600v1000H0z"/>
+<ellipse cx="805" cy="480" rx="570" ry="660" fill="url(#clearing)"/>
+<g fill="#1d3430" opacity=".6">
+<path d="M412 0h18l23 731h-61Zm152 0h11l13 659h-30ZM684 0h12l-1 649h-21ZM924 0h15l6 678h-28Zm133 0h17l-9 723h-27Zm150 0h23l27 802h-36Z"/>
+<path d="M0 41q194-100 310 8 77-133 184-46 109-92 178 8 48 91-79 131-92 61-172 4-57 83-180 28Q48 228 0 114Zm1600-6q-143-57-260 13-107-94-215-26-101-78-207 1-71 86 39 126 59 52 165 1 122 94 241 5 120 57 237 0Z"/>
+</g>
+<path d="m676-20 99 0 231 850-152 68Zm115 0h39l371 727-110 65Z" fill="url(#shaft)"/>
+<path d="M768 597c154 107-64 139-52 232s63 116 117 171H547c-47-159 65-203 163-248s98-104 58-155Z" fill="url(#path)"/>
+<g fill="#102623">
+<path d="M222 0h48l35 461 44-76 17 8-58 147 17 319-90 38 20-399-65-167 20-9 47 104ZM1327 0h51l-25 392 62-150 23 9-88 236 31 408-100-38 36-356-82-212 24-11 62 123Z"/>
+<path d="M0 0h395q67 63-12 143-70 89-191 21Q107 240 0 174Zm1600 0h-363q-69 65 16 130 97 107 196 29 74 82 151 20Z"/>
+</g>
+<g fill="#071b1c">
+<path d="M60 0h93l18 1010H28Zm1403 0h79l29 1000h-126Z"/>
+<path d="M0 839q145-96 296 10t249 66l67 85H0Zm1600 4q-191-77-352 20t-281 66l-37 71h670Z"/>
+</g>
+<g fill="#cfdfa5" opacity=".27"><circle cx="652" cy="436" r="2"/><circle cx="892" cy="569" r="1.6"/><circle cx="742" cy="742" r="1.5"/><circle cx="1056" cy="622" r="1.5"/><circle cx="961" cy="403" r="2"/><circle cx="601" cy="639" r="1.4"/></g>
+</svg>

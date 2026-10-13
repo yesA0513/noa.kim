@@ -1,0 +1,30 @@
+/* The preview and full-screen scene share the same local artwork. */
+:root, .preset-ice { --scene-image: url('../../img/ambient/moonlit-voyage.svg'); }
+.scene-world[data-scene='moonlit-voyage'] { --scene-image: url('../../img/ambient/moonlit-voyage.svg'); }
+:root[data-ambient-scene='cosmic-drift'], .preset-violet, .scene-world[data-scene='cosmic-drift'] { --scene-image: url('../../img/ambient/cosmic-drift.svg'); }
+:root[data-ambient-scene='afterglow'], .preset-rose, .scene-world[data-scene='afterglow'] { --scene-image: url('../../img/ambient/afterglow.svg'); }
+:root[data-ambient-scene='desert-dusk'], .preset-amber, .scene-world[data-scene='desert-dusk'] { --scene-image: url('../../img/ambient/desert-dusk.svg'); }
+:root[data-ambient-scene='aurora'], .preset-mint, .scene-world[data-scene='aurora'] { --scene-image: url('../../img/ambient/aurora.svg'); }
+:root[data-ambient-scene='forest-whisper'], .preset-lime, .scene-world[data-scene='forest-whisper'] { --scene-image: url('../../img/ambient/forest-whisper.svg'); }
+:root[data-ambient-scene='deep-current'], .preset-ocean, .scene-world[data-scene='deep-current'] { --scene-image: url('../../img/ambient/deep-current.svg'); }
+:root[data-ambient-scene='midnight-drive'], .preset-crimson, .scene-world[data-scene='midnight-drive'] { --scene-image: url('../../img/ambient/midnight-drive.svg'); }
+
+.scene-worlds { position: absolute; inset: 0; opacity: var(--ambient-intensity); }
+.scene-world { position: absolute; inset: 0; opacity: 0; background: var(--scene-image) center / cover no-repeat; transition: opacity .65s ease; }
+:root:not([data-ambient-scene]) .scene-world[data-scene='moonlit-voyage'],
+:root[data-ambient-scene='moonlit-voyage'] .scene-world[data-scene='moonlit-voyage'],
+:root[data-ambient-scene='cosmic-drift'] .scene-world[data-scene='cosmic-drift'],
+:root[data-ambient-scene='afterglow'] .scene-world[data-scene='afterglow'],
+:root[data-ambient-scene='desert-dusk'] .scene-world[data-scene='desert-dusk'],
+:root[data-ambient-scene='aurora'] .scene-world[data-scene='aurora'],
+:root[data-ambient-scene='forest-whisper'] .scene-world[data-scene='forest-whisper'],
+:root[data-ambient-scene='deep-current'] .scene-world[data-scene='deep-current'],
+:root[data-ambient-scene='midnight-drive'] .scene-world[data-scene='midnight-drive'] { opacity: 1; }
+.scene-worlds::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #eef1f5b3, #eef1f54d); }
+:root[data-theme='dark'] .scene-worlds::after { background: linear-gradient(180deg, #060a1410, #060a1426); }
+
+.ambient-preset .ambient-style-art, .ambient-picker .ambient-style-art { background: var(--scene-image) center / cover no-repeat; }
+.ambient-preset .ambient-style-art::before, .ambient-picker .ambient-style-art::before { display: none; }
+.ambient-preset .ambient-style-art::after, .ambient-picker .ambient-style-art::after { background: linear-gradient(180deg, transparent 35%, #04060b30 55%, #04060bf2); }
+.ambient-style-name small { display: block; margin-top: 4px; color: #c8cbd4; font-size: 9px; font-weight: 400; line-height: 1.3; }
+@media (prefers-reduced-motion: reduce) { .scene-world { transition: none; } }
