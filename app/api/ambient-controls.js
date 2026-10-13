@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.toggle('is-active', isActive);
             button.setAttribute('aria-pressed', String(isActive));
         });
-        themeStatuses.forEach(status => { status.textContent = root.dataset.theme === 'dark' ? '다크' : '라이트'; });
+        themeStatuses.forEach(status => { status.textContent = root.dataset.theme === 'dark' ? 'Dark' : 'Light'; });
     };
     setThemeButtons();
     window.addEventListener('themechange', setThemeButtons);
@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
         root.dataset.ambientEnabled = String(isEnabled);
         powerButton.classList.toggle('is-active', isEnabled);
         powerButton.setAttribute('aria-pressed', String(isEnabled));
-        powerButton.textContent = isEnabled ? '켜짐' : '꺼짐';
-        powerButton.setAttribute('aria-label', `앰비언트 조명 ${isEnabled ? '끄기' : '켜기'}`);
+        powerButton.textContent = isEnabled ? 'ON' : 'OFF';
+        powerButton.setAttribute('aria-label', `Turn ambient lighting ${isEnabled ? 'off' : 'on'}`);
         root.style.setProperty('--ambient-intensity', isEnabled ? Number(brightness.value) / 100 : 0);
         if (shouldSave) save({ ...savedSettings(), enabled: isEnabled });
     };

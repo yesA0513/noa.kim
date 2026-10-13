@@ -21,15 +21,15 @@
     <title>김노아 · @yesA0513</title>
     <script src="app/api/theme.js?v=09b4af397d12"></script>
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=8a5229d7e0a1">
+    <link rel="stylesheet" href="style.css?v=a6ce4b8b7f81">
     <link rel="stylesheet" href="responsive.css?v=0edb8229e8f6">
-    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=850c913df46a">
+    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=6ff3b0ed7449">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
     <script src="app/api/weather.js?v=316e7ab02654" defer></script>
     <script src="app/api/clock.js?v=b50a97144d26" defer></script>
     <script src="app/api/main.js?v=399d4e2c96eb" defer></script>
     <script src="app/api/service.js?v=819c8e1208b6" defer></script>
-    <script src="app/api/ambient-controls.js?v=1d1679d1599c" defer></script>
+    <script src="app/api/ambient-controls.js?v=3868d5e2af33" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">본문으로 이동</a>
@@ -208,55 +208,55 @@
                 <a href="#work"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><span>Projects</span></a>
                 <a href="#photography"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><span>Photography</span></a>
             </nav>
-        <aside class="ambient-console" aria-label="앰비언트 조명 설정">
-            <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span>앰비언트</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">다크</span></button>
+        <aside class="ambient-console" lang="en" aria-label="Ambient lighting settings">
+            <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span>Ambient</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">Dark</span></button>
 <div class="ambient-panel" id="ambient-panel" role="dialog" aria-modal="true" aria-labelledby="ambient-title" aria-hidden="true" inert>
             <div class="ambient-panel-head">
-                <div><span class="ambient-kicker">화면의 분위기</span><strong id="ambient-title">Ambient Styles</strong></div>
+                <div><span class="ambient-kicker">Set the mood</span><strong id="ambient-title">Ambient Styles</strong></div>
                 <div class="ambient-panel-actions">
-                    <button type="button" class="ambient-power is-active" aria-pressed="true" aria-label="앰비언트 조명 끄기">켜짐</button>
-                    <button type="button" class="ambient-close" aria-label="앰비언트 설정 닫기">×</button>
+                    <button type="button" class="ambient-power is-active" aria-pressed="true" aria-label="Turn ambient lighting off">ON</button>
+                    <button type="button" class="ambient-close" aria-label="Close ambient settings">×</button>
                 </div>
             </div>
             <div class="ambient-section">
-                <span class="ambient-label">나에게 맞는 분위기를 선택하세요</span>
+                <span class="ambient-label">Choose your style</span>
                 <div class="ambient-palette">
-                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#a778ff,#ff7daf" aria-label="아이스 블루 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">아이스 블루</span></button>
-                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" aria-label="보라 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">바이올렛</span></button>
-                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" aria-label="분홍 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">로즈</span></button>
-                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" aria-label="호박색 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">앰버</span></button>
-                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" aria-label="민트 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">민트</span></button>
-                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" aria-label="라임 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">라임</span></button>
-                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" aria-label="바다색 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">오션</span></button>
-                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" aria-label="진홍 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">크림슨</span></button>
-                    <label class="ambient-picker" aria-label="직접 앰비언트 색상 선택"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">직접 선택</span><input type="color" value="#56d7ff" aria-label="직접 앰비언트 색상 선택"></label>
+                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#a778ff,#ff7daf" aria-label="Ice Blue lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Ice Blue</span></button>
+                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" aria-label="Violet lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Violet</span></button>
+                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" aria-label="Rose lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Rose</span></button>
+                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" aria-label="Amber lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Amber</span></button>
+                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" aria-label="Mint lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Mint</span></button>
+                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" aria-label="Lime lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Lime</span></button>
+                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" aria-label="Ocean lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Ocean</span></button>
+                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" aria-label="Crimson lighting"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Crimson</span></button>
+                    <label class="ambient-picker" aria-label="Choose a custom ambient color"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Custom</span><input type="color" value="#56d7ff" aria-label="Choose a custom ambient color"></label>
                 </div>
             </div>
             <div class="ambient-section">
-                <span class="ambient-label" id="theme-label">화면 테마</span>
+                <span class="ambient-label" id="theme-label">Display Theme</span>
                 <div class="ambient-theme-switch" role="group" aria-labelledby="theme-label">
-                    <button type="button" class="ambient-theme" data-theme-preference="system" aria-pressed="true">시스템</button>
-                    <button type="button" class="ambient-theme" data-theme-preference="light" aria-pressed="false">라이트</button>
-                    <button type="button" class="ambient-theme" data-theme-preference="dark" aria-pressed="false">다크</button>
+                    <button type="button" class="ambient-theme" data-theme-preference="system" aria-pressed="true">System</button>
+                    <button type="button" class="ambient-theme" data-theme-preference="light" aria-pressed="false">Light</button>
+                    <button type="button" class="ambient-theme" data-theme-preference="dark" aria-pressed="false">Dark</button>
                 </div>
             </div>
             <div class="ambient-section">
-                <span class="ambient-label">조명 방식</span>
+                <span class="ambient-label">Color Mode</span>
                 <div class="ambient-mode-switch">
-                    <button type="button" class="ambient-mode" data-ambient-mode="multi" aria-pressed="true">다색</button>
-                    <button type="button" class="ambient-mode" data-ambient-mode="single" aria-pressed="false">단색</button>
+                    <button type="button" class="ambient-mode" data-ambient-mode="multi" aria-pressed="true">Multicolor</button>
+                    <button type="button" class="ambient-mode" data-ambient-mode="single" aria-pressed="false">Monocolor</button>
                 </div>
             </div>
             <div class="ambient-section ambient-multi-colors">
-                <span class="ambient-label">조명 색상</span>
+                <span class="ambient-label">Colors</span>
                 <div class="ambient-multi-pickers">
-                    <label><span>첫 번째</span><input class="ambient-multi-primary" type="color" value="#56d7ff" aria-label="첫 번째 앰비언트 색상"></label>
-                    <label><span>두 번째</span><input class="ambient-multi-secondary" type="color" value="#a778ff" aria-label="두 번째 앰비언트 색상"></label>
+                    <label><span>Primary</span><input class="ambient-multi-primary" type="color" value="#56d7ff" aria-label="Primary ambient color"></label>
+                    <label><span>Secondary</span><input class="ambient-multi-secondary" type="color" value="#a778ff" aria-label="Secondary ambient color"></label>
                 </div>
             </div>
             <div class="ambient-section ambient-brightness-row">
-                <div><span class="ambient-label">밝기</span><output class="ambient-brightness-value">85%</output></div>
-                <input class="ambient-brightness" type="range" min="20" max="100" value="85" aria-label="앰비언트 조명 밝기">
+                <div><span class="ambient-label">Brightness</span><output class="ambient-brightness-value">85%</output></div>
+                <input class="ambient-brightness" type="range" min="20" max="100" value="85" aria-label="Ambient brightness">
             </div>
         </div>
 
