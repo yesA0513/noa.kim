@@ -16,15 +16,15 @@
     --scene-bottom: color-mix(in srgb, var(--ambient-tone-secondary) 36%, #d3d9e1);
     --scene-horizon: color-mix(in srgb, var(--ambient-tone-tertiary) 27%, #e3e6eb);
     --ink: #1c222c;
-    --muted: #535866;
-    --surface: color-mix(in srgb, var(--ambient-tone-secondary) 7%, #ffffffe0);
-    --surface-top: color-mix(in srgb, var(--ambient-tone) 9%, #fffffff0);
+    --muted: #414754;
+    --surface: color-mix(in srgb, var(--ambient-tone-secondary) 7%, #ffffffa3);
+    --surface-top: color-mix(in srgb, var(--ambient-tone) 9%, #ffffffbd);
     --border: color-mix(in srgb, var(--ambient-tone) 24%, #41475230);
     --border-soft: color-mix(in srgb, var(--ambient-tone-secondary) 12%, #41475224);
     --accent: color-mix(in srgb, var(--ambient-tone) 42%, #16202b);
     --accent-secondary: color-mix(in srgb, var(--ambient-tone-secondary) 42%, #16202b);
-    --hover-surface: color-mix(in srgb, var(--ambient-tone) 15%, #fff);
-    --panel-shadow: 0 8px 24px #171b2418, inset 0 1px 0 #ffffff88;
+    --hover-surface: color-mix(in srgb, var(--ambient-tone) 15%, #ffffffd1);
+    --panel-shadow: 0 8px 24px #171b2410, inset 0 1px 0 #ffffff66;
     --button-start: color-mix(in srgb, var(--ambient-tone) 38%, #10141e);
     --button-end: color-mix(in srgb, var(--ambient-tone-secondary) 30%, #10141e);
     --dial-indicator: var(--accent);
@@ -40,14 +40,14 @@
     --scene-horizon: color-mix(in srgb, var(--ambient-tone-tertiary) 21%, #151923);
     --ink: #f1f3f7;
     --muted: #c1c5ce;
-    --surface: color-mix(in srgb, var(--ambient-tone-secondary) 7%, #0b0d14db);
-    --surface-top: color-mix(in srgb, var(--ambient-tone) 12%, #1c1e28ed);
+    --surface: color-mix(in srgb, var(--ambient-tone-secondary) 7%, #0b0d1480);
+    --surface-top: color-mix(in srgb, var(--ambient-tone) 12%, #1c1e28a8);
     --border: color-mix(in srgb, var(--ambient-tone) 22%, #ffffff18);
     --border-soft: color-mix(in srgb, var(--ambient-tone-secondary) 12%, #ffffff12);
     --accent: color-mix(in srgb, var(--ambient-tone) 68%, #fff);
     --accent-secondary: color-mix(in srgb, var(--ambient-tone-secondary) 68%, #fff);
-    --hover-surface: color-mix(in srgb, var(--ambient-tone) 20%, #20222c);
-    --panel-shadow: 0 9px 26px #0000002b, inset 0 1px 0 #ffffff0b;
+    --hover-surface: color-mix(in srgb, var(--ambient-tone) 20%, #20222cb8);
+    --panel-shadow: 0 9px 26px #0000001c, inset 0 1px 0 #ffffff14;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -118,7 +118,7 @@ body[data-page='photography'] .nav-handle, body[data-page='photography'] .header
 .mbti-container { display: flex; }
 .mbti-item { min-width: 20px; min-height: 28px; padding: 0 3px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font-size: 10px; }
 .mbti-item:hover, .mbti-item.is-active { background: var(--hover-surface); color: var(--accent); }
-.mbti-descriptions { display: none; position: absolute; z-index: 4; right: 0; bottom: calc(100% + 8px); width: 230px; max-width: calc(100vw - 70px); border: 1px solid var(--border); border-radius: 10px; background: var(--surface-top); box-shadow: 0 8px 25px #00000033; }
+.mbti-descriptions { display: none; position: absolute; z-index: 4; right: 0; bottom: calc(100% + 8px); width: 230px; max-width: calc(100vw - 70px); border: 1px solid var(--border); border-radius: 10px; background: color-mix(in srgb, var(--surface-top) 35%, var(--page-bg)); box-shadow: 0 8px 25px #00000033; }
 .mbti-descriptions.is-open { display: block; }
 .mbti-desc { display: block; padding: 13px 16px; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .toolkit { padding: 15px 20px; }

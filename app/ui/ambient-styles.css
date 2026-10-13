@@ -4,7 +4,7 @@
     position: fixed;
     inset: 0;
     z-index: 80;
-    background: #030408b8;
+    background: #03040870;
     visibility: hidden;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
@@ -36,8 +36,8 @@
     padding: 24px 30px 28px;
     border: 1px solid var(--ambient-ui-border);
     border-radius: 16px;
-    background: radial-gradient(ellipse at 14% 0%, color-mix(in srgb, var(--ambient-tone) 24%, transparent), transparent 55%), radial-gradient(ellipse at 90% 100%, color-mix(in srgb, var(--ambient-tone-secondary) 19%, transparent), transparent 54%), linear-gradient(150deg, #14151dfc, #0a0b11fc);
-    box-shadow: 0 28px 90px #0000008c, inset 0 1px 0 color-mix(in srgb, var(--ambient-ui-accent) 15%, transparent);
+    background: radial-gradient(ellipse at 14% 0%, color-mix(in srgb, var(--ambient-tone) 24%, transparent), transparent 55%), radial-gradient(ellipse at 90% 100%, color-mix(in srgb, var(--ambient-tone-secondary) 19%, transparent), transparent 54%), linear-gradient(150deg, #14151dbf, #0a0b11cc);
+    box-shadow: 0 28px 90px #00000066, inset 0 1px 0 color-mix(in srgb, var(--ambient-ui-accent) 15%, transparent);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
     visibility: hidden;
