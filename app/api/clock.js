@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const periodElement = document.getElementById('time-period');
     const hourElement = document.getElementById('time-hour');
     const minuteElement = document.getElementById('time-minute');
+    const statusClock = document.querySelector('.top-clock');
     if (!container || !display || !periodElement || !hourElement || !minuteElement) return;
 
     // Keep the seconds marker on the dial perimeter, clear of the digital time.
@@ -33,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         hourElement.textContent = hour;
         minuteElement.textContent = minute;
         display.setAttribute('aria-label', `서울 시간 ${hour}시 ${minute}분`);
+        if (statusClock) {
+            statusClock.textContent = `${hour}:${minute}`;
+            statusClock.setAttribute('aria-label', `서울 시간 ${hour}시 ${minute}분`);
+            if (statusClock.tagName === 'TIME') statusClock.dateTime = `${hour}:${minute}`;
+        }
     };
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');

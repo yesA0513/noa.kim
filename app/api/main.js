@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const focusWillBeHidden = pages.some(page => page !== selected && page.contains(document.activeElement));
         const previous = activePage;
-        const previousScroll = viewport.scrollTop;
+        const previousTop = previous ? previous.offsetTop - viewport.scrollTop : 0;
         clearTransition();
         activePage = selected;
         settlePages();
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             viewport.classList.add('is-page-transitioning');
             previous.hidden = false;
             previous.classList.add('is-leaving');
-            previous.style.top = `${-previousScroll}px`;
+            previous.style.top = `${previousTop}px`;
             selected.classList.add('is-entering');
             pageAnimations = [
                 previous.animate([
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const photo = document.querySelector('.showphoto img');
+    const photo = document.querySelector('.scene-photo') || document.querySelector('.showphoto img');
     const photoFallback = document.querySelector('.photo-fallback');
     if (photo && photoFallback) {
         const showPhotoFallback = () => {

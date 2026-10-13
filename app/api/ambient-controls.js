@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const brightness = document.querySelector('.ambient-brightness');
     const brightnessValue = document.querySelector('.ambient-brightness-value');
     const multiColors = ['#56d7ff', '#a778ff', '#ff7daf'];
+    const colorPattern = /^#[0-9a-f]{6}$/i;
+    const normalizeColor = value => colorPattern.test(value || '') ? value.toLowerCase() : null;
+    const normalizeColors = value => Array.isArray(value) && value.length >= 2 && value.every(normalizeColor)
+        ? value.slice(0, 3).map(normalizeColor) : multiColors;
+    let disabledOutside = [];
+    let returnFocus = trigger;
 
     const savedSettings = () => {
         try {
@@ -45,9 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
         button.classList.toggle('is-active', isActive);
         button.setAttribute('aria-pressed', String(isActive));
     });
+    const setPresetButtons = (color = '', colors = []) => {
+        presets.forEach((preset) => {
+            const presetColors = preset.dataset.ambientMulti.split(',').map(normalizeColor);
+            const isActive = Boolean(color && normalizeColor(preset.dataset.ambientColor) === normalizeColor(color))
+                || (!color && colors.length > 0 && presetColors.join(',') === colors.join(','));
+            preset.classList.toggle('is-active', isActive);
+            preset.setAttribute('aria-pressed', String(isActive));
+        });
+        picker.closest('.ambient-picker').classList.toggle('is-active', ![...presets].some(preset => preset.classList.contains('is-active')));
+    };
 
     const setBrightness = (value, shouldSave = true) => {
-        const intensity = Math.max(20, Math.min(100, Number(value)));
+        const number = Number(value);
+        const intensity = Number.isFinite(number) ? Math.max(20, Math.min(100, number)) : 85;
         root.style.setProperty('--ambient-intensity', root.dataset.ambientEnabled === 'false' ? 0 : intensity / 100);
         brightness.value = intensity;
         brightnessValue.textContent = `${intensity}%`;
@@ -68,18 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const setColor = (color, shouldSave = true) => {
+        color = normalizeColor(color) || multiColors[0];
         root.style.setProperty('--ambient-primary', color);
         root.style.setProperty('--ambient-secondary', color);
         root.style.setProperty('--ambient-tertiary', color);
         root.dataset.ambientMode = 'single';
         setModeButtons('single');
         picker.value = color;
-        presets.forEach((preset) => preset.classList.toggle('is-active', preset.dataset.ambientColor === color));
+        setPresetButtons(color);
         const brightnessSetting = Number(brightness.value);
         if (shouldSave) save({ ...savedSettings(), mode: 'single', color, brightness: brightnessSetting });
     };
 
     const setMulti = (colors = multiColors, presetColor = '', shouldSave = true) => {
+        colors = normalizeColors(colors);
         const [primary, secondary, tertiary = colors[1]] = colors;
         root.style.setProperty('--ambient-primary', primary);
         root.style.setProperty('--ambient-secondary', secondary);
@@ -88,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setModeButtons('multi');
         multiPrimary.value = primary;
         multiSecondary.value = secondary;
-        presets.forEach((preset) => preset.classList.toggle('is-active', preset.dataset.ambientColor === presetColor));
+        setPresetButtons(presetColor, [primary, secondary, tertiary]);
         if (shouldSave) save({ ...savedSettings(), mode: 'multi', colors: [primary, secondary, tertiary], presetColor, brightness: Number(brightness.value) });
     };
 
@@ -97,24 +116,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saved.mode === 'single' && saved.color) setColor(saved.color, false);
         else setMulti(saved.colors || multiColors, saved.presetColor || '', false);
         setBrightness(saved?.brightness ?? 85, false);
-        setPower(saved?.enabled ?? true, false);
+        setPower(saved?.enabled !== false, false);
     } catch {
         setMulti(multiColors, '', false);
         setBrightness(85, false);
         setPower(true, false);
     }
 
+    const focusableControls = () => [...panel.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex="0"]')]
+        .filter(element => element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+    const disableBackground = () => {
+        let branch = panel;
+        while (branch.parentElement && branch !== document.body) {
+            [...branch.parentElement.children].forEach(sibling => {
+                if (sibling === branch || ['SCRIPT', 'STYLE', 'LINK'].includes(sibling.tagName)) return;
+                disabledOutside.push({ element: sibling, inert: sibling.inert });
+                sibling.inert = true;
+            });
+            branch = branch.parentElement;
+        }
+    };
+    const enableBackground = () => {
+        disabledOutside.forEach(({ element, inert }) => { element.inert = inert; });
+        disabledOutside = [];
+    };
     const setPanelOpen = (isOpen, restoreFocus = false) => {
+        const wasOpen = consoleElement.classList.contains('is-open');
+        if (isOpen && !wasOpen) {
+            returnFocus = trigger;
+            disableBackground();
+        } else if (!isOpen && wasOpen) enableBackground();
         consoleElement.classList.toggle('is-open', isOpen);
+        document.body.classList.toggle('ambient-settings-open', isOpen);
         trigger.setAttribute('aria-expanded', String(isOpen));
         panel.setAttribute('aria-hidden', String(!isOpen));
         panel.inert = !isOpen;
         if (isOpen) {
-            requestAnimationFrame(() => {
+            // Wait for the visibility transition to begin before moving focus into the screen.
+            requestAnimationFrame(() => requestAnimationFrame(() => {
                 if (!consoleElement.classList.contains('is-open')) return;
-                panel.querySelector('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])')?.focus();
-            });
-        } else if (restoreFocus) trigger.focus();
+                (closeButton || focusableControls()[0])?.focus({ preventScroll: true });
+            }));
+        } else if (restoreFocus && wasOpen) {
+            (returnFocus?.isConnected ? returnFocus : trigger).focus({ preventScroll: true });
+        }
     };
     setPanelOpen(false);
     trigger.addEventListener('click', () => {
@@ -122,12 +167,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     closeButton.addEventListener('click', () => setPanelOpen(false, true));
     document.addEventListener('click', event => {
-        if (!consoleElement.contains(event.target)) setPanelOpen(false);
+        if (consoleElement.classList.contains('is-open') && !panel.contains(event.target) && !trigger.contains(event.target)) {
+            setPanelOpen(false, true);
+        }
     });
     document.addEventListener('keydown', event => {
-        if (event.key !== 'Escape' || !consoleElement.classList.contains('is-open')) return;
-        event.preventDefault();
-        setPanelOpen(false, true);
+        if (!consoleElement.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            setPanelOpen(false, true);
+        } else if (event.key === 'Tab') {
+            const controls = focusableControls();
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (!first) return;
+            if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
     });
     powerButton.addEventListener('click', () => setPower(root.dataset.ambientEnabled !== 'true'));
     modeButtons.forEach((button) => button.addEventListener('click', () => {

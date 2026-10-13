@@ -21,14 +21,15 @@
     <title>김노아 · @yesA0513</title>
     <script src="app/api/theme.js?v=09b4af397d12"></script>
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=8d7490cd90e5">
-    <link rel="stylesheet" href="responsive.css?v=df08509cfa2e">
+    <link rel="stylesheet" href="style.css?v=8a5229d7e0a1">
+    <link rel="stylesheet" href="responsive.css?v=0edb8229e8f6">
+    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=850c913df46a">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
     <script src="app/api/weather.js?v=316e7ab02654" defer></script>
-    <script src="app/api/clock.js?v=0367177c7f2e" defer></script>
-    <script src="app/api/main.js?v=0f928f17b2b0" defer></script>
+    <script src="app/api/clock.js?v=b50a97144d26" defer></script>
+    <script src="app/api/main.js?v=399d4e2c96eb" defer></script>
     <script src="app/api/service.js?v=819c8e1208b6" defer></script>
-    <script src="app/api/ambient-controls.js?v=4c282cdec9e2" defer></script>
+    <script src="app/api/ambient-controls.js?v=1d1679d1599c" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">본문으로 이동</a>
@@ -36,6 +37,7 @@
         <defs>
             <symbol id="icon-car" viewBox="0 0 24 24"><path d="m5 8 2-5h10l2 5M3 8h18v9H3Zm3 9v3m12-3v3M6 12h2m8 0h2"/></symbol>
             <symbol id="icon-army" viewBox="0 0 24 24"><path d="m12 2 8 4v6c0 5-4 8-8 10-4-2-8-5-8-10V6Z"/><path d="m12 7 1.5 3.1 3.5.5-2.5 2.4.6 3.4-3.1-1.6-3.1 1.6.6-3.4L7 10.6l3.5-.5Z"/></symbol>
+            <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z"/></symbol>
             <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
             <symbol id="icon-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
             <symbol id="icon-sliders" viewBox="0 0 24 24"><path d="M4 6h4m4 0h8M4 12h10m4 0h2M4 18h2m4 0h10"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
@@ -55,6 +57,7 @@
             <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
         </defs>
     </svg>
+    <div class="display-scene" aria-hidden="true"><img class="scene-photo" src="img/sapporo.jpg" alt="" width="2828" height="4097" loading="lazy" decoding="async"><span class="scene-light"></span></div>
     <div class="ambient" aria-hidden="true"><span class="ambient-orb orb-one"></span><span class="ambient-orb orb-two"></span></div>
     <div class="contents">
         <header class="site-header">
@@ -62,11 +65,7 @@
                 <span id="MyName">김노아</span>
                 <span class="nav-handle">@yesA0513</span>
             </a>
-            <nav class="section-nav" aria-label="화면 메뉴">
-                <a class="is-active" href="#overview">Overview</a>
-                <a href="#work">Projects</a>
-                <a href="#photography">Photography</a>
-            </nav>
+            <div class="header-status"><span class="header-zone">서울</span><time class="top-clock" aria-label="서울 시간">--:--</time></div>
             <div class="nav-links">
                 <a href="https://github.com/yesa0513" data-tooltip="GitHub" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.8-1.33-3.8-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.6 1.55.23 2.7.1 2.98.73.79 1.16 1.8 1.16 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.1c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
@@ -125,7 +124,18 @@
                         <div class="skill-item"><img class="skill-icon" src="img/icons/docker.svg" alt="" width="32" height="32"><span class="skill-name">Docker</span></div>
                         <div class="skill-item"><img class="skill-icon" src="img/icons/git.svg" alt="" width="32" height="32"><span class="skill-name">Git</span></div>
                     </div><div class="learn"><p class="eyebrow">배우는 중</p><p>Java · React · Kotlin · Swift</p></div></div>
-                </section></div>
+                </section><section class="service-card panel" data-enlistment-date="2026-03-09" data-discharge-date="2027-09-08" aria-labelledby="service-title">
+                            <svg class="service-landscape" viewBox="0 0 640 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 128 94 84 147 113 251 41 377 117 459 77 551 109 640 50M0 151 105 127 202 148 323 95 416 135 516 119 640 137"/></svg>
+                            <div class="service-head"><div><p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 복무 정보</p><h2 class="service-status" id="service-title">대한민국 육군 복무 중</h2></div><svg class="icon service-emblem" aria-hidden="true"><use href="#icon-army"/></svg></div>
+                            <div class="service-metrics">
+                                <div class="service-progress-row" hidden>
+                                    <div class="service-progress-stat"><span class="service-label">복무 진행률</span><p class="service-progress-value">—%</p></div>
+                                    <progress class="service-progress" max="100" value="0" aria-label="복무 진행률"></progress>
+                                </div>
+                                <div class="service-remaining"><p class="service-day-caption service-label">전역까지 남은 날짜</p><p class="service-countdown">D-<span aria-hidden="true">—</span></p></div>
+                            </div>
+                            <div class="service-dates"><span>입대 <time datetime="2026-03-09">2026.03.09</time></span><span>전역 <time class="service-date" datetime="2027-09-08">2027.09.08</time></span></div>
+                        </section></div>
                     <div class="lifestyle-column"><section class="interests-panel panel" aria-labelledby="interests-title">
                         <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> interesting</p><h2 id="interests-title">일상을 채우는 것들</h2>
                         <div class="interest-list">
@@ -146,25 +156,8 @@
                         <div class="weather-art"><svg class="icon weather-icon" viewBox="0 0 48 48" role="img" aria-label="날씨를 확인하고 있어요"><use href="#weather-cloud"/></svg></div>
                         <div class="weather-info"><p class="weather-temp">--°C</p><p class="weather-desc">날씨 확인 중</p></div><span class="weather-location">성남시</span>
                     </a>
-                </section></div>
+                </section><section class="education panel" aria-labelledby="education-title"><h2 class="eyebrow" id="education-title"><span class="status-light" aria-hidden="true"></span> 학력</h2><div><h3>성일고등학교</h3><p>일반 인문계 · 2021–2023</p></div><div><h3>상명대학교</h3><p>소프트웨어학과 · 2024–현재</p></div></section></div>
                 </div>
-                <section class="information-section" aria-label="정보">
-                    <div class="information-grid">
-                        <section class="service-card panel" data-enlistment-date="2026-03-09" data-discharge-date="2027-09-08" aria-labelledby="service-title">
-                            <svg class="service-landscape" viewBox="0 0 640 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 128 94 84 147 113 251 41 377 117 459 77 551 109 640 50M0 151 105 127 202 148 323 95 416 135 516 119 640 137"/></svg>
-                            <div class="service-head"><div><p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 복무 정보</p><h2 class="service-status" id="service-title">대한민국 육군 복무 중</h2></div><svg class="icon service-emblem" aria-hidden="true"><use href="#icon-army"/></svg></div>
-                            <div class="service-metrics">
-                                <div class="service-progress-row" hidden>
-                                    <div class="service-progress-stat"><span class="service-label">복무 진행률</span><p class="service-progress-value">—%</p></div>
-                                    <progress class="service-progress" max="100" value="0" aria-label="복무 진행률"></progress>
-                                </div>
-                                <div class="service-remaining"><p class="service-day-caption service-label">전역까지 남은 날짜</p><p class="service-countdown">D-<span aria-hidden="true">—</span></p></div>
-                            </div>
-                            <div class="service-dates"><span>입대 <time datetime="2026-03-09">2026.03.09</time></span><span>전역 <time class="service-date" datetime="2027-09-08">2027.09.08</time></span></div>
-                        </section>
-                        <section class="education panel" aria-labelledby="education-title"><h2 class="eyebrow" id="education-title"><span class="status-light" aria-hidden="true"></span> 학력</h2><div><h3>성일고등학교</h3><p>일반 인문계 · 2021–2023</p></div><div><h3>상명대학교</h3><p>소프트웨어학과 · 2024–현재</p></div></section>
-                    </div>
-                </section>
             </section>
             <section class="app-page" id="work" data-page="work" aria-labelledby="projects-title" hidden inert>
                 <div class="page-heading"><p class="eyebrow">아이디어를 실제로</p><h1 class="page-title" id="projects-title" tabindex="-1">만든 것들</h1><p>일상에서 떠오른 생각을 직접 만든 웹사이트와 서비스로 풀어봤어요.</p></div>
@@ -200,13 +193,7 @@
             </section>
             <section class="app-page" id="photography" data-page="photography" aria-labelledby="photography-title" hidden inert>
                 <div class="page-heading"><p class="eyebrow">여행과 일상의 기록</p><h1 class="page-title" id="photography-title" tabindex="-1">사진으로 남긴 순간</h1><p>지나치기 아쉬운 장면들을 하나씩 모으고 있어요.</p></div>
-                <div class="photography-layout"><a class="photo-panel panel box7" href="https://photo.noa.kim" target="_blank" rel="noopener noreferrer" aria-label="내가 담은 순간들, 사진 모음 열기">
-                    <div class="showphoto">
-                        <img src="img/sapporo.jpg" alt="푸른 하늘과 초록 나무 사이로 보이는 삿포로 TV 타워" width="2828" height="4097" loading="lazy" decoding="async">
-                        <div class="photo-fallback" hidden><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><span>사진을 불러오지 못했어요.</span></div>
-                        <div class="photo-caption"><p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 사진</p><h2>내가 담은 순간들</h2><span class="photo-link">사진 모음 보기 <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></span></div>
-                    </div>
-                </a><div class="photo-details panel"><p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 최근 촬영한 사진</p><h2>삿포로에서 담은 한 장</h2><p>여행과 일상에서 직접 촬영한 사진 중 마음에 드는 장면들을 모았습니다. 더 많은 사진은 사진 모음에서 볼 수 있어요.</p><a class="button-primary" href="https://photo.noa.kim" target="_blank" rel="noopener noreferrer">사진 모음 보기 <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a><div class="photo-other"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><div><h3>게임 속 장면도 기록해요</h3><p>4K로 담은 스크린샷은 Shots!에서.</p><a class="text-link" href="https://shots.noa.kim" target="_blank" rel="noopener noreferrer">스크린샷 보기 ↗</a></div></div></div></div>
+                <div class="photography-layout"><div class="photo-details panel"><p class="photo-fallback" hidden>사진을 불러오지 못했어요.</p><p class="eyebrow"><span class="status-light" aria-hidden="true"></span> 최근 촬영한 사진</p><h2>삿포로에서 담은 한 장</h2><p>여행과 일상에서 직접 촬영한 사진 중 마음에 드는 장면들을 모았습니다. 더 많은 사진은 사진 모음에서 볼 수 있어요.</p><a class="button-primary" href="https://photo.noa.kim" target="_blank" rel="noopener noreferrer">사진 모음 보기 <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a><div class="photo-other"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><div><h3>게임 속 장면도 기록해요</h3><p>4K로 담은 스크린샷은 Shots!에서.</p><a class="text-link" href="https://shots.noa.kim" target="_blank" rel="noopener noreferrer">스크린샷 보기 ↗</a></div></div></div></div>
             </section>
         </main>
     <div class="media-dock panel">
@@ -216,14 +203,33 @@
             <div class="musicinfo"><p class="eyebrow">지금 듣는 음악</p><p id="song">음악을 확인하고 있어요…</p><p id="artist">Apple Music에서 최근 들은 음악</p></div>
             <svg class="icon music-link" aria-hidden="true"><use href="#icon-external"/></svg>
         </a>
+            <nav class="section-nav" aria-label="화면 메뉴">
+                <a class="is-active" href="#overview"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg><span>Overview</span></a>
+                <a href="#work"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg><span>Projects</span></a>
+                <a href="#photography"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><span>Photography</span></a>
+            </nav>
         <aside class="ambient-console" aria-label="앰비언트 조명 설정">
             <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span>앰비언트</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">다크</span></button>
-<div class="ambient-panel" id="ambient-panel" aria-hidden="true" inert>
+<div class="ambient-panel" id="ambient-panel" role="dialog" aria-modal="true" aria-labelledby="ambient-title" aria-hidden="true" inert>
             <div class="ambient-panel-head">
-                <div><span class="ambient-kicker">화면의 분위기</span><strong>앰비언트</strong></div>
+                <div><span class="ambient-kicker">화면의 분위기</span><strong id="ambient-title">Ambient Styles</strong></div>
                 <div class="ambient-panel-actions">
                     <button type="button" class="ambient-power is-active" aria-pressed="true" aria-label="앰비언트 조명 끄기">켜짐</button>
                     <button type="button" class="ambient-close" aria-label="앰비언트 설정 닫기">×</button>
+                </div>
+            </div>
+            <div class="ambient-section">
+                <span class="ambient-label">나에게 맞는 분위기를 선택하세요</span>
+                <div class="ambient-palette">
+                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#a778ff,#ff7daf" aria-label="아이스 블루 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">아이스 블루</span></button>
+                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" aria-label="보라 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">바이올렛</span></button>
+                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" aria-label="분홍 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">로즈</span></button>
+                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" aria-label="호박색 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">앰버</span></button>
+                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" aria-label="민트 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">민트</span></button>
+                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" aria-label="라임 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">라임</span></button>
+                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" aria-label="바다색 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">오션</span></button>
+                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" aria-label="진홍 조명"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">크림슨</span></button>
+                    <label class="ambient-picker" aria-label="직접 앰비언트 색상 선택"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">직접 선택</span><input type="color" value="#56d7ff" aria-label="직접 앰비언트 색상 선택"></label>
                 </div>
             </div>
             <div class="ambient-section">
@@ -246,20 +252,6 @@
                 <div class="ambient-multi-pickers">
                     <label><span>첫 번째</span><input class="ambient-multi-primary" type="color" value="#56d7ff" aria-label="첫 번째 앰비언트 색상"></label>
                     <label><span>두 번째</span><input class="ambient-multi-secondary" type="color" value="#a778ff" aria-label="두 번째 앰비언트 색상"></label>
-                </div>
-            </div>
-            <div class="ambient-section">
-                <span class="ambient-label">색상 선택</span>
-                <div class="ambient-palette">
-                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#6e7cff,#a778ff" aria-label="아이스 블루 조명"></button>
-                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" aria-label="보라 조명"></button>
-                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" aria-label="분홍 조명"></button>
-                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" aria-label="호박색 조명"></button>
-                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" aria-label="민트 조명"></button>
-                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" aria-label="라임 조명"></button>
-                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" aria-label="바다색 조명"></button>
-                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" aria-label="진홍 조명"></button>
-                    <label class="ambient-picker" aria-label="직접 앰비언트 색상 선택"><input type="color" value="#56d7ff" aria-label="직접 앰비언트 색상 선택"></label>
                 </div>
             </div>
             <div class="ambient-section ambient-brightness-row">
