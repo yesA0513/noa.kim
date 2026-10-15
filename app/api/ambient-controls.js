@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeButtons = document.querySelectorAll('.ambient-theme');
     const themeStatuses = document.querySelectorAll('.theme-status');
     const presets = document.querySelectorAll('.ambient-preset');
+    const palette = document.querySelector('.ambient-palette');
     const picker = document.querySelector('.ambient-picker input');
     const multiPrimary = document.querySelector('.ambient-multi-primary');
     const multiSecondary = document.querySelector('.ambient-multi-secondary');
@@ -25,6 +26,29 @@ document.addEventListener('DOMContentLoaded', () => {
         ? value.slice(0, 3).map(normalizeColor) : multiColors;
     let disabledOutside = [];
     let returnFocus = trigger;
+
+    const restorePaletteSnap = () => palette.classList.remove('is-wheel-scrolling');
+    palette.addEventListener('wheel', event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || !event.cancelable) return;
+        if (Math.abs(event.deltaX) >= Math.abs(event.deltaY)) {
+            restorePaletteSnap();
+            return;
+        }
+        const maximum = palette.scrollWidth - palette.clientWidth;
+        const position = palette.scrollLeft;
+        if (maximum <= 0 || (event.deltaY < 0 ? position <= 0 : position >= maximum - 1)) return;
+        const unit = event.deltaMode === 1 ? parseFloat(getComputedStyle(palette).lineHeight) || 16
+            : event.deltaMode === 2 ? palette.clientWidth : 1;
+        event.preventDefault();
+        // Keep small wheel steps from snapping back before they accumulate.
+        palette.classList.add('is-wheel-scrolling');
+        palette.scrollLeft = Math.max(0, Math.min(maximum, position + event.deltaY * unit));
+    }, { passive: false });
+    palette.addEventListener('pointerleave', restorePaletteSnap);
+    palette.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch' || event.pointerType === 'pen') restorePaletteSnap();
+    });
+    palette.addEventListener('keydown', restorePaletteSnap);
 
     const savedSettings = () => {
         try {
@@ -169,7 +193,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isOpen && !wasOpen) {
             returnFocus = trigger;
             disableBackground();
-        } else if (!isOpen && wasOpen) enableBackground();
+        } else if (!isOpen && wasOpen) {
+            enableBackground();
+            restorePaletteSnap();
+        }
         consoleElement.classList.toggle('is-open', isOpen);
         document.body.classList.toggle('ambient-settings-open', isOpen);
         trigger.setAttribute('aria-expanded', String(isOpen));

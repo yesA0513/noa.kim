@@ -81,7 +81,7 @@
     .photo-details { padding: 23px; }
     .photo-details h2 { font-size: 23px; }
     .photo-caption { padding: 23px; }
-    .media-dock { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'music settings' 'navigation navigation'; gap: 8px 12px; min-height: 119px; padding: 9px 11px; border-radius: 13px; }
+    .media-dock { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'music settings' 'navigation navigation'; gap: 8px 12px; min-height: 119px; margin-top: 12px; padding: 9px 11px; border-radius: 13px; border-top-color: color-mix(in srgb, var(--accent) 35%, var(--border)); background: linear-gradient(130deg, color-mix(in srgb, var(--surface-top) 65%, var(--page-bg)), color-mix(in srgb, var(--surface) 60%, var(--page-bg))); box-shadow: 0 -8px 26px #0000001f, 0 8px 30px #00000026, inset 0 1px 0 color-mix(in srgb, var(--accent) 14%, transparent); }
     .album-thumbnail { width: 36px; height: 36px; flex-basis: 36px; }
     .music-widget { gap: 9px; width: 100%; }
     .musicinfo .eyebrow { font-size: 8px; }

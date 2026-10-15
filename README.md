@@ -10,6 +10,8 @@
 
 `Moonlit Voyage`, `Cosmic Drift`, `Afterglow`, `Desert Dusk`, `Aurora`, `Forest Whisper`, `Deep Current`, `Midnight Drive`는 각각 다른 로컬 SVG 풍경과 팔레트를 사용합니다. 미리보기와 배경은 같은 그림을 사용하며 장면 전환은 부드럽게 겹쳐집니다. 선택한 장면은 색상과 함께 저장되고 기존 색상 설정에서도 해당 장면을 복원합니다. `Custom`으로 색상을 바꿔도 선택한 풍경은 유지합니다.
 
+앰비언트 선택 창도 `Light`·`Dark`·`System` 테마를 따릅니다. 스타일 미리보기 위에서 마우스 휠을 굴리면 가로로 이동하며, 목록 끝에서는 설정창을 세로로 스크롤할 수 있습니다. 모바일에서는 본문과 하단 바 사이에 여백을 두고 하단 바의 배경을 더 선명하게 표시합니다.
+
 소개 화면의 정보 영역에는 육군 복무 카드가 있습니다. 입대일(2026-03-09)과 전역일(2027-09-08)을 기준으로 남은 날짜와 복무 진행률을 계산하며, 서울 기준 자정과 탭 복귀 시 갱신합니다. 날짜를 변경하려면 `index.html`의 `data-enlistment-date`, `data-discharge-date`와 표시되는 입대일의 `<time>`도 수정하세요. `node scripts/test_service.cjs`로 날짜 계산과 갱신 동작을 검증할 수 있습니다.
 
 사진·기술 아이콘·폰트는 로컬 파일로 제공합니다. Pretendard v1.3.9와 Inter v4.1은 SIL Open Font License로 배포되며, 라이선스는 `img/fonts/Pretendard-LICENSE.txt`와 `img/fonts/LICENSE.txt`에 있습니다. 음악과 날씨는 기존 API를 사용하며, 로딩과 오류 상태도 한국어로 표시합니다.
