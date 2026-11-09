@@ -5,54 +5,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.querySelector('.ambient-close');
     const powerButton = document.querySelector('.ambient-power');
     const panel = document.querySelector('.ambient-panel');
-    const modeButtons = document.querySelectorAll('.ambient-mode');
     const themeButtons = document.querySelectorAll('.ambient-theme');
     const themeStatuses = document.querySelectorAll('.theme-status');
-    const playbackButtons = document.querySelectorAll('[data-ambient-playback]');
+    const playbackButtons = document.querySelectorAll('.ambient-playback');
     const playbackStatus = document.querySelector('.ambient-dynamic-status');
     const triggerLabel = document.querySelector('.settings-trigger-label');
     const worlds = document.querySelectorAll('.scene-world');
-    const presets = document.querySelectorAll('.ambient-preset');
-    const palette = document.querySelector('.ambient-palette');
     const picker = document.querySelector('.ambient-picker input');
-    const multiPrimary = document.querySelector('.ambient-multi-primary');
-    const multiSecondary = document.querySelector('.ambient-multi-secondary');
     const brightness = document.querySelector('.ambient-brightness');
     const brightnessValue = document.querySelector('.ambient-brightness-value');
-    const multiColors = ['#56d7ff', '#a778ff', '#ff7daf'];
-    const sceneIds = new Set(['moonlit-voyage', 'cosmic-drift', 'afterglow', 'desert-dusk', 'aurora', 'forest-whisper', 'deep-current', 'midnight-drive']);
     const defaultScene = 'moonlit-voyage';
-    const normalizeScene = value => sceneIds.has(value) ? value : null;
+    const defaultAccent = '#91a9bc';
+    // Old scene-only/preset selections still retain their color palette. The
+    // manual artwork is now always the one base scene; Dynamic uses all worlds.
+    const legacyPalettes = [
+        { scene: 'moonlit-voyage', color: '#56d7ff', colors: ['#56d7ff', '#a778ff', '#ff7daf'] },
+        { scene: 'cosmic-drift', color: '#ae7aff', colors: ['#7174ff', '#ae7aff', '#ff82c8'] },
+        { scene: 'afterglow', color: '#ff78b8', colors: ['#ff6e9f', '#a778ff', '#56d7ff'] },
+        { scene: 'desert-dusk', color: '#ffb454', colors: ['#ffb454', '#ff766d', '#a778ff'] },
+        { scene: 'aurora', color: '#55e6b0', colors: ['#55e6b0', '#56d7ff', '#a778ff'] },
+        { scene: 'forest-whisper', color: '#c7f36b', colors: ['#c7f36b', '#55e6b0', '#56d7ff'] },
+        { scene: 'deep-current', color: '#4f8cff', colors: ['#4f8cff', '#56d7ff', '#55e6b0'] },
+        { scene: 'midnight-drive', color: '#ff6172', colors: ['#ff6172', '#ffb454', '#a778ff'] },
+    ];
     const colorPattern = /^#[0-9a-f]{6}$/i;
     const normalizeColor = value => typeof value === 'string' && colorPattern.test(value) ? value.toLowerCase() : null;
     const validColors = value => Array.isArray(value) && value.length >= 2 && value.every(normalizeColor);
-    const normalizeColors = value => validColors(value)
-        ? value.slice(0, 3).map(normalizeColor) : multiColors;
     let disabledOutside = [];
     let returnFocus = trigger;
-
-    const restorePaletteSnap = () => palette.classList.remove('is-wheel-scrolling');
-    palette.addEventListener('wheel', event => {
-        if (event.ctrlKey || event.metaKey || event.shiftKey || !event.cancelable) return;
-        if (Math.abs(event.deltaX) >= Math.abs(event.deltaY)) {
-            restorePaletteSnap();
-            return;
-        }
-        const maximum = palette.scrollWidth - palette.clientWidth;
-        const position = palette.scrollLeft;
-        if (maximum <= 0 || (event.deltaY < 0 ? position <= 0 : position >= maximum - 1)) return;
-        const unit = event.deltaMode === 1 ? parseFloat(getComputedStyle(palette).lineHeight) || 16
-            : event.deltaMode === 2 ? palette.clientWidth : 1;
-        event.preventDefault();
-        // Keep small wheel steps from snapping back before they accumulate.
-        palette.classList.add('is-wheel-scrolling');
-        palette.scrollLeft = Math.max(0, Math.min(maximum, position + event.deltaY * unit));
-    }, { passive: false });
-    palette.addEventListener('pointerleave', restorePaletteSnap);
-    palette.addEventListener('pointerdown', event => {
-        if (event.pointerType === 'touch' || event.pointerType === 'pen') restorePaletteSnap();
-    });
-    palette.addEventListener('keydown', restorePaletteSnap);
 
     const savedSettings = () => {
         try {
@@ -64,54 +44,25 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSettings = savedSettings();
     let playback = currentSettings.playback === 'dynamic' ? 'dynamic' : 'manual';
     let dynamicTimer;
-    const save = (value) => {
-        // Stored colors and scene always describe Manual, even while Dynamic
-        // renders a different palette. Brightness and power remain shared.
-        currentSettings = { ...value, scene: normalizeScene(value.scene) || defaultScene, playback };
+    const save = value => {
+        // Dynamic's rendered scene never replaces the saved manual colors.
+        currentSettings = { ...value, scene: defaultScene, playback };
         try { localStorage.setItem('ambient-light', JSON.stringify(currentSettings)); }
         catch { /* Controls remain usable when browser storage is unavailable. */ }
     };
-    const presetColors = preset => {
-        const colors = normalizeColors(preset.dataset.ambientMulti.split(','));
-        return [colors[0], colors[1], colors[2] || colors[1]];
-    };
-    const inferScene = saved => {
-        const color = normalizeColor(saved.mode === 'single' ? saved.color : saved.presetColor);
-        const colors = validColors(saved.colors) ? normalizeColors(saved.colors) : [];
-        const palette = colors.length ? [colors[0], colors[1], colors[2] || colors[1]].join(',') : '';
-        const matchingPalette = saved.mode !== 'single' && [...presets].find(preset => presetColors(preset).join(',') === palette);
-        const matchingColor = color && [...presets].find(preset => normalizeColor(preset.dataset.ambientColor) === color);
-        return normalizeScene((matchingPalette || matchingColor)?.dataset.ambientScene) || defaultScene;
-    };
     const setThemeButtons = () => {
-        themeButtons.forEach((button) => {
-            const isActive = button.dataset.themePreference === root.dataset.themePreference;
-            button.classList.toggle('is-active', isActive);
-            button.setAttribute('aria-pressed', String(isActive));
+        themeButtons.forEach(button => {
+            const active = button.dataset.themePreference === root.dataset.themePreference;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-pressed', String(active));
         });
         themeStatuses.forEach(status => { status.textContent = root.dataset.theme === 'dark' ? 'Dark' : 'Light'; });
     };
     setThemeButtons();
     window.addEventListener('themechange', setThemeButtons);
-    themeButtons.forEach((button) => button.addEventListener('click', () => {
+    themeButtons.forEach(button => button.addEventListener('click', () => {
         window.noaTheme.setPreference(button.dataset.themePreference);
     }));
-    const setModeButtons = (mode) => modeButtons.forEach((button) => {
-        const isActive = button.dataset.ambientMode === mode;
-        button.classList.toggle('is-active', isActive);
-        button.setAttribute('aria-pressed', String(isActive));
-    });
-    const setPresetButtons = (color = '', colors = []) => {
-        presets.forEach((preset) => {
-            const matchesScene = preset.dataset.ambientScene === root.dataset.ambientScene;
-            const matchesPalette = color ? normalizeColor(preset.dataset.ambientColor) === normalizeColor(color)
-                : colors.length > 0 && presetColors(preset).join(',') === colors.join(',');
-            const isActive = playback !== 'dynamic' && matchesScene && matchesPalette;
-            preset.classList.toggle('is-active', isActive);
-            preset.setAttribute('aria-pressed', String(isActive));
-        });
-        picker.closest('.ambient-picker').classList.toggle('is-active', playback !== 'dynamic' && ![...presets].some(preset => preset.classList.contains('is-active')));
-    };
 
     const setBrightness = (value, shouldSave = true) => {
         const number = Number(value);
@@ -122,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSettings = { ...currentSettings, brightness: intensity };
         if (shouldSave) save(currentSettings);
     };
-
     const setPower = (isEnabled, shouldSave = true) => {
         root.dataset.ambientEnabled = String(isEnabled);
         powerButton.classList.toggle('is-active', isEnabled);
@@ -133,48 +83,44 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSettings = { ...currentSettings, enabled: isEnabled };
         if (shouldSave) save(currentSettings);
     };
-
     const setColor = (color, shouldSave = true) => {
-        color = normalizeColor(color) || multiColors[0];
-        root.style.setProperty('--ambient-primary', color);
-        root.style.setProperty('--ambient-secondary', color);
-        root.style.setProperty('--ambient-tertiary', color);
+        const savedColor = normalizeColor(color) ? color : defaultAccent;
+        const renderedColor = normalizeColor(savedColor);
+        root.dataset.ambientScene = defaultScene;
         root.dataset.ambientMode = 'single';
-        setModeButtons('single');
-        picker.value = color;
-        setPresetButtons(color);
-        const brightnessSetting = Number(brightness.value);
-        currentSettings = { ...currentSettings, mode: 'single', color, scene: root.dataset.ambientScene, brightness: brightnessSetting };
+        root.style.setProperty('--ambient-primary', renderedColor);
+        root.style.setProperty('--ambient-secondary', renderedColor);
+        root.style.setProperty('--ambient-tertiary', renderedColor);
+        picker.value = renderedColor;
+        currentSettings = { ...currentSettings, mode: 'single', color: savedColor, scene: defaultScene };
         if (shouldSave) save(currentSettings);
     };
-
-    const setMulti = (colors = multiColors, presetColor = '', shouldSave = true) => {
-        colors = normalizeColors(colors);
-        const [primary, secondary, tertiary = colors[1]] = colors;
+    const setMulti = (colors, presetColor = '', shouldSave = true) => {
+        // Preserve older multi-color preferences without exposing another mode
+        // selector. Editing the single color field explicitly replaces them.
+        const savedColors = validColors(colors) ? [...colors] : [defaultAccent, defaultAccent, defaultAccent];
+        const [primary, secondary, tertiary = secondary] = savedColors.map(normalizeColor);
+        root.dataset.ambientScene = defaultScene;
+        root.dataset.ambientMode = 'multi';
         root.style.setProperty('--ambient-primary', primary);
         root.style.setProperty('--ambient-secondary', secondary);
         root.style.setProperty('--ambient-tertiary', tertiary);
-        root.dataset.ambientMode = 'multi';
-        setModeButtons('multi');
-        multiPrimary.value = primary;
-        multiSecondary.value = secondary;
         picker.value = primary;
-        setPresetButtons('', [primary, secondary, tertiary]);
-        currentSettings = { ...currentSettings, mode: 'multi', colors: [primary, secondary, tertiary], presetColor, scene: root.dataset.ambientScene, brightness: Number(brightness.value) };
+        currentSettings = { ...currentSettings, mode: 'multi', colors: savedColors, presetColor, scene: defaultScene };
         if (shouldSave) save(currentSettings);
     };
-
     try {
         const saved = currentSettings;
-        root.dataset.ambientScene = normalizeScene(saved.scene) || inferScene(saved);
-        const scenePreset = [...presets].find(preset => preset.dataset.ambientScene === root.dataset.ambientScene);
-        if (saved.mode === 'single') setColor(normalizeColor(saved.color) || scenePreset?.dataset.ambientColor, false);
-        else setMulti(validColors(saved.colors) ? saved.colors : scenePreset ? presetColors(scenePreset) : multiColors, saved.presetColor || '', false);
-        setBrightness(saved?.brightness ?? 85, false);
-        setPower(saved?.enabled !== false, false);
+        const legacy = legacyPalettes.find(palette => palette.scene === saved.scene || palette.color === normalizeColor(saved.presetColor));
+        if (saved.mode === 'single') setColor(normalizeColor(saved.color) ? saved.color : legacy?.color, false);
+        else if (validColors(saved.colors)) setMulti(saved.colors, saved.presetColor || '', false);
+        else if (legacy) setMulti(legacy.colors, saved.presetColor || legacy.color, false);
+        else if (saved.mode === 'multi') setMulti(undefined, saved.presetColor || '', false);
+        else setColor(saved.color || saved.presetColor, false);
+        setBrightness(saved.brightness ?? 85, false);
+        setPower(saved.enabled !== false, false);
     } catch {
-        root.dataset.ambientScene = defaultScene;
-        setMulti(multiColors, '', false);
+        setColor(defaultAccent, false);
         setBrightness(85, false);
         setPower(true, false);
     }
@@ -197,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (world.dataset.scene === snapshot.nextScene) opacity += snapshot.blend;
             world.style.opacity = String(opacity);
         });
-        setPresetButtons();
         playbackStatus.textContent = `서울 ${snapshot.time} · ${snapshot.period}`;
         // Recompute from the clock, rather than accumulating timer drift.
         dynamicTimer = setTimeout(refreshDynamic, 60000 - Date.now() % 60000 + 50);
@@ -220,10 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
             root.style.removeProperty('--ambient-daylight');
             delete root.dataset.ambientPeriod;
             const manual = currentSettings;
-            root.dataset.ambientScene = normalizeScene(manual.scene) || defaultScene;
+            root.dataset.ambientScene = defaultScene;
             if (manual.mode === 'single') setColor(manual.color, false);
             else setMulti(manual.colors, manual.presetColor, false);
-            playbackStatus.textContent = '프리셋과 색상을 직접 선택합니다.';
+            playbackStatus.textContent = '포인트 색상을 직접 선택합니다.';
         } else {
             playbackStatus.textContent = '서울 시간에 맞춰 색과 배경이 변합니다.';
             refreshDynamic();
@@ -261,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
             disableBackground();
         } else if (!isOpen && wasOpen) {
             enableBackground();
-            restorePaletteSnap();
         }
         consoleElement.classList.toggle('is-open', isOpen);
         document.body.classList.toggle('ambient-settings-open', isOpen);
@@ -311,38 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setPower(root.dataset.ambientEnabled !== 'true');
         refreshDynamic();
     });
-    modeButtons.forEach((button) => button.addEventListener('click', () => {
-        setPlayback('manual');
-        const mode = button.dataset.ambientMode;
-        if (mode === root.dataset.ambientMode) return;
-        const activePreset = [...presets].find(preset => preset.classList.contains('is-active'));
-        if (mode === 'multi') {
-            if (activePreset) setMulti(presetColors(activePreset), activePreset.dataset.ambientColor);
-            else setMulti([picker.value, picker.value, picker.value]);
-        } else {
-            setColor(activePreset ? activePreset.dataset.ambientColor : multiPrimary.value);
-        }
-    }));
-    presets.forEach((preset) => preset.addEventListener('click', () => {
-        setPlayback('manual');
-        root.dataset.ambientScene = normalizeScene(preset.dataset.ambientScene) || defaultScene;
-        if (root.dataset.ambientMode === 'multi') {
-            setMulti(preset.dataset.ambientMulti.split(','), preset.dataset.ambientColor);
-        } else {
-            setColor(preset.dataset.ambientColor);
-        }
-    }));
-    picker.addEventListener('input', (event) => {
+    picker.addEventListener('input', event => {
         const color = event.target.value;
         setPlayback('manual');
         setColor(color);
     });
-    const setPickedMulti = () => {
-        const colors = [multiPrimary.value, multiSecondary.value, multiSecondary.value];
-        setPlayback('manual');
-        setMulti(colors);
-    };
-    multiPrimary.addEventListener('input', setPickedMulti);
-    multiSecondary.addEventListener('input', setPickedMulti);
-    brightness.addEventListener('input', (event) => setBrightness(event.target.value));
+    brightness.addEventListener('input', event => setBrightness(event.target.value));
 });
