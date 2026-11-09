@@ -24,8 +24,8 @@
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=ce412206c7cc">
     <link rel="stylesheet" href="responsive.css?v=5d464890fdb4">
-    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=0c5077b1fb2f">
-    <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=a411a2e49fe8">
+    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=e07c48617272">
+    <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=7e6aae70f682">
     <link rel="stylesheet" href="app/ui/design-switch.css?v=bb870dab04b9">
     <link rel="stylesheet" href="app/ui/studio.css?v=e8808c90bc49">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
@@ -33,7 +33,8 @@
     <script src="app/api/clock.js?v=b50a97144d26" defer></script>
     <script src="app/api/main.js?v=c8b952d40a6f" defer></script>
     <script src="app/api/service.js?v=819c8e1208b6" defer></script>
-    <script src="app/api/ambient-controls.js?v=31fb2a2ff3e0" defer></script>
+    <script src="app/api/ambient-time.js?v=3cbbb868bfed" defer></script>
+    <script src="app/api/ambient-controls.js?v=eacaed23a700" defer></script>
     <script src="app/api/studio.js?v=093eff6f799f" defer></script>
 </head>
 <body>
@@ -243,6 +244,14 @@
                     <button type="button" class="site-design-option" data-design-choice="classic" aria-pressed="false"><strong>Classic</strong><small>배경 효과와 위젯</small></button>
                     <button type="button" class="site-design-option" data-design-choice="studio" aria-pressed="false"><strong>Studio</strong><small>타이포와 여백 중심의 공간</small></button>
                 </div>
+            </div>
+            <div class="ambient-section ambient-playback-settings" lang="ko">
+                <span class="ambient-label" id="ambient-playback-label">배경 모드</span>
+                <div class="ambient-playback-switch" role="group" aria-labelledby="ambient-playback-label">
+                    <button type="button" class="ambient-playback" data-ambient-playback="manual" aria-pressed="true">Manual</button>
+                    <button type="button" class="ambient-playback" data-ambient-playback="dynamic" aria-pressed="false">Dynamic</button>
+                </div>
+                <p class="ambient-dynamic-status" aria-live="off">프리셋과 색상을 직접 선택합니다.</p>
             </div>
             <div class="ambient-section">
                 <span class="ambient-label">Choose your style</span>

@@ -15,6 +15,9 @@
 .display-scene::after { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: url('../../img/ambient/atmospheres/grain.svg') repeat; opacity: .045; }
 .scene-light { background: radial-gradient(ellipse at 0% 15%, color-mix(in srgb, var(--ambient-primary) 9%, transparent), transparent 65%), radial-gradient(ellipse at 100% 95%, color-mix(in srgb, var(--ambient-secondary) 7%, transparent), transparent 65%); }
 .ambient { display: none; }
+/* Daylight shifts the neutral canvas while keeping Light/Dark user-controlled. */
+:root[data-ambient-playback='dynamic']:not([data-ambient-enabled='false']) .display-scene { background: linear-gradient(145deg, color-mix(in srgb, #f7f5ee calc(100% * var(--ambient-daylight, 1)), #e1e5ee), color-mix(in srgb, #edf0e8 calc(100% * var(--ambient-daylight, 1)), #d4dce8)); }
+:root[data-ambient-playback='dynamic'][data-theme='dark']:not([data-ambient-enabled='false']) .display-scene { background: linear-gradient(145deg, color-mix(in srgb, #28343d calc(100% * var(--ambient-daylight, 1)), #12171e), color-mix(in srgb, #1e2931 calc(100% * var(--ambient-daylight, 1)), #0c1118)); }
 
 .scene-worlds { position: absolute; inset: 0; opacity: var(--ambient-intensity); }
 .scene-world { position: absolute; inset: 0; opacity: 0; background: var(--scene-image) center / cover no-repeat; transition: opacity .65s ease; }
