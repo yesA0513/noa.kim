@@ -19,8 +19,9 @@
     .service-card { grid-area: service; }
     .education.panel { grid-area: education; }
     .other-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .photography-layout { grid-template-columns: minmax(0, 1fr); }
-    .photo-panel { height: 430px; min-height: 0; }
+    #photography { width: min(100%, 600px); }
+    .photography-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .photo-panel { width: min(100%, 460px); justify-self: center; }
     .theme-status { display: none; }
     .ambient-trigger .icon { display: none; }
     .music-link { display: none; }
@@ -77,8 +78,8 @@
     .project-copy p { font-size: 13px; }
     .other-projects { grid-template-columns: minmax(0, 1fr); }
     .small-project { padding: 22px; min-height: 164px; }
-    .photo-panel { height: 360px; }
-    .photo-details { padding: 23px; }
+    .photo-panel { width: 100%; }
+    .photo-details { padding: 0; }
     .photo-details h2 { font-size: 23px; }
     .photo-caption { padding: 23px; }
     .media-dock { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'music settings' 'navigation navigation'; gap: 8px 12px; min-height: 119px; margin-top: 12px; padding: 9px 11px; border-radius: 13px; background: linear-gradient(130deg, color-mix(in srgb, var(--surface-top) 65%, var(--page-bg)), color-mix(in srgb, var(--surface) 60%, var(--page-bg))); box-shadow: var(--panel-shadow); }
