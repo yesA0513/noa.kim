@@ -20,11 +20,14 @@
     <meta property="og:image" content="img/Preview.png">
     <title>김노아 · @yesA0513</title>
     <script src="app/api/theme.js?v=09b4af397d12"></script>
+    <script src="app/api/design.js?v=8ab52afc2a28"></script>
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=ce412206c7cc">
     <link rel="stylesheet" href="responsive.css?v=5d464890fdb4">
     <link rel="stylesheet" href="app/ui/ambient-styles.css?v=0c5077b1fb2f">
     <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=a761ed9a54b7">
+    <link rel="stylesheet" href="app/ui/design-switch.css?v=46e5e38e321d">
+    <link rel="stylesheet" href="app/ui/studio.css?v=1d3d400ce458">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
     <script src="app/api/weather.js?v=316e7ab02654" defer></script>
     <script src="app/api/clock.js?v=b50a97144d26" defer></script>
@@ -149,6 +152,10 @@
                             </div>
                             <div class="service-dates"><span>입대 <time datetime="2026-03-09">2026.03.09</time></span><span>전역 <time class="service-date" datetime="2027-09-08">2027.09.08</time></span></div>
                         </section></div>
+                    <a class="studio-portrait" href="#photography" aria-label="삿포로에서 담은 사진, 사진 탭 보기">
+                        <img src="img/sapporo.jpg" alt="" width="2828" height="4097" loading="lazy" decoding="async">
+                        <span class="studio-portrait-meta"><span>삿포로, 일본</span><span>사진 둘러보기 ↗</span></span>
+                    </a>
                     <div class="lifestyle-column"><section class="interests-panel panel" aria-labelledby="interests-title">
                         <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> interesting</p><h2 id="interests-title">일상을 채우는 것들</h2>
                         <div class="interest-list">
@@ -224,13 +231,20 @@
                 <a href="#photography"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg><span>Photography</span></a>
             </nav>
         <aside class="ambient-console" lang="en" aria-label="Ambient lighting settings">
-            <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span>Ambient</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">Dark</span></button>
+            <button type="button" class="ambient-trigger" aria-expanded="false" aria-controls="ambient-panel"><span class="ambient-trigger-light" aria-hidden="true"></span><span class="settings-trigger-label">Ambient</span><svg class="icon" aria-hidden="true"><use href="#icon-sliders"/></svg><span class="theme-status">Dark</span></button>
 <div class="ambient-panel" id="ambient-panel" role="dialog" aria-modal="true" aria-labelledby="ambient-title" aria-hidden="true" inert>
             <div class="ambient-panel-head">
                 <div><span class="ambient-kicker">Set the mood</span><strong id="ambient-title">Ambient Styles</strong></div>
                 <div class="ambient-panel-actions">
                     <button type="button" class="ambient-power is-active" aria-pressed="true" aria-label="Turn ambient lighting off">ON</button>
                     <button type="button" class="ambient-close" aria-label="Close ambient settings">×</button>
+                </div>
+            </div>
+            <div class="ambient-section design-settings" lang="ko">
+                <span class="ambient-label" id="design-label">디자인</span>
+                <div class="site-design-switch" role="group" aria-labelledby="design-label">
+                    <button type="button" class="site-design-option" data-design-choice="classic" aria-pressed="false"><strong>Classic</strong><small>풍경과 위젯이 있는 공간</small></button>
+                    <button type="button" class="site-design-option" data-design-choice="studio" aria-pressed="false"><strong>Studio</strong><small>타이포와 여백 중심의 공간</small></button>
                 </div>
             </div>
             <div class="ambient-section">

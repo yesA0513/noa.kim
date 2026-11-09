@@ -1,0 +1,8 @@
+.studio-portrait { display: none; }
+.design-settings { grid-column: 1 / -1; }
+.site-design-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.site-design-option { min-width: 0; padding: 14px 16px; border: 0; border-radius: 9px; color: var(--muted); background: var(--surface); text-align: left; }
+.site-design-option strong { display: block; font-size: 14px; font-weight: 600; }
+.site-design-option small { display: block; margin-top: 3px; font-size: 10px; }
+.site-design-option:hover { background: var(--hover-surface); }
+.site-design-option.is-active { color: var(--accent); background: var(--hover-surface); box-shadow: inset 3px 0 0 var(--accent); }
