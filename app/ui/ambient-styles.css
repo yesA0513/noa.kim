@@ -63,6 +63,15 @@
 .ambient-power.is-active { color: var(--ink); background: var(--ambient-ui-control-start); }
 .ambient-panel .ambient-section { margin-top: 19px; padding-top: 0; border-top: 0; }
 .ambient-panel .ambient-label { font-size: 11px; color: var(--muted); }
+.ambient-playback-settings { grid-column: 1 / -1; }
+.ambient-playback-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.ambient-playback { min-height: 38px; padding: 7px 12px; border: 0; border-radius: 6px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; }
+.ambient-playback.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); }
+.ambient-dynamic-status { min-height: 17px; margin-top: 9px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-theme-switch) { grid-column: 1 / -1; }
+:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-palette),
+:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-mode-switch),
+:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-multi-colors { display: none; }
 .ambient-theme-switch, .ambient-mode-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
 .ambient-mode-switch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .ambient-theme, .ambient-mode { min-width: 0; min-height: 35px; padding: 5px; border: 0; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; letter-spacing: .01em; }

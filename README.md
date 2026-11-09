@@ -14,6 +14,12 @@ Classic에서는 **Ambient → 디자인 → Studio**로 새 디자인을 선택
 Studio에서는 상단 달 모양 버튼이나 하단 System·Light·Dark로 테마를 바꿉니다.
 배경·조명 설정과 시계·날씨·복무 위젯은 Classic에서 제공합니다.
 
+Classic의 **Ambient → 배경 모드 → Dynamic**을 선택하면 서울 시간을 따라 색상·배경·빛의 밝고 어두운 정도가 서서히 변합니다.
+새벽부터 아침·낮·오후·노을·저녁·밤으로 이어지는 고정 시간대 구성이며, 실제 일출·일몰 예보를 사용하는 기능은 아닙니다.
+수동 프리셋과 사용자 색상은 따로 기억하고 **Manual**로 돌아오면 복원합니다. 기본값은 Manual입니다.
+조명 전원·밝기·밝은/어두운 테마는 직접 선택한 값을 유지합니다.
+백그라운드 탭과 Studio에서는 갱신을 쉬고, 돌아오면 현재 시간으로 바로 맞춥니다.
+
 특정 디자인으로 바로 여는 링크도 사용할 수 있습니다.
 
 - `https://www.noa.kim/?design=studio`
@@ -28,3 +34,4 @@ Classic의 기본 스타일은 `style.css`·`responsive.css`, Studio의 독립�
 프로젝트·소개·관심사·기술·학력은 Classic의 콘텐츠를 읽어 Studio에도 반영하므로 두 번 입력할 필요가 없습니다.
 
 CSS 또는 JavaScript 변경 후 `python scripts/update_asset_versions.py`로 에셋 버전을 갱신합니다.
+시간대 계산 검증은 `node --test scripts/test_ambient_time.cjs`로 실행합니다.
