@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+<title>Deep Current — soft light and curved planes</title>
+<defs>
+  <radialGradient id="wash" cx="0" cy="0" r="1" gradientTransform="translate(120 120) rotate(34) scale(1150 810)" gradientUnits="userSpaceOnUse"><stop stop-color="#82a9bc" stop-opacity=".4"/><stop offset=".5" stop-color="#82a9bc" stop-opacity=".16"/><stop offset="1" stop-color="#82a9bc" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1340 900) rotate(-142) scale(970 700)" gradientUnits="userSpaceOnUse"><stop stop-color="#b7cbd0" stop-opacity=".34"/><stop offset=".55" stop-color="#728fa8" stop-opacity=".12"/><stop offset="1" stop-color="#728fa8" stop-opacity="0"/></radialGradient>
+  <linearGradient id="plane" x1="210" y1="910" x2="1380" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#82a9bc" stop-opacity="0"/><stop offset=".4" stop-color="#728fa8" stop-opacity=".12"/><stop offset=".72" stop-color="#b7cbd0" stop-opacity=".22"/><stop offset="1" stop-color="#b7cbd0" stop-opacity="0"/></linearGradient>
+  <linearGradient id="fold" x1="350" y1="1000" x2="1550" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#728fa8" stop-opacity="0"/><stop offset=".55" stop-color="#82a9bc" stop-opacity=".09"/><stop offset="1" stop-color="#b7cbd0" stop-opacity=".24"/></linearGradient>
+  <linearGradient id="edge" x1="60" y1="1000" x2="1500" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="#b7cbd0" stop-opacity="0"/><stop offset=".5" stop-color="#b7cbd0" stop-opacity=".2"/><stop offset="1" stop-color="#b7cbd0" stop-opacity="0"/></linearGradient>
+</defs>
+<g transform="translate(0 0)">
+  <path fill="url(#wash)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#glow)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#plane)" d="M-240 1160C160 710 525 935 825 625S1375 255 1800 -160V1160H-240Z"/>
+  <path fill="url(#fold)" d="M-100 1080C455 820 760 1070 1160 705S1580 480 1780 280V1080H-100Z"/>
+  <path stroke="url(#edge)" stroke-width="1.25" d="M-240 1160C160 710 525 935 825 625S1375 255 1800 -160"/>
+</g>
+</svg>
