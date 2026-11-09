@@ -197,10 +197,12 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .small-project h3 { font-size: 15px; font-weight: 550; }
 .small-project p { color: var(--muted); font-size: 12px; line-height: 1.7; margin-top: 7px; margin-bottom: 19px; word-break: keep-all; }
 .project-link { color: var(--accent); font-size: 11px; margin-top: auto; }
-.photography-layout { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 360px); align-items: start; gap: 18px; min-height: calc(100dvh - 265px); }
-.photo-panel { display: block; position: relative; margin: 0; min-height: 370px; height: clamp(370px, calc(100dvh - 238px), 670px); overflow: hidden; }
+/* Size the portrait from the available height and keep its caption alongside it. */
+#photography { --photo-width: clamp(260px, calc((100dvh - 320px) * 2828 / 4097), 470px); --photo-gap: clamp(32px, 5vw, 80px); width: min(100%, calc(var(--photo-width) + var(--photo-gap) + 360px)); margin-inline: auto; }
+.photography-layout { display: grid; grid-template-columns: minmax(0, var(--photo-width)) minmax(0, 360px); align-items: center; gap: var(--photo-gap); padding-bottom: 12px; }
+.photo-panel { display: block; position: relative; margin: 0; aspect-ratio: 2828 / 4097; overflow: hidden; }
 .showphoto { position: relative; width: 100%; height: 100%; }
-.showphoto > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+.showphoto > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .photo-caption { position: absolute; z-index: 1; top: 0; left: 0; right: 0; padding: 24px 26px 60px; color: #fff; background: linear-gradient(180deg, #071321b8, transparent); }
 .photo-caption .eyebrow { color: #dfebff; }
 .photo-caption h2 { margin: 9px 0 10px; font-size: 25px; font-weight: 550; letter-spacing: -.03em; }
@@ -208,9 +210,9 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .photo-link .icon { width: 14px; height: 14px; }
 .photo-fallback { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px; color: var(--muted); background: var(--surface); font-size: 12px; }
 .photo-fallback .icon { width: 44px; height: 44px; }
-.photo-details { width: 100%; padding: 23px; align-self: start; }
+.photo-details { width: 100%; padding: 12px 0; }
 .photo-details .photo-fallback { position: static; display: block; margin-bottom: 15px; padding: 10px; border-radius: 7px; font-size: 12px; }
-.photo-details h2 { margin: 10px 0 15px; font-size: 25px; font-weight: 550; letter-spacing: -.03em; }
+.photo-details h2 { margin: 12px 0 18px; font-size: 30px; font-weight: 550; line-height: 1.4; letter-spacing: -.03em; word-break: keep-all; }
 .photo-details > p:not(.eyebrow) { color: var(--muted); font-size: 13px; line-height: 1.8; word-break: keep-all; }
 .photo-details > .button-primary { margin-top: 22px; }
 .photo-other { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-soft); }
