@@ -30,6 +30,7 @@
 .studio-site :is(main, section) { scroll-margin-top: calc(var(--s-header-height) + 24px); }
 .s-header, #studio-main { width: min(100%, 1440px); margin-inline: auto; }
 .s-header { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: var(--s-header-height); background: var(--s-paper); }
+.s-header::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--s-paper); box-shadow: 0 0 0 100vmax var(--s-paper); clip-path: inset(0 -100vmax); }
 .s-brand { flex-shrink: 0; font-size: 15px; font-weight: 700; letter-spacing: -.04em; }
 .s-brand > span { display: block; margin-top: 1px; color: var(--s-muted); font-family: Pretendard, sans-serif; font-size: 9px; font-weight: 400; letter-spacing: 0; }
 .s-nav { display: flex; align-items: center; gap: 38px; margin-left: auto; }
