@@ -24,8 +24,8 @@
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=ce412206c7cc">
     <link rel="stylesheet" href="responsive.css?v=5d464890fdb4">
-    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=e07c48617272">
-    <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=7e6aae70f682">
+    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=951eac59bfa7">
+    <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=f9a01aa0a4d1">
     <link rel="stylesheet" href="app/ui/design-switch.css?v=bb870dab04b9">
     <link rel="stylesheet" href="app/ui/studio.css?v=e8808c90bc49">
     <script src="app/api/music.js?v=c240f1857aa8" defer></script>
@@ -34,7 +34,7 @@
     <script src="app/api/main.js?v=c8b952d40a6f" defer></script>
     <script src="app/api/service.js?v=819c8e1208b6" defer></script>
     <script src="app/api/ambient-time.js?v=3cbbb868bfed" defer></script>
-    <script src="app/api/ambient-controls.js?v=eacaed23a700" defer></script>
+    <script src="app/api/ambient-controls.js?v=55e5b54f12fe" defer></script>
     <script src="app/api/studio.js?v=093eff6f799f" defer></script>
 </head>
 <body>
@@ -248,24 +248,10 @@
             <div class="ambient-section ambient-playback-settings" lang="ko">
                 <span class="ambient-label" id="ambient-playback-label">배경 모드</span>
                 <div class="ambient-playback-switch" role="group" aria-labelledby="ambient-playback-label">
-                    <button type="button" class="ambient-playback" data-ambient-playback="manual" aria-pressed="true">Manual</button>
+                    <button type="button" class="ambient-playback" data-ambient-playback="manual" aria-pressed="true">기본</button>
                     <button type="button" class="ambient-playback" data-ambient-playback="dynamic" aria-pressed="false">Dynamic</button>
                 </div>
-                <p class="ambient-dynamic-status" aria-live="off">프리셋과 색상을 직접 선택합니다.</p>
-            </div>
-            <div class="ambient-section">
-                <span class="ambient-label">Choose your style</span>
-                <div class="ambient-palette">
-                    <button type="button" class="ambient-preset preset-ice" data-ambient-color="#56d7ff" data-ambient-multi="#56d7ff,#a778ff,#ff7daf" data-ambient-scene="moonlit-voyage" aria-label="Moonlit Voyage: Silver blue"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Moonlit Voyage<small>Silver blue</small></span></button>
-                    <button type="button" class="ambient-preset preset-violet" data-ambient-color="#ae7aff" data-ambient-multi="#7174ff,#ae7aff,#ff82c8" data-ambient-scene="cosmic-drift" aria-label="Cosmic Drift: Soft violet"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Cosmic Drift<small>Soft violet</small></span></button>
-                    <button type="button" class="ambient-preset preset-rose" data-ambient-color="#ff78b8" data-ambient-multi="#ff6e9f,#a778ff,#56d7ff" data-ambient-scene="afterglow" aria-label="Afterglow: Dusty rose"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Afterglow<small>Dusty rose</small></span></button>
-                    <button type="button" class="ambient-preset preset-amber" data-ambient-color="#ffb454" data-ambient-multi="#ffb454,#ff766d,#a778ff" data-ambient-scene="desert-dusk" aria-label="Desert Dusk: Warm champagne"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Desert Dusk<small>Warm champagne</small></span></button>
-                    <button type="button" class="ambient-preset preset-mint" data-ambient-color="#55e6b0" data-ambient-multi="#55e6b0,#56d7ff,#a778ff" data-ambient-scene="aurora" aria-label="Aurora: Muted teal"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Aurora<small>Muted teal</small></span></button>
-                    <button type="button" class="ambient-preset preset-lime" data-ambient-color="#c7f36b" data-ambient-multi="#c7f36b,#55e6b0,#56d7ff" data-ambient-scene="forest-whisper" aria-label="Forest Whisper: Quiet sage"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Forest Whisper<small>Quiet sage</small></span></button>
-                    <button type="button" class="ambient-preset preset-ocean" data-ambient-color="#4f8cff" data-ambient-multi="#4f8cff,#56d7ff,#55e6b0" data-ambient-scene="deep-current" aria-label="Deep Current: Ocean slate"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Deep Current<small>Ocean slate</small></span></button>
-                    <button type="button" class="ambient-preset preset-crimson" data-ambient-color="#ff6172" data-ambient-multi="#ff6172,#ffb454,#a778ff" data-ambient-scene="midnight-drive" aria-label="Midnight Drive: Smoked mauve"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Midnight Drive<small>Smoked mauve</small></span></button>
-                    <label class="ambient-picker" aria-label="Choose a custom ambient color"><span class="ambient-style-art" aria-hidden="true"></span><span class="ambient-style-name">Custom</span><input type="color" value="#56d7ff" aria-label="Choose a custom ambient color"></label>
-                </div>
+                <p class="ambient-dynamic-status" aria-live="off">포인트 색상을 직접 선택합니다.</p>
             </div>
             <div class="ambient-section">
                 <span class="ambient-label" id="theme-label">Display Theme</span>
@@ -275,19 +261,8 @@
                     <button type="button" class="ambient-theme" data-theme-preference="dark" aria-pressed="false">Dark</button>
                 </div>
             </div>
-            <div class="ambient-section">
-                <span class="ambient-label">Color Mode</span>
-                <div class="ambient-mode-switch">
-                    <button type="button" class="ambient-mode" data-ambient-mode="multi" aria-pressed="true">Multicolor</button>
-                    <button type="button" class="ambient-mode" data-ambient-mode="single" aria-pressed="false">Monocolor</button>
-                </div>
-            </div>
-            <div class="ambient-section ambient-multi-colors">
-                <span class="ambient-label">Colors</span>
-                <div class="ambient-multi-pickers">
-                    <label><span>Primary</span><input class="ambient-multi-primary" type="color" value="#56d7ff" aria-label="Primary ambient color"></label>
-                    <label><span>Secondary</span><input class="ambient-multi-secondary" type="color" value="#a778ff" aria-label="Secondary ambient color"></label>
-                </div>
+            <div class="ambient-section ambient-color-setting" lang="ko">
+                <label class="ambient-picker"><span class="ambient-label">포인트 색상</span><input type="color" value="#91a9bc" aria-label="포인트 색상"></label>
             </div>
             <div class="ambient-section ambient-brightness-row">
                 <div><span class="ambient-label">Brightness</span><output class="ambient-brightness-value">85%</output></div>

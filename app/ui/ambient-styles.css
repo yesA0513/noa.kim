@@ -1,4 +1,4 @@
-/* A separate ambient screen with the horizontal preview carousel used by MBUX. */
+/* Shared display settings with a basic accent color and time-based Dynamic mode. */
 .ambient-console { --ambient-ui-overlay: #1822302b; --ambient-ui-shadow: #18223033; }
 :root[data-theme='dark'] .ambient-console { --ambient-ui-overlay: #03040870; --ambient-ui-shadow: #00000066; }
 .ambient-console::before {
@@ -14,12 +14,10 @@
 .ambient-console.is-open::before { visibility: visible; opacity: 1; }
 .ambient-panel {
     --ambient-ui-accent: var(--accent);
-    --ambient-ui-secondary: var(--accent-secondary);
     --ambient-ui-border: var(--border);
     --ambient-ui-control-start: color-mix(in srgb, var(--ambient-tone) 18%, var(--surface-top));
     --ambient-ui-control-end: color-mix(in srgb, var(--ambient-tone-secondary) 12%, var(--surface));
     --ambient-ui-scroll: var(--accent);
-    --ambient-preview-accent: color-mix(in srgb, var(--ambient-tone) 68%, #fff);
     color-scheme: inherit;
     color: var(--ink);
     display: grid;
@@ -51,7 +49,7 @@
     scrollbar-color: var(--ambient-ui-scroll) transparent;
 }
 .ambient-console.is-open .ambient-panel { visibility: visible; opacity: 1; transform: translate(-50%, -50%); }
-.ambient-panel-head, .ambient-panel .ambient-multi-colors, .ambient-panel .ambient-section:has(.ambient-palette), .ambient-panel .ambient-brightness-row { grid-column: 1 / -1; }
+.ambient-panel-head, .ambient-color-setting, .ambient-panel .ambient-section:has(.ambient-theme-switch), .ambient-panel .ambient-brightness-row { grid-column: 1 / -1; }
 .ambient-panel-head { display: flex; align-items: center; position: relative; justify-content: center; padding: 0 76px 18px; text-align: center; border-bottom: 1px solid var(--ambient-ui-border); }
 .ambient-panel-head strong { display: block; margin-top: 3px; font-size: 21px; font-weight: 550; letter-spacing: -.025em; }
 .ambient-kicker, .ambient-label { display: block; font-weight: 550; letter-spacing: .025em; }
@@ -68,70 +66,13 @@
 .ambient-playback { min-height: 38px; padding: 7px 12px; border: 0; border-radius: 6px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; }
 .ambient-playback.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); }
 .ambient-dynamic-status { min-height: 17px; margin-top: 9px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
-:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-theme-switch) { grid-column: 1 / -1; }
-:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-palette),
-:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-section:has(.ambient-mode-switch),
-:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-multi-colors { display: none; }
-.ambient-theme-switch, .ambient-mode-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
-.ambient-mode-switch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ambient-theme, .ambient-mode { min-width: 0; min-height: 35px; padding: 5px; border: 0; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; letter-spacing: .01em; }
-.ambient-theme.is-active, .ambient-mode.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); }
+:root[data-ambient-playback='dynamic'] .ambient-panel .ambient-color-setting { display: none; }
+.ambient-theme-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.ambient-theme { min-width: 0; min-height: 35px; padding: 5px; border: 0; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; letter-spacing: .01em; }
+.ambient-theme.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); }
 .ambient-panel :focus-visible { outline-color: var(--ambient-ui-accent); outline-offset: 3px; }
-.ambient-panel .ambient-multi-pickers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 9px; }
-.ambient-panel .ambient-multi-pickers label { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 11px; border-radius: 7px; color: var(--muted); background: var(--surface); font-size: 10px; }
-.ambient-multi-pickers input { width: 22px; height: 22px; padding: 0; border: 0; background: transparent; cursor: pointer; }
-:root[data-ambient-mode='single'] .ambient-multi-colors { display: none; }
-.ambient-panel .ambient-palette {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
-    scrollbar-width: thin;
-    scrollbar-color: var(--ambient-ui-scroll) transparent;
-    padding: 6px 3px 11px;
-    margin-top: 8px;
-}
-.ambient-panel .ambient-preset, .ambient-panel .ambient-picker {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    padding: 0;
-    flex: 0 0 120px;
-    height: 146px;
-    min-height: 146px;
-    scroll-snap-align: start;
-    isolation: isolate;
-    border: 0;
-    border-radius: 8px;
-    background: #070c1a;
-    box-shadow: none;
-    text-align: left;
-    transition: box-shadow .15s;
-}
-.ambient-panel .ambient-preset:hover, .ambient-panel .ambient-picker:hover { box-shadow: 0 0 16px color-mix(in srgb, var(--ambient-ui-secondary) 18%, transparent); }
-.ambient-panel .ambient-preset.is-active, .ambient-panel .ambient-picker.is-active { box-shadow: 0 0 0 2px var(--ambient-ui-accent), 0 0 18px color-mix(in srgb, var(--ambient-ui-accent) 18%, transparent); }
-.ambient-preset::after, .ambient-picker::after { content: ""; position: absolute; top: 8px; right: 8px; width: 7px; height: 7px; border: 1px solid #d0d1d869; border-radius: 50%; background: #bfc0c752; }
-.ambient-preset.is-active::after, .ambient-picker.is-active::after { background: var(--ambient-preview-accent); border-color: #ffffffbb; box-shadow: 0 0 9px var(--ambient-preview-accent); }
-.ambient-style-art { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 77% 12%, color-mix(in srgb, var(--preview-color) 26%, transparent), transparent 47%), linear-gradient(180deg, #061027 2%, #101b39 48%, var(--preview-color) 74%, #060b19 94%); }
-.ambient-style-art::before { content: ""; position: absolute; left: -20%; width: 140%; bottom: 32px; height: 31px; border-top: 1px solid color-mix(in srgb, var(--preview-color) 55%, #fff); border-radius: 50% 50% 0 0; background: linear-gradient(180deg, #111c35, #070c19); box-shadow: 0 -7px 20px color-mix(in srgb, var(--preview-color) 38%, transparent); transform: rotate(-7deg); }
-.ambient-style-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, #040816d9 88%, #040816); }
-.ambient-style-name { position: absolute; left: 10px; right: 8px; bottom: 10px; z-index: 2; color: #f1f2f5; font-size: 12px; font-weight: 500; line-height: 1.3; text-shadow: 0 1px 4px #000; }
-.preset-ice { --preview-color: #56d7ff; }
-.preset-violet { --preview-color: #ae7aff; }
-.preset-rose { --preview-color: #ff78b8; }
-.preset-amber { --preview-color: #ffb454; }
-.preset-mint { --preview-color: #55e6b0; }
-.preset-lime { --preview-color: #c7f36b; }
-.preset-ocean { --preview-color: #4f8cff; }
-.preset-crimson { --preview-color: #ff6172; }
-.preset-violet .ambient-style-art { background: radial-gradient(ellipse at 20% 36%, #ae7aff9c, transparent 44%), radial-gradient(ellipse at 80% 53%, #7e5df8a1, transparent 53%), linear-gradient(160deg, #090d26, #4f2d77 68%, #080b19); }
-.preset-violet .ambient-style-art::before, .preset-rose .ambient-style-art::before { transform: rotate(7deg); }
-.preset-ocean .ambient-style-art::before, .preset-mint .ambient-style-art::before { height: 42px; border-radius: 50% 80% 0 0; transform: rotate(4deg); }
-.ambient-panel .ambient-picker { --preview-color: #9bcaff; cursor: pointer; }
-.ambient-picker .ambient-style-art { background: radial-gradient(ellipse at 16% 55%, #5bd4ffad, transparent 50%), radial-gradient(ellipse at 87% 43%, #ee79ccbf, transparent 60%), linear-gradient(160deg, #0b193c, #4e5277 70%, #08101d); }
-.ambient-panel .ambient-picker input { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-.ambient-picker:focus-within { outline: 2px solid var(--ambient-ui-accent); outline-offset: 3px; }
+.ambient-picker { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 48px; padding: 10px 12px; border-radius: 9px; background: var(--surface); cursor: pointer; }
+.ambient-panel .ambient-picker input { width: 38px; height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; }
 .ambient-brightness-row { padding-bottom: 2px; }
 .ambient-brightness-row > div { display: flex; align-items: center; justify-content: space-between; }
 .ambient-panel .ambient-brightness-value { color: var(--ink); font-size: 11px; font-weight: 600; }
@@ -144,12 +85,8 @@
     .ambient-power, .ambient-close { width: 30px; height: 30px; }
     .ambient-panel-actions { gap: 6px; top: 1px; }
     .ambient-panel .ambient-section { margin-top: 16px; }
-    .ambient-panel .ambient-palette { gap: 8px; }
-    .ambient-panel .ambient-preset, .ambient-panel .ambient-picker { flex-basis: 104px; height: 136px; min-height: 136px; }
-    .ambient-style-name { left: 8px; bottom: 9px; font-size: 11px; }
-    .ambient-panel .ambient-multi-pickers { gap: 7px; }
-    .ambient-theme, .ambient-mode { font-size: 11px; }
+    .ambient-theme { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .ambient-console::before, .ambient-panel, .ambient-preset, .ambient-picker { transition: none; }
+    .ambient-console::before, .ambient-panel { transition: none; }
 }

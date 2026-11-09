@@ -1,14 +1,12 @@
-/* Restrained light fields replace the illustrative scenery. Each preview uses
-   the same transparent artwork as its full-screen background. */
-:root, .preset-ice { --scene-image: url('../../img/ambient/atmospheres/moonlit-voyage.svg'); }
+/* One static background; the remaining light fields blend internally in Dynamic. */
 .scene-world[data-scene='moonlit-voyage'] { --scene-image: url('../../img/ambient/atmospheres/moonlit-voyage.svg'); }
-:root[data-ambient-scene='cosmic-drift'], .preset-violet, .scene-world[data-scene='cosmic-drift'] { --scene-image: url('../../img/ambient/atmospheres/cosmic-drift.svg'); }
-:root[data-ambient-scene='afterglow'], .preset-rose, .scene-world[data-scene='afterglow'] { --scene-image: url('../../img/ambient/atmospheres/afterglow.svg'); }
-:root[data-ambient-scene='desert-dusk'], .preset-amber, .scene-world[data-scene='desert-dusk'] { --scene-image: url('../../img/ambient/atmospheres/desert-dusk.svg'); }
-:root[data-ambient-scene='aurora'], .preset-mint, .scene-world[data-scene='aurora'] { --scene-image: url('../../img/ambient/atmospheres/aurora.svg'); }
-:root[data-ambient-scene='forest-whisper'], .preset-lime, .scene-world[data-scene='forest-whisper'] { --scene-image: url('../../img/ambient/atmospheres/forest-whisper.svg'); }
-:root[data-ambient-scene='deep-current'], .preset-ocean, .scene-world[data-scene='deep-current'] { --scene-image: url('../../img/ambient/atmospheres/deep-current.svg'); }
-:root[data-ambient-scene='midnight-drive'], .preset-crimson, .scene-world[data-scene='midnight-drive'] { --scene-image: url('../../img/ambient/atmospheres/midnight-drive.svg'); }
+.scene-world[data-scene='cosmic-drift'] { --scene-image: url('../../img/ambient/atmospheres/cosmic-drift.svg'); }
+.scene-world[data-scene='afterglow'] { --scene-image: url('../../img/ambient/atmospheres/afterglow.svg'); }
+.scene-world[data-scene='desert-dusk'] { --scene-image: url('../../img/ambient/atmospheres/desert-dusk.svg'); }
+.scene-world[data-scene='aurora'] { --scene-image: url('../../img/ambient/atmospheres/aurora.svg'); }
+.scene-world[data-scene='forest-whisper'] { --scene-image: url('../../img/ambient/atmospheres/forest-whisper.svg'); }
+.scene-world[data-scene='deep-current'] { --scene-image: url('../../img/ambient/atmospheres/deep-current.svg'); }
+.scene-world[data-scene='midnight-drive'] { --scene-image: url('../../img/ambient/atmospheres/midnight-drive.svg'); }
 
 .display-scene { background: linear-gradient(145deg, #f4f4f0, #e9ebe7); }
 :root[data-theme='dark'] .display-scene { background: linear-gradient(145deg, #171c22, #101419 65%, #161b20); }
@@ -33,9 +31,4 @@
 .scene-worlds::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, #f8f8f433, transparent 60%, #e5e8e21a); }
 :root[data-theme='dark'] .scene-worlds::after { background: radial-gradient(ellipse at 50% 40%, transparent 35%, #090c1026); }
 
-.ambient-preset .ambient-style-art, .ambient-picker .ambient-style-art { background: var(--scene-image) center / cover no-repeat; }
-.ambient-preset .ambient-style-art::before, .ambient-picker .ambient-style-art::before { display: none; }
-.ambient-preset .ambient-style-art::after, .ambient-picker .ambient-style-art::after { background: linear-gradient(180deg, transparent 35%, #04060b30 55%, #04060bf2); }
-.ambient-style-name small { display: block; margin-top: 4px; color: #c8cbd4; font-size: 9px; font-weight: 400; line-height: 1.3; }
-.ambient-panel .ambient-palette.is-wheel-scrolling { scroll-snap-type: none; }
 @media (prefers-reduced-motion: reduce) { .scene-world { transition: none; } }
