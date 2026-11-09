@@ -37,10 +37,10 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 24px 30px 28px;
-    border: 1px solid var(--ambient-ui-border);
+    border: 0;
     border-radius: 16px;
     background: radial-gradient(ellipse at 14% 0%, color-mix(in srgb, var(--ambient-tone) 24%, transparent), transparent 55%), radial-gradient(ellipse at 90% 100%, color-mix(in srgb, var(--ambient-tone-secondary) 19%, transparent), transparent 54%), linear-gradient(150deg, color-mix(in srgb, var(--surface-top) 80%, var(--page-bg)), color-mix(in srgb, var(--surface) 80%, var(--page-bg)));
-    box-shadow: 0 28px 90px var(--ambient-ui-shadow), inset 0 1px 0 color-mix(in srgb, var(--ambient-ui-accent) 15%, transparent);
+    box-shadow: 0 28px 90px var(--ambient-ui-shadow);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
     visibility: hidden;
@@ -57,19 +57,19 @@
 .ambient-kicker, .ambient-label { display: block; font-weight: 550; letter-spacing: .025em; }
 .ambient-kicker { font-size: 11px; color: var(--muted); }
 .ambient-panel-actions { display: flex; position: absolute; right: 0; top: 2px; gap: 9px; }
-.ambient-power, .ambient-close { display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--border); border-radius: 7px; color: var(--ink); background: var(--surface); }
+.ambient-power, .ambient-close { display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 7px; color: var(--ink); background: var(--surface); }
 .ambient-power { font-size: 10px; font-weight: 550; }
 .ambient-close { font-size: 18px; }
-.ambient-power.is-active { color: var(--ink); background: var(--ambient-ui-control-start); border-color: color-mix(in srgb, var(--ambient-ui-accent) 55%, transparent); }
+.ambient-power.is-active { color: var(--ink); background: var(--ambient-ui-control-start); }
 .ambient-panel .ambient-section { margin-top: 19px; padding-top: 0; border-top: 0; }
 .ambient-panel .ambient-label { font-size: 11px; color: var(--muted); }
-.ambient-theme-switch, .ambient-mode-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border: 1px solid var(--border-soft); border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.ambient-theme-switch, .ambient-mode-switch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 9px; padding: 4px; border-radius: 9px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
 .ambient-mode-switch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ambient-theme, .ambient-mode { min-width: 0; min-height: 35px; padding: 5px; border: 1px solid transparent; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; letter-spacing: .01em; }
-.ambient-theme.is-active, .ambient-mode.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); border-color: color-mix(in srgb, var(--ambient-ui-accent) 60%, transparent); box-shadow: inset 0 1px 0 #ffffff1a; }
+.ambient-theme, .ambient-mode { min-width: 0; min-height: 35px; padding: 5px; border: 0; border-radius: 5px; color: var(--muted); background: transparent; font-size: 12px; font-weight: 550; letter-spacing: .01em; }
+.ambient-theme.is-active, .ambient-mode.is-active { color: var(--ink); background: linear-gradient(180deg, var(--ambient-ui-control-start), var(--ambient-ui-control-end)); }
 .ambient-panel :focus-visible { outline-color: var(--ambient-ui-accent); outline-offset: 3px; }
 .ambient-panel .ambient-multi-pickers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 9px; }
-.ambient-panel .ambient-multi-pickers label { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 11px; border: 1px solid var(--border-soft); border-radius: 7px; color: var(--muted); background: var(--surface); font-size: 10px; }
+.ambient-panel .ambient-multi-pickers label { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 11px; border-radius: 7px; color: var(--muted); background: var(--surface); font-size: 10px; }
 .ambient-multi-pickers input { width: 22px; height: 22px; padding: 0; border: 0; background: transparent; cursor: pointer; }
 :root[data-ambient-mode='single'] .ambient-multi-colors { display: none; }
 .ambient-panel .ambient-palette {
@@ -93,15 +93,15 @@
     min-height: 146px;
     scroll-snap-align: start;
     isolation: isolate;
-    border: 1px solid #ffffff30;
+    border: 0;
     border-radius: 8px;
     background: #070c1a;
-    box-shadow: inset 0 1px 0 #ffffff0d;
+    box-shadow: none;
     text-align: left;
-    transition: border-color .15s, box-shadow .15s;
+    transition: box-shadow .15s;
 }
-.ambient-panel .ambient-preset:hover, .ambient-panel .ambient-picker:hover { border-color: var(--ambient-ui-secondary); }
-.ambient-panel .ambient-preset.is-active, .ambient-panel .ambient-picker.is-active { border-color: var(--ambient-ui-accent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--ambient-ui-accent) 33%, transparent), 0 0 18px color-mix(in srgb, var(--ambient-ui-accent) 18%, transparent); }
+.ambient-panel .ambient-preset:hover, .ambient-panel .ambient-picker:hover { box-shadow: 0 0 16px color-mix(in srgb, var(--ambient-ui-secondary) 18%, transparent); }
+.ambient-panel .ambient-preset.is-active, .ambient-panel .ambient-picker.is-active { box-shadow: 0 0 0 2px var(--ambient-ui-accent), 0 0 18px color-mix(in srgb, var(--ambient-ui-accent) 18%, transparent); }
 .ambient-preset::after, .ambient-picker::after { content: ""; position: absolute; top: 8px; right: 8px; width: 7px; height: 7px; border: 1px solid #d0d1d869; border-radius: 50%; background: #bfc0c752; }
 .ambient-preset.is-active::after, .ambient-picker.is-active::after { background: var(--ambient-preview-accent); border-color: #ffffffbb; box-shadow: 0 0 9px var(--ambient-preview-accent); }
 .ambient-style-art { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 77% 12%, color-mix(in srgb, var(--preview-color) 26%, transparent), transparent 47%), linear-gradient(180deg, #061027 2%, #101b39 48%, var(--preview-color) 74%, #060b19 94%); }
