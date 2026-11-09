@@ -24,7 +24,7 @@
     <link rel="preload" href="img/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=ce412206c7cc">
     <link rel="stylesheet" href="responsive.css?v=5d464890fdb4">
-    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=951eac59bfa7">
+    <link rel="stylesheet" href="app/ui/ambient-styles.css?v=8e2868dc1250">
     <link rel="stylesheet" href="app/ui/ambient-scenes.css?v=f9a01aa0a4d1">
     <link rel="stylesheet" href="app/ui/design-switch.css?v=bb870dab04b9">
     <link rel="stylesheet" href="app/ui/studio.css?v=e8808c90bc49">
@@ -34,7 +34,7 @@
     <script src="app/api/main.js?v=c8b952d40a6f" defer></script>
     <script src="app/api/service.js?v=819c8e1208b6" defer></script>
     <script src="app/api/ambient-time.js?v=3cbbb868bfed" defer></script>
-    <script src="app/api/ambient-controls.js?v=55e5b54f12fe" defer></script>
+    <script src="app/api/ambient-controls.js?v=8208f77a439a" defer></script>
     <script src="app/api/studio.js?v=093eff6f799f" defer></script>
 </head>
 <body>
@@ -251,7 +251,7 @@
                     <button type="button" class="ambient-playback" data-ambient-playback="manual" aria-pressed="true">기본</button>
                     <button type="button" class="ambient-playback" data-ambient-playback="dynamic" aria-pressed="false">Dynamic</button>
                 </div>
-                <p class="ambient-dynamic-status" aria-live="off">포인트 색상을 직접 선택합니다.</p>
+                <p class="ambient-dynamic-status" aria-live="off">색상 프리셋을 선택합니다.</p>
             </div>
             <div class="ambient-section">
                 <span class="ambient-label" id="theme-label">Display Theme</span>
@@ -262,7 +262,14 @@
                 </div>
             </div>
             <div class="ambient-section ambient-color-setting" lang="ko">
-                <label class="ambient-picker"><span class="ambient-label">포인트 색상</span><input type="color" value="#91a9bc" aria-label="포인트 색상"></label>
+                <span class="ambient-label" id="ambient-accent-label">포인트 색상</span>
+                <div class="ambient-accent-options" role="group" aria-labelledby="ambient-accent-label">
+                    <button type="button" class="ambient-accent" data-ambient-accent="#91a9bc" style="--ambient-swatch: #91a9bc" aria-pressed="false"><span class="ambient-accent-dot" aria-hidden="true"></span><span>블루</span></button>
+                    <button type="button" class="ambient-accent" data-ambient-accent="#8fab98" style="--ambient-swatch: #8fab98" aria-pressed="false"><span class="ambient-accent-dot" aria-hidden="true"></span><span>세이지</span></button>
+                    <button type="button" class="ambient-accent" data-ambient-accent="#c4a16f" style="--ambient-swatch: #c4a16f" aria-pressed="false"><span class="ambient-accent-dot" aria-hidden="true"></span><span>샌드</span></button>
+                    <button type="button" class="ambient-accent" data-ambient-accent="#c292a2" style="--ambient-swatch: #c292a2" aria-pressed="false"><span class="ambient-accent-dot" aria-hidden="true"></span><span>로즈</span></button>
+                </div>
+                <p class="ambient-accent-status" hidden>이전에 선택한 색상을 사용 중입니다.</p>
             </div>
             <div class="ambient-section ambient-brightness-row">
                 <div><span class="ambient-label">Brightness</span><output class="ambient-brightness-value">85%</output></div>

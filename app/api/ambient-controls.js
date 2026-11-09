@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const playbackStatus = document.querySelector('.ambient-dynamic-status');
     const triggerLabel = document.querySelector('.settings-trigger-label');
     const worlds = document.querySelectorAll('.scene-world');
-    const picker = document.querySelector('.ambient-picker input');
+    const accentButtons = document.querySelectorAll('.ambient-accent');
+    const accentStatus = document.querySelector('.ambient-accent-status');
     const brightness = document.querySelector('.ambient-brightness');
     const brightnessValue = document.querySelector('.ambient-brightness-value');
     const defaultScene = 'moonlit-voyage';
@@ -63,6 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
     themeButtons.forEach(button => button.addEventListener('click', () => {
         window.noaTheme.setPreference(button.dataset.themePreference);
     }));
+    const syncAccents = () => {
+        const selectedColor = currentSettings.mode === 'single' ? normalizeColor(currentSettings.color) : null;
+        let matched = false;
+        accentButtons.forEach(button => {
+            const selected = selectedColor === button.dataset.ambientAccent;
+            button.classList.toggle('is-active', selected);
+            button.setAttribute('aria-pressed', String(selected));
+            if (selected) matched = true;
+        });
+        accentStatus.hidden = matched;
+    };
 
     const setBrightness = (value, shouldSave = true) => {
         const number = Number(value);
@@ -91,13 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
         root.style.setProperty('--ambient-primary', renderedColor);
         root.style.setProperty('--ambient-secondary', renderedColor);
         root.style.setProperty('--ambient-tertiary', renderedColor);
-        picker.value = renderedColor;
         currentSettings = { ...currentSettings, mode: 'single', color: savedColor, scene: defaultScene };
+        syncAccents();
         if (shouldSave) save(currentSettings);
     };
     const setMulti = (colors, presetColor = '', shouldSave = true) => {
         // Preserve older multi-color preferences without exposing another mode
-        // selector. Editing the single color field explicitly replaces them.
+        // selector. Choosing a color preset explicitly replaces them.
         const savedColors = validColors(colors) ? [...colors] : [defaultAccent, defaultAccent, defaultAccent];
         const [primary, secondary, tertiary = secondary] = savedColors.map(normalizeColor);
         root.dataset.ambientScene = defaultScene;
@@ -105,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         root.style.setProperty('--ambient-primary', primary);
         root.style.setProperty('--ambient-secondary', secondary);
         root.style.setProperty('--ambient-tertiary', tertiary);
-        picker.value = primary;
         currentSettings = { ...currentSettings, mode: 'multi', colors: savedColors, presetColor, scene: defaultScene };
+        syncAccents();
         if (shouldSave) save(currentSettings);
     };
     try {
@@ -168,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             root.dataset.ambientScene = defaultScene;
             if (manual.mode === 'single') setColor(manual.color, false);
             else setMulti(manual.colors, manual.presetColor, false);
-            playbackStatus.textContent = '포인트 색상을 직접 선택합니다.';
+            playbackStatus.textContent = '색상 프리셋을 선택합니다.';
         } else {
             playbackStatus.textContent = '서울 시간에 맞춰 색과 배경이 변합니다.';
             refreshDynamic();
@@ -255,10 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setPower(root.dataset.ambientEnabled !== 'true');
         refreshDynamic();
     });
-    picker.addEventListener('input', event => {
-        const color = event.target.value;
+    accentButtons.forEach(button => button.addEventListener('click', () => {
+        const color = button.dataset.ambientAccent;
         setPlayback('manual');
         setColor(color);
-    });
+    }));
     brightness.addEventListener('input', event => setBrightness(event.target.value));
 });
