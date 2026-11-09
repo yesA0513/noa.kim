@@ -91,8 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTransition();
             settlePages();
         });
-        window.addEventListener('hashchange', () => showPage({ focus: true }));
+        window.addEventListener('hashchange', () => {
+            if (document.documentElement.dataset.design !== 'studio') showPage({ focus: true });
+        });
+        window.addEventListener('designchange', () => {
+            if (document.documentElement.dataset.design === 'classic') showPage({ animate: false });
+        });
         document.addEventListener('click', event => {
+            if (document.documentElement.dataset.design === 'studio') return;
             if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             const link = event.target.closest('a[href]');
             if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
@@ -107,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (!['#overview', '#work', '#more-work', '#photography'].includes(target.hash)) return;
             event.preventDefault();
-            if (target.hash !== location.hash) history.pushState(null, '', target.hash);
+            if (target.hash !== location.hash) history.pushState({ noaDesign: 'classic' }, '', target.hash);
             showPage({ focus: true });
         });
     }
