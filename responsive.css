@@ -68,7 +68,7 @@
     }
 
     /* 1열에서는 정사각형 비율이 콘텐츠 길이에 방해가 되므로 해제 */
-    .box2, .box3, .box4, .box5, .box7 {
+    .box2, .box3, .box7 {
         aspect-ratio: unset; 
         height: auto;
     }
