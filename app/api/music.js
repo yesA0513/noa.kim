@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     prefersDarkScheme.addEventListener("change", updateTheme);
 
     const apiUrl = "https://yuntae.in/api/music/recent";
-    const userToken = "As/7rThEu36hoBYtl0EA2nOswDjqdGWpltAq98DSGkJztQUWboLS/j1f5ZnndDaRs1iyb9tIuVMcDYdWIZ4wRzZCHGVES7VOGNwhsKPW8kkGRAX8RQrqG105CaL+rIM/MxSsSdeOX/9fmF8ZKtwSZLe6sTDFKIPXbQLbWgsiDQB2854OIT1rLWfEj2FtxcqCZvrCrhAbAZPVkHvnJHohThG6CTsnGed0bV3mUgWNlUmvA1eMKQ=="; //media-user-token
+    const userToken = "0.AktYAPbNiGO2P8Hw2ITiDaBpBk/RfLVmvHuR06sa7WCBGWaqU7lBI8inTp2k8uX0yBzLCFj06BOV8tRMRivbTB+UmqhRczVHIXS2mOPyKHWUN6Ej5qDbxwTMn0dNZitD25b1ujoNHmhdH4csVD7r4XOmyg51OYzAkTeoIXP2r2In2Ux7Xxx4vPKX4aOxN+p3ifY+Xn9OggHOh1y2Hjf94e/xspY5rGol3Q9rDoCC9wo/ZMXzcg=="; //media-user-token
 
         fetch(apiUrl,{
             headers: {
