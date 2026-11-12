@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const percentage = elapsedDays / totalDays * 100;
         const percentageText = `${percentFormat.format(percentage)}%`;
 
-        card.querySelector('#military-status').textContent = beforeEnlistment ? '입대 예정' : completed ? '복무 완료' : '복무 중';
+        card.querySelector('#military-status').textContent = beforeEnlistment ? '입대 예정' : completed ? '복무 완료' : '복무중';
         card.querySelector('#military-remaining-label').textContent = beforeEnlistment ? '입대까지' : '전역까지';
         card.querySelector('#military-remaining').textContent = remainingDays.toLocaleString('ko-KR');
         card.querySelector('#military-percentage').textContent = percentageText;
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progress.value = percentage;
         progress.textContent = percentageText;
         progress.setAttribute('aria-valuetext', percentageText);
+        card.style.setProperty('--military-progress', `${percentage}%`);
     };
 
     updateMilitaryService();

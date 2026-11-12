@@ -325,18 +325,23 @@ nav a:hover::before {
     min-width: 0;
 }
 
-.military-card .title { padding-bottom: 1.25rem; }
-
-.military-branch {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
+.military-card .title {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding-bottom: 0;
 }
 
-.military-status {
-    margin-left: 0.5rem;
+.military-mark {
+    flex-shrink: 0;
+    width: 24px;
+    height: 28px;
     color: var(--c-text-secondary);
-    font-size: 0.75rem;
+}
+
+.military-title-text {
+    min-width: 0;
+    word-break: keep-all;
 }
 
 .military-dates {
@@ -385,17 +390,36 @@ nav a:hover::before {
     font-weight: 400;
 }
 
+.military-progress-track {
+    position: relative;
+    margin-top: 0.75rem;
+}
+
 .military-progress {
     display: block;
     width: 100%;
     height: 6px;
-    margin-top: 0.75rem;
+    margin: 0;
     border: 0;
     border-radius: 999px;
     overflow: hidden;
     appearance: none;
     background: var(--c-military-track);
     color: var(--c-text-primary);
+}
+
+.military-progress-marker {
+    position: absolute;
+    top: 50%;
+    left: clamp(4px, var(--military-progress, 0%), calc(100% - 4px));
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--c-text-primary);
+    border-radius: 50%;
+    background: var(--c-box-bg);
+    box-sizing: border-box;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .military-progress::-webkit-progress-bar {
