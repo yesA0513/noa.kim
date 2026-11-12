@@ -690,6 +690,8 @@ ion-icon {
 
 /* box6: 오버레이를 위한 위치 기준(positioning context)을 설정합니다. */
 .box6 {
+    display: grid;
+    place-items: center;
     position: relative; /* 자식 요소의 absolute 위치 기준 */
     overflow: hidden;   /* 박스 밖으로 나가는 모든 요소를 숨깁니다. */
     cursor: pointer;
