@@ -326,8 +326,13 @@
                 </div>
             </div>
             <section class="military-card reveal-on-scroll" aria-labelledby="military-title">
-                <h2 class="title" id="military-title">병역</h2>
-                <p class="military-branch">대한민국 육군 <span class="military-status" id="military-status">복무 중</span></p>
+                <h2 class="title" id="military-title">
+                    <svg class="military-mark" viewBox="0 0 24 28" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M12 2 3 6v8c0 7 9 12 9 12s9-5 9-12V6L12 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                        <path d="m12 8.5 1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4L12 8.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="military-title-text">대한민국 육군 <span id="military-status">복무중</span></span>
+                </h2>
                 <dl class="military-dates">
                     <div>
                         <dt>입대일</dt>
@@ -348,7 +353,10 @@
                         <p class="military-value" id="military-percentage">—%</p>
                     </div>
                 </div>
-                <progress class="military-progress" id="military-progress" value="0" max="100" aria-label="복무 진행률">0%</progress>
+                <div class="military-progress-track">
+                    <progress class="military-progress" id="military-progress" value="0" max="100" aria-label="복무 진행률">0%</progress>
+                    <span class="military-progress-marker" aria-hidden="true"></span>
+                </div>
             </section>
         </div>
     </section>
