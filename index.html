@@ -324,6 +324,32 @@
                         <p class="Detail">(2024~) 소프트웨어학과</p>
                     </div>
                 </div>
+            </div>
+            <section class="military-card reveal-on-scroll" aria-labelledby="military-title">
+                <h2 class="title" id="military-title">병역</h2>
+                <p class="military-branch">대한민국 육군 <span class="military-status" id="military-status">복무 중</span></p>
+                <dl class="military-dates">
+                    <div>
+                        <dt>입대일</dt>
+                        <dd><time id="military-enlistment" datetime="2026-03-09">2026.03.09</time></dd>
+                    </div>
+                    <div>
+                        <dt>전역일</dt>
+                        <dd><time id="military-discharge" datetime="2027-09-08">2027.09.08</time></dd>
+                    </div>
+                </dl>
+                <div class="military-metrics">
+                    <div>
+                        <p class="military-label" id="military-remaining-label">전역까지</p>
+                        <p class="military-value"><span id="military-remaining">—</span><span class="military-unit">일</span></p>
+                    </div>
+                    <div>
+                        <p class="military-label">복무 진행률</p>
+                        <p class="military-value" id="military-percentage">—%</p>
+                    </div>
+                </div>
+                <progress class="military-progress" id="military-progress" value="0" max="100" aria-label="복무 진행률">0%</progress>
+            </section>
         </div>
     </section>
     <script>
@@ -333,6 +359,7 @@
         setInterval(getWeather, 1800000);
     </script>
     <script src="app/api/scroll-animation.js" defer></script>
+    <script src="app/api/military.js" defer></script>
 </body>
 
 </html>
