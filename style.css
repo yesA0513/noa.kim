@@ -122,33 +122,31 @@ nav.is-visible { animation-delay: 0.1s; }
   --c-mbti-j-bg: rgba(255, 105, 97, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* 다크 모드 덮어쓰기 */
-    --c-bg: #121212;
-    --c-text-primary: #efefef;
-    --c-text-secondary: #848484;
-    --c-text-tertiary: #656565;
-    --c-box-bg: #1f1f1f;
-    --c-nav-link: #a0a0a0;
-    --c-tooltip-bg: #f0f0f0;
-    --c-tooltip-text: #121212;
-    --c-skills-divider: rgba(255, 255, 255, 0.08);
-    --c-military-track: rgba(255, 255, 255, 0.08);
-    --c-clock-hand: #858585;
-    --c-clock-shadow: rgba(0, 0, 0, 0.5);
-    --c-location-tag: #ffffff7b;
-    --c-overlay-button-bg: #00000081;
-    --c-image-filter: brightness(85%);
-    --c-music-overlay-filter: brightness(40%);
-    --c-overlay-bg: rgba(0, 0, 0, 0.25);
+:root[data-theme="dark"] {
+  /* 다크 모드 덮어쓰기 */
+  --c-bg: #121212;
+  --c-text-primary: #efefef;
+  --c-text-secondary: #848484;
+  --c-text-tertiary: #656565;
+  --c-box-bg: #1f1f1f;
+  --c-nav-link: #a0a0a0;
+  --c-tooltip-bg: #f0f0f0;
+  --c-tooltip-text: #121212;
+  --c-skills-divider: rgba(255, 255, 255, 0.08);
+  --c-military-track: rgba(255, 255, 255, 0.08);
+  --c-clock-hand: #858585;
+  --c-clock-shadow: rgba(0, 0, 0, 0.5);
+  --c-location-tag: #ffffff7b;
+  --c-overlay-button-bg: #00000081;
+  --c-image-filter: brightness(85%);
+  --c-music-overlay-filter: brightness(40%);
+  --c-overlay-bg: rgba(0, 0, 0, 0.25);
 
-    /* MBTI 색상 (더 잘보이도록 투명도 조정) */
-    --c-mbti-i-bg: rgba(100, 149, 237, 0.4);
-    --c-mbti-n-bg: rgba(147, 112, 219, 0.4);
-    --c-mbti-t-bg: rgba(60, 179, 113, 0.4);
-    --c-mbti-j-bg: rgba(255, 105, 97, 0.4);
-  }
+  /* MBTI 색상 (더 잘보이도록 투명도 조정) */
+  --c-mbti-i-bg: rgba(100, 149, 237, 0.4);
+  --c-mbti-n-bg: rgba(147, 112, 219, 0.4);
+  --c-mbti-t-bg: rgba(60, 179, 113, 0.4);
+  --c-mbti-j-bg: rgba(255, 105, 97, 0.4);
 }
 
 /* =================================================================
@@ -163,9 +161,50 @@ body {
 }
 
 nav {
+    position: relative;
     margin: 1rem auto;
     padding: 3rem 0;
     max-width: 1100px;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+    appearance: none;
+    padding: 0;
+    border: 1px solid var(--c-skills-divider);
+    border-radius: 12px;
+    background: var(--c-box-bg);
+    color: var(--c-text-secondary);
+    font: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--c-text-primary);
+    border-color: var(--c-text-tertiary);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--c-text-primary);
+    outline-offset: 4px;
+}
+
+.theme-icon { width: 20px; height: 20px; }
+.theme-icon-sun { display: none; }
+:root[data-theme="dark"] .theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-icon-sun { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle { transition: none; }
 }
 
 nav a {
@@ -804,12 +843,10 @@ ion-icon {
 }
 
 /* 다크모드에서 텍스트 색상을 흰색으로 고정 */
-@media (prefers-color-scheme: dark) {
-    .box6 .overlay .title,
-    .box6 .overlay .musictitle,
-    .box6 .overlay .musicartist {
-        color: #ffffff;
-    }
+:root[data-theme="dark"] .box6 .overlay .title,
+:root[data-theme="dark"] .box6 .overlay .musictitle,
+:root[data-theme="dark"] .box6 .overlay .musicartist {
+    color: #ffffff;
 }
 
 .box6 .overlay .title {
