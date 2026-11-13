@@ -1,22 +1,10 @@
-/* --- 폰트 선언 (변경 없음) --- */
 @font-face {
-    font-family: 'PartialSansKR-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+    font-family: 'Pretendard Variable';
+    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'LINESeedKR-Bd';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SunBatang-Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/SunBatang-Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
 @keyframes sweep {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
