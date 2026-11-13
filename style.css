@@ -96,6 +96,7 @@ nav.is-visible { animation-delay: 0.1s; }
    1. 색상 변수 정의 (라이트/다크 모드 팔레트)
    ================================================================= */
 :root {
+  --theme-duration: 0.3s;
   /* 라이트 모드 (기본값) */
   --c-bg: #ffffff;
   --c-text-primary: #000000;
@@ -160,6 +161,13 @@ body {
     padding-bottom: 4rem;
 }
 
+:where(body, body *),
+:where(body, body *)::before,
+:where(body, body *)::after {
+    transition: background-color var(--theme-duration) ease,
+        color var(--theme-duration) ease, border-color var(--theme-duration) ease;
+}
+
 nav {
     position: relative;
     margin: 1rem auto;
@@ -167,9 +175,23 @@ nav {
     max-width: 1100px;
 }
 
+.nav-links {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 1.5rem;
+    padding-right: 44px;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+}
+
 .theme-toggle {
     position: absolute;
-    top: 3rem;
+    top: 50%;
     right: 0;
     display: grid;
     place-items: center;
@@ -178,33 +200,42 @@ nav {
     box-sizing: border-box;
     appearance: none;
     padding: 0;
-    border: 1px solid var(--c-skills-divider);
-    border-radius: 12px;
-    background: var(--c-box-bg);
-    color: var(--c-text-secondary);
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--c-nav-link);
     font: inherit;
+    font-size: 1.2rem;
+    transform: translateY(-50%);
     cursor: pointer;
     touch-action: manipulation;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition: color var(--theme-duration) ease;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.nav-links a:hover {
     color: var(--c-text-primary);
-    border-color: var(--c-text-tertiary);
 }
 
 .theme-toggle:focus-visible {
-    outline: 2px solid var(--c-text-primary);
-    outline-offset: 4px;
+    outline: 1px solid currentColor;
+    outline-offset: 2px;
 }
 
-.theme-icon { width: 20px; height: 20px; }
-.theme-icon-sun { display: none; }
-:root[data-theme="dark"] .theme-icon-moon { display: none; }
-:root[data-theme="dark"] .theme-icon-sun { display: block; }
+.theme-icon {
+    grid-area: 1 / 1;
+    width: 1em;
+    height: 1em;
+    pointer-events: none;
+    transition: opacity var(--theme-duration) ease;
+}
+
+.theme-icon-sun { opacity: 0; }
+:root[data-theme="dark"] .theme-icon-moon { opacity: 0; }
+:root[data-theme="dark"] .theme-icon-sun { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
-    .theme-toggle { transition: none; }
+    :root { --theme-duration: 0s; }
 }
 
 nav a {
